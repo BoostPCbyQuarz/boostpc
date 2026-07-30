@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/</loc>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/pages/services.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/pages/resultats.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/pages/avis.html</loc>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/pages/communaute.html</loc>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/pages/apropos.html</loc>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/pages/faq.html</loc>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/pages/contact.html</loc>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://boostpcbyquarz.github.io/boostpc/pages/mentions-legales.html</loc>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>
