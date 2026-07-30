@@ -27,16 +27,16 @@ body {
 header {
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
-    padding: 10px 50px;
+    padding: clamp(8px, 1.5vh, 15px) 50px;
 
     background: #111827;
 
 }
-
-
 .logo {
 
     font-size: 30px;
@@ -76,16 +76,16 @@ nav a:hover {
 
     text-align: center;
 
-    padding: 30px 20px;
+    padding: clamp(10px, 2vh, 25px) 20px;
 
 }
 
 
 .hero h1 {
 
-    margin-top: 25px;
+    margin-top: clamp(10px, 2vh, 20px);
 
-    font-size: 45px;
+    font-size: clamp(30px, 4vw, 45px);
 
     color: #00bfff;
 
@@ -94,9 +94,9 @@ nav a:hover {
 
 .hero p {
 
-    margin-top: 25px;
+    margin-top: clamp(10px, 1.5vh, 20px);
 
-    font-size: 22px;
+    font-size: clamp(16px, 1.5vw, 22px);
 
     border-radius: 10px;
 
@@ -194,12 +194,11 @@ button:hover {
 /* =========================
    SERVICES
 ========================= */
-
 .services {
 
     text-align: center;
 
-    padding: 5px 20px;
+    padding: clamp(10px, 2vh, 20px) 20px;
 
 }
 
@@ -208,9 +207,9 @@ button:hover {
 
     color: #00bfff;
 
-    font-size: 40px;
+    font-size: clamp(28px, 3.5vw, 40px);
 
-    margin-bottom: 50px;
+    margin-bottom: clamp(15px, 2.5vh, 30px);
 
 }
 
@@ -223,18 +222,16 @@ button:hover {
 
     flex-wrap: wrap;
 
-    gap: 10px;
+    gap: clamp(8px, 1.5vw, 15px);
 
 }
-
-
 .service-card {
 
     background: #111827;
 
-    width: 300px;
+    width: 250px;
 
-    padding: 30px;
+    padding: clamp(15px, 2.5vh, 25px);
 
     border-radius: 15px;
 
@@ -243,8 +240,6 @@ button:hover {
     border: 1px solid #1f2937;
 
 }
-
-
 .service-card:hover {
 
     transform: translateY(-10px);
@@ -273,12 +268,11 @@ button:hover {
  /* =========================
    RESULTATS
 ========================= */
-
 .results {
 
     text-align: center;
 
-    padding: 80px 20px;
+    padding: clamp(15px, 3vh, 30px) 20px;
 
     background: #111827;
 
@@ -289,9 +283,9 @@ button:hover {
 
     color: #00bfff;
 
-    font-size: 50px;
+    font-size: clamp(28px, 4vw, 42px);
 
-    margin-bottom: 10px;
+    margin-bottom: clamp(8px, 1.5vh, 15px);
 
 }
 
@@ -304,14 +298,11 @@ button:hover {
 
     color: #d0d0d0;
 
-    font-size: 30px;
+    font-size: clamp(16px, 1.8vw, 20px);
 
     line-height: 1.5;
 
 }
-
-
-
 .results-container {
 
     display: flex;
@@ -320,9 +311,9 @@ button:hover {
 
     flex-wrap: wrap;
 
-    gap: 20px;
+    gap: clamp(10px, 1.5vw, 20px);
 
-    margin-top: 30px;
+    margin-top: clamp(15px, 2.5vh, 25px);
 
 }
 
@@ -330,13 +321,26 @@ button:hover {
 
 .result-card {
 
-    width: 280px;
+    width: 240px;
 
-    padding: 23px;
+    padding: clamp(12px, 2vh, 20px);
 
     background: #0b1020;
 
     border-radius: 15px;
+
+    border: 1px solid #1f2937;
+
+    transition: 0.3s;
+
+}
+
+
+.result-card:hover {
+
+    transform: translateY(-10px);
+
+    border-color: #8B5CF6;
 
 }
 
@@ -346,22 +350,23 @@ button:hover {
 
     color: #8B5CF6;
 
-    margin-bottom: 25px;
+    margin-bottom: clamp(10px, 1.5vh, 18px);
+
+    font-size: 18px;
 
 }
 /* =========================
    RESULTATS AVANT / APRES
 ========================= */
-
 .before {
 
     color: #ff3b3b;
 
-    margin: 15px;
+    margin: 10px;
 
-    font-size: 17px;
+    font-size: 15px;
 
-    line-height: 1.5;
+    line-height: 1.4;
 
 }
 
@@ -370,13 +375,13 @@ button:hover {
 
     color: #00bfff;
 
-    margin: 15px;
+    margin: 10px;
 
-    font-size: 17px;
+    font-size: 15px;
 
     font-weight: bold;
 
-    line-height: 1.5;
+    line-height: 1.4;
 
 }
 /* =========================
@@ -385,20 +390,53 @@ button:hover {
 
 .community {
 
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: calc(100vh - 140px);
+
     text-align: center;
 
-    padding: 80px 20px;
+    padding: clamp(20px, 3.5vh, 35px) 20px;
+
+}
+.community h2 {
+
+    color: #8B5CF6;
+
+    font-size: clamp(28px, 3.5vw, 40px);
+
+    margin-bottom: 8px;
+
+}
+
+
+.community > p {
+
+    max-width: 750px;
+
+    margin: 0 auto;
+
+    color: #d0d0d0;
+
+    font-size: clamp(15px, 1.6vw, 18px);
+
+    line-height: 1.5;
 
 }
 /* =========================
    A PROPOS
 ========================= */
-
 .about {
 
     text-align: center;
 
-    padding: 80px 20px;
+    padding: clamp(20px, 3vh, 35px) 20px;
 
     background: #111827;
 
@@ -409,28 +447,42 @@ button:hover {
 
     color: #00bfff;
 
-    font-size: 40px;
+    font-size: clamp(32px, 4.5vw, 46px);
 
-    margin-bottom: 30px;
+    margin-bottom: clamp(12px, 2vh, 20px);
 
 }
 
 
 .about > p {
 
-    max-width: 800px;
+    max-width: 850px;
 
-    margin: 20px auto;
+    margin: clamp(10px, 1.5vh, 16px) auto;
 
     color: #d0d0d0;
 
-    line-height: 1.7;
+    font-size: clamp(17px, 1.8vw, 20px);
+
+    line-height: 1.6;
+
+    transition: transform 0.25s ease;
+
+    cursor: default;
+
+}
+
+
+.about > p:hover {
+
+    transform: scale(1.05);
+
+    color: #ffffff;
 
 }
 /* =========================
    VALEURS A PROPOS
 ========================= */
-
 .values {
 
     display: flex;
@@ -439,23 +491,20 @@ button:hover {
 
     flex-wrap: wrap;
 
-    gap: 30px;
+    gap: clamp(12px, 1.8vw, 20px);
 
-    margin-top: 50px;
+    margin-top: clamp(15px, 2.5vh, 25px);
 
 }
-
-
-
 .value-card {
 
-    width: 250px;
+    width: 180px;
 
     background: #0b1020;
 
-    padding: 20px;
+    padding: 12px;
 
-    border-radius: 15px;
+    border-radius: 12px;
 
     border: 1px solid #1f2937;
 
@@ -463,18 +512,25 @@ button:hover {
 
     box-sizing: border-box;
 
-    transition: 0.3s;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 
 }
-
-
 .value-card:hover {
 
-    transform: translateY(-10px);
+    transform: scale(1.35) translateY(-10px);
+
+    background: #1a1f35;
 
     border-color: #8B5CF6;
 
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.45);
+
+    z-index: 3;
+
+    position: relative;
+
 }
+
 .value-card h3 {
 
     color: #8B5CF6;
@@ -485,12 +541,11 @@ button:hover {
 /* =========================
    CONTACT
 ========================= */
-
 .contact {
 
     text-align: center;
 
-    padding: 80px 20px;
+    padding: clamp(20px, 3.5vh, 35px) 20px;
 
 }
 
@@ -499,9 +554,9 @@ button:hover {
 
     color: #00bfff;
 
-    font-size: 40px;
+    font-size: clamp(30px, 4vw, 42px);
 
-    margin-bottom: 25px;
+    margin-bottom: clamp(10px, 1.5vh, 18px);
 
 }
 
@@ -510,24 +565,39 @@ button:hover {
 
     max-width: 700px;
 
-    margin: auto;
+    margin: 0 auto;
 
     color: #d0d0d0;
 
+    font-size: clamp(15px, 1.6vw, 18px);
+
+    line-height: 1.5;
+
 }
-
-
 .contact-box {
 
     max-width: 500px;
 
-    margin: 40px auto;
+    margin: clamp(15px, 2.5vh, 25px) auto;
 
-    padding: 30px;
+    padding: clamp(18px, 2.5vh, 25px);
 
     background: #111827;
 
     border-radius: 15px;
+
+    border: 1px solid #1f2937;
+
+    transition: 0.3s;
+
+}
+
+
+.contact-box:hover {
+
+    transform: translateY(-8px);
+
+    border-color: #8B5CF6;
 
 }
 
@@ -536,6 +606,17 @@ button:hover {
 
     color: #8B5CF6;
 
+    font-size: clamp(17px, 1.8vw, 20px);
+
+}
+
+
+.contact-box p {
+
+    font-size: clamp(14px, 1.5vw, 16px);
+
+    line-height: 1.5;
+
 }
 
 
@@ -543,7 +624,9 @@ button:hover {
 
     color: #d0d0d0;
 
-    margin: 10px;
+    margin: 8px;
+
+    font-size: clamp(14px, 1.5vw, 16px);
 
 }
 /* =========================
@@ -591,12 +674,11 @@ button:hover {
 /* =========================
    METHODE BOOSTPC
 ========================= */
-
 .method {
 
     text-align: center;
 
-    padding: 60px 20px;
+    padding: clamp(15px, 2.5vh, 30px) 20px;
 
 }
 
@@ -605,13 +687,11 @@ button:hover {
 
     color: #00bfff;
 
-    font-size: 40px;
+    font-size: clamp(28px, 3.5vw, 40px);
 
-    margin-bottom: 25px;
+    margin-bottom: clamp(10px, 2vh, 20px);
 
 }
-
-
 .method-intro {
 
     max-width: 700px;
@@ -623,8 +703,6 @@ button:hover {
     line-height: 1.6;
 
 }
-
-
 .method-container {
 
     display: flex;
@@ -633,9 +711,9 @@ button:hover {
 
     flex-wrap: wrap;
 
-    gap: 25px;
+    gap: clamp(10px, 1.5vw, 20px);
 
-    margin-top: 50px;
+    margin-top: clamp(15px, 2.5vh, 30px);
 
 }
 
@@ -643,18 +721,28 @@ button:hover {
 
 .method-card {
 
-    width: 250px;
+    width: 220px;
 
-    padding: 30px;
+    padding: clamp(12px, 2vh, 20px);
 
     background: #111827;
 
     border-radius: 15px;
 
+    transition: 0.3s;
+
+    border: 1px solid #1f2937;
+
 }
 
 
+.method-card:hover {
 
+    transform: translateY(-10px);
+
+    border-color: #8B5CF6;
+
+}
 .method-card h3 {
 
     color: #8B5CF6;
@@ -681,26 +769,37 @@ button:hover {
 
     flex-wrap: wrap;
 
-    gap: 25px;
+    gap: clamp(14px, 2vw, 22px);
 
-    margin-top: 35px;
+    margin-top: clamp(20px, 3vh, 30px);
 
 }
 
 
 .community-card {
 
-    width: 280px;
+    width: 250px;
 
-    padding: 25px;
+    padding: clamp(15px, 2.5vh, 22px);
 
     background: #111827;
 
     border-radius: 15px;
 
+    border: 1px solid #1f2937;
+
+    transition: 0.3s;
+
 }
 
 
+.community-card:hover {
+
+    transform: translateY(-10px);
+
+    border-color: #8B5CF6;
+
+}
 .community-card h3 {
 
     color: #8B5CF6;
@@ -720,36 +819,40 @@ button:hover {
 /* =========================
    ENGAGEMENT BOOSTPC
 ========================= */
-
 .trust-box {
 
-    width: 250px;
+    width: 180px;
 
     text-align: left;
 
-    padding: 20px;
+    padding: 12px;
 
     background: #0b1020;
 
-    border-radius: 15px;
+    border-radius: 12px;
 
     border: 1px solid #1f2937;
 
     box-sizing: border-box;
 
-    transition: 0.3s;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 
 }
-
-
 .trust-box:hover {
 
-    transform: translateY(-10px);
+    transform: scale(1.35) translateY(-10px);
+
+    background: #1a1f35;
 
     border-color: #8B5CF6;
 
-}
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.45);
 
+    z-index: 3;
+
+    position: relative;
+
+}
 
 .trust-box h3 {
 
@@ -770,11 +873,8 @@ button:hover {
 /* =========================
    ELEMENTS COMMUNS
 ========================= */
-
 .service-card,
-.community-card,
-.value-card,
-.trust-box {
+.community-card {
 
     background: #111827;
 
@@ -787,12 +887,8 @@ button:hover {
     transition: 0.3s;
 
 }
-
-
 .service-card:hover,
-.community-card:hover,
-.value-card:hover,
-.trust-box:hover {
+.community-card:hover {
 
     transform: translateY(-5px);
 
@@ -846,14 +942,13 @@ nav a {
 
     align-items: center;
 
-    gap: 60px;
+    gap: clamp(20px, 3vw, 40px);
 
-    padding: 50px 20px;
+    padding: clamp(15px, 3vh, 30px) 20px;
 
     flex-wrap: wrap;
 
 }
-
 .advantage-card {
 
     width: 280px;
@@ -1071,12 +1166,11 @@ footer a:hover {
 /* =========================
    AVIS / TEMOIGNAGES
 ========================= */
-
 .testimonials {
 
     text-align: center;
 
-    padding: 80px 20px;
+    padding: clamp(50px, 8vh, 90px) 20px;
 
 }
 
@@ -1085,20 +1179,22 @@ footer a:hover {
 
     color: #00bfff;
 
-    font-size: 40px;
+    font-size: clamp(34px, 4.5vw, 48px);
 
-    margin-bottom: 20px;
+    margin-bottom: clamp(18px, 3vh, 30px);
 
 }
 
 
 .testimonials-intro {
 
-    max-width: 700px;
+    max-width: 750px;
 
     margin: auto;
 
     color: #d0d0d0;
+
+    font-size: clamp(17px, 2vw, 22px);
 
     line-height: 1.6;
 
@@ -1111,20 +1207,20 @@ footer a:hover {
 
     justify-content: center;
 
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
-    gap: 25px;
+    gap: clamp(12px, 1.5vw, 20px);
 
-    margin-top: 50px;
+    margin-top: clamp(30px, 5vh, 50px);
 
 }
 
 
 .testimonial-card {
 
-    width: 320px;
+    width: clamp(200px, 14vw, 260px);
 
-    padding: 25px;
+    padding: clamp(16px, 2.5vh, 24px);
 
     background: #111827;
 
@@ -1134,20 +1230,35 @@ footer a:hover {
 
     text-align: left;
 
-}
+    position: relative;
 
-
-.testimonial-card p {
-
-    color: #d0d0d0;
-
-    line-height: 1.5;
-
-    font-style: italic;
+    transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
 
 }
 
 
+.testimonials-container:hover .testimonial-card {
+
+    transform: scale(0.9);
+
+    opacity: 0.55;
+
+}
+
+
+.testimonials-container .testimonial-card:hover {
+
+    transform: scale(1.2) translateY(-15px) !important;
+
+    opacity: 1 !important;
+
+    border-color: #8B5CF6;
+
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+
+    z-index: 2;
+
+}
 .testimonial-author {
 
     display: block;
@@ -1211,8 +1322,6 @@ footer a:hover {
     margin-top: 50px;
 
 }
-
-
 .faq-card {
 
     width: 300px;
@@ -1227,9 +1336,26 @@ footer a:hover {
 
     text-align: left;
 
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+
 }
 
 
+.faq-card:hover {
+
+    transform: scale(1.1) translateY(-10px);
+
+    background: #1a1f35;
+
+    border-color: #8B5CF6;
+
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
+
+    z-index: 3;
+
+    position: relative;
+
+}
 .faq-card h3 {
 
     color: #8B5CF6;
@@ -1244,5 +1370,139 @@ footer a:hover {
     color: #d0d0d0;
 
     line-height: 1.6;
+
+}
+/* =========================
+   ANIMATIONS D'APPARITION
+========================= */
+
+.hero,
+.advantages,
+.services,
+.results,
+.community,
+.about,
+.contact,
+.method,
+.testimonials,
+.faq {
+
+    animation: fadeInUp 0.8s ease-out;
+
+}
+
+
+@keyframes fadeInUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+/* =========================
+   CLIGNOTEMENT DISCORD
+========================= */
+
+.blink-text {
+
+    animation: blinkText 1.5s ease-in-out infinite;
+
+}
+
+
+@keyframes blinkText {
+
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+}
+/* =========================
+   AJUSTEMENT TAILLE TEXTE CARTES A PROPOS
+========================= */
+
+.value-card h3,
+.trust-box h3 {
+
+    font-size: 15px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.value-card p,
+.trust-box p {
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+}
+/* =========================
+   CORRECTIF MOBILE - AVIS / TRUST / FAQ
+========================= */
+
+@media (max-width: 768px) {
+
+    .testimonials-container {
+        flex-wrap: wrap;
+    }
+
+    .testimonial-card,
+    .trust-box,
+    .faq-card {
+        width: 90%;
+        max-width: 320px;
+    }
+
+}
+/* =========================
+   MISE EN AVANT BLOC DISCORD CONTACT
+========================= */
+
+.contact-box-featured {
+
+    max-width: 550px;
+
+    border: 2px solid #8B5CF6;
+
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+
+    animation: pulseGlow 2.5s ease-in-out infinite;
+
+}
+
+
+.contact-box-featured:hover {
+
+    transform: scale(1.1) translateY(-10px);
+
+    box-shadow: 0 0 45px rgba(139, 92, 246, 0.7);
+
+    animation-play-state: paused;
+
+}
+
+
+@keyframes pulseGlow {
+
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 35px rgba(139, 92, 246, 0.6);
+    }
 
 }
