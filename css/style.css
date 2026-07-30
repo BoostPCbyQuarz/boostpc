@@ -368,9 +368,11 @@ button:hover {
 
     line-height: 1.4;
 
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.9);
+
+    font-weight: bold;
+
 }
-
-
 .after {
 
     color: #00bfff;
@@ -1562,4 +1564,35 @@ footer a:hover {
 
 .result-card:nth-child(6) {
     background-image: url("../images/resultats/resultat-refroidissement.jpg");
+}
+/* =========================
+   ZOOM AU SURVOL - CARTES RESULTATS
+========================= */
+
+.result-card {
+
+    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+
+.results-container:hover .result-card {
+
+    transform: scale(0.9);
+
+    opacity: 0.6;
+
+}
+
+
+.results-container .result-card:hover {
+
+    transform: scale(1.25) translateY(-10px) !important;
+
+    opacity: 1 !important;
+
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+
+    z-index: 3;
+
 }
