@@ -449,18 +449,32 @@ button:hover {
 
 .value-card {
 
-    width: 280px;
+    width: 250px;
 
     background: #0b1020;
 
-    padding: 30px;
+    padding: 20px;
 
     border-radius: 15px;
+
+    border: 1px solid #1f2937;
+
+    text-align: left;
+
+    box-sizing: border-box;
+
+    transition: 0.3s;
 
 }
 
 
+.value-card:hover {
 
+    transform: translateY(-10px);
+
+    border-color: #8B5CF6;
+
+}
 .value-card h3 {
 
     color: #8B5CF6;
@@ -709,28 +723,39 @@ button:hover {
 
 .trust-box {
 
-    max-width: 600px;
+    width: 250px;
 
-    margin: 30px auto 0;
+    text-align: left;
 
-    padding: 25px;
+    padding: 20px;
 
-    background: #111827;
+    background: #0b1020;
 
     border-radius: 15px;
 
-    border: 2px solid #8B5CF6;
+    border: 1px solid #1f2937;
 
     box-sizing: border-box;
+
+    transition: 0.3s;
+
+}
+
+
+.trust-box:hover {
+
+    transform: translateY(-10px);
+
+    border-color: #8B5CF6;
 
 }
 
 
 .trust-box h3 {
 
-    color: #00bfff;
+    color: #8B5CF6;
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
 }
 
