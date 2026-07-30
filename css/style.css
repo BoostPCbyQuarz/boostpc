@@ -1043,3 +1043,96 @@ footer a:hover {
     }
 
 }
+/* =========================
+   AVIS / TEMOIGNAGES
+========================= */
+
+.testimonials {
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+}
+
+
+.testimonials h2 {
+
+    color: #00bfff;
+
+    font-size: 40px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.testimonials-intro {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    color: #d0d0d0;
+
+    line-height: 1.6;
+
+}
+
+
+.testimonials-container {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin-top: 50px;
+
+}
+
+
+.testimonial-card {
+
+    width: 320px;
+
+    padding: 25px;
+
+    background: #111827;
+
+    border-radius: 15px;
+
+    border: 1px solid #1f2937;
+
+    text-align: left;
+
+}
+
+
+.testimonial-card p {
+
+    color: #d0d0d0;
+
+    line-height: 1.5;
+
+    font-style: italic;
+
+}
+
+
+.testimonial-author {
+
+    display: block;
+
+    margin-top: 15px;
+
+    color: #8B5CF6;
+
+    font-weight: bold;
+
+    font-style: normal;
+
+}
