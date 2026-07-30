@@ -1506,3 +1506,60 @@ footer a:hover {
     }
 
 }
+/* =========================
+   IMAGES DE FOND - RESULTATS
+========================= */
+
+.result-card {
+
+    position: relative;
+
+    background-size: cover;
+
+    background-position: center;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+}
+
+
+.result-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(180deg, rgba(11, 16, 32, 0.55) 0%, rgba(11, 16, 32, 0.92) 100%);
+
+    z-index: -1;
+
+}
+
+
+.result-card:nth-child(1) {
+    background-image: url("../images/resultats/resultat-windows.png");
+}
+
+.result-card:nth-child(2) {
+    background-image: url("../images/resultats/resultat-gaming.png");
+}
+
+.result-card:nth-child(3) {
+    background-image: url("../images/resultats/resultat-systeme.png");
+}
+
+.result-card:nth-child(4) {
+    background-image: url("../images/resultats/resultat-energie.png");
+}
+
+.result-card:nth-child(5) {
+    background-image: url("../images/resultats/resultat-reseau.jpeg");
+}
+
+.result-card:nth-child(6) {
+    background-image: url("../images/resultats/resultat-refroidissement.jpg");
+}
