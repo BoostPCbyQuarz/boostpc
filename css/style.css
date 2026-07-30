@@ -1175,16 +1175,24 @@ footer a:hover {
 
 .faq-container {
 
-    max-width: 800px;
+    display: flex;
 
-    margin: 50px auto 0;
+    justify-content: center;
 
-    text-align: left;
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin-top: 50px;
 
 }
 
 
-.faq-item {
+.faq-card {
+
+    width: 300px;
+
+    padding: 25px;
 
     background: #111827;
 
@@ -1192,23 +1200,21 @@ footer a:hover {
 
     border: 1px solid #1f2937;
 
-    padding: 25px;
-
-    margin-bottom: 20px;
+    text-align: left;
 
 }
 
 
-.faq-item h3 {
+.faq-card h3 {
 
     color: #8B5CF6;
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
 }
 
 
-.faq-item p {
+.faq-card p {
 
     color: #d0d0d0;
 
