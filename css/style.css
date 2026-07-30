@@ -1136,3 +1136,82 @@ footer a:hover {
     font-style: normal;
 
 }
+/* =========================
+   FAQ
+========================= */
+
+.faq {
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+}
+
+
+.faq h2 {
+
+    color: #00bfff;
+
+    font-size: 40px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.faq-intro {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    color: #d0d0d0;
+
+    line-height: 1.6;
+
+}
+
+
+.faq-container {
+
+    max-width: 800px;
+
+    margin: 50px auto 0;
+
+    text-align: left;
+
+}
+
+
+.faq-item {
+
+    background: #111827;
+
+    border-radius: 15px;
+
+    border: 1px solid #1f2937;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.faq-item h3 {
+
+    color: #8B5CF6;
+
+    margin-bottom: 10px;
+
+}
+
+
+.faq-item p {
+
+    color: #d0d0d0;
+
+    line-height: 1.6;
+
+}
