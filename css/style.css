@@ -1596,3 +1596,18 @@ footer a:hover {
     z-index: 3;
 
 }
+/* =========================
+   LOGO HERO ACCUEIL
+========================= */
+
+.hero-logo {
+
+    width: clamp(120px, 15vw, 180px);
+
+    height: auto;
+
+    margin-top: clamp(10px, 2vh, 20px);
+
+    border-radius: 50%;
+
+}
