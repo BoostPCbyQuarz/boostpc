@@ -27,3 +27,35 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+// Zoom au scroll sur les cartes résultats (mobile) - déclenché quand le bloc est proche du centre de l'écran
+document.addEventListener('DOMContentLoaded', function () {
+
+    const resultCards = document.querySelectorAll('.result-card');
+
+    if (resultCards.length > 0) {
+
+        function updateZoomOnScroll() {
+
+            const screenCenter = window.innerHeight / 2;
+
+            resultCards.forEach(function (card) {
+
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.top + (rect.height / 2);
+                const distanceFromCenter = Math.abs(screenCenter - cardCenter);
+
+             // Le bloc est considéré "au centre" seulement s'il est plus proche que la moitié de sa propre hauteur
+                if (distanceFromCenter < rect.height * 0.6) {
+                    card.classList.add('in-view');
+                } else {
+                    card.classList.remove('in-view');
+                }   
+
+            });
+        }
+
+        window.addEventListener('scroll', updateZoomOnScroll);
+        updateZoomOnScroll(); // vérifie une première fois au chargement
+    }
+
+});
