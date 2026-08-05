@@ -2178,3 +2178,54 @@ footer a:hover {
     }
 
 }
+/* =========================
+   COMPTEUR D'INTERVENTIONS
+========================= */
+
+.intervention-counter {
+
+    margin-bottom: 15px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #1f2937;
+
+}
+
+
+.intervention-counter p {
+
+    font-size: 16px;
+
+    color: #d0d0d0;
+
+    margin-bottom: 6px;
+
+}
+
+
+.intervention-counter strong {
+
+    color: #00bfff;
+
+    font-size: 20px;
+
+}
+
+
+.intervention-counter a {
+
+    color: #8B5CF6;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+}
+
+
+.intervention-counter a:hover {
+
+    text-decoration: underline;
+
+}
