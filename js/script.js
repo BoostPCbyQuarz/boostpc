@@ -59,3 +59,36 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+  const channelName = "sylvain2500";
+  
+  // Cette URL vérifie si le streamer est en live
+  const url = `https://api.twitch.tv/helix/streams?user_login=${channelName}`;
+  
+  // Tu dois ajouter ta clé API Twitch (voir étape 2)
+  const clientId = "TON_CLIENT_ID_TWITCH"; // À remplacer
+  const token = "TON_ACCESS_TOKEN_TWITCH";  // À remplacer
+  
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Client-ID": clientId,
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    
+    const data = await response.json();
+    
+    // Si le streamer est en live
+    if (data.data.length > 0) {
+      // Le streamer EST en direct
+      document.querySelector(".voyant").className = "voyant voyant-online";
+      document.querySelector(".statut").textContent = "🔴 EN DIRECT";
+    } else {
+      // Le streamer n'est pas en direct
+      document.querySelector(".voyant").className = "voyant voyant-offline";
+      document.querySelector(".statut").textContent = "En ligne : Non";
+    }
+  } catch (error) {
+    console.log("Erreur vérification Twitch:", error);
+  }

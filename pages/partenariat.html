@@ -56,34 +56,26 @@
 
 <section class="partners-hero">
 
-    <h2>
-        Devenir partenaire
-    </h2>
+    <h2>Devenir partenaire</h2>
 
-    <p>
-        BoostPC met en avant les créateurs de contenu.
-        Un espace dédié à leur visibilité, en toute simplicité.
-    </p>
+    <p>BoostPC met en avant les créateurs de contenu. Un espace dédié à leur visibilité, en toute simplicité.</p>
 
-    <div class="partners-container">
-
-        <div class="partner-card">
-            <h3>🎥 Streamers & créateurs</h3>
-            <p>
-                Ton lien affiché sur cette page, en échange d'une
-                mention de BoostPC de temps en temps sur ton live
-                ou tes réseaux.
-            </p>
+    <div class="carte-twitch">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/65e7e4b2-1130-4587-9d83-c944360a3a60-profile_image-70x70.jpeg" alt="Sylvain Gaming" class="carte-twitch-img">
+        
+        <div class="carte-twitch-contenu">
+            <div class="carte-header">
+                <h3>Sylvain Gaming</h3>
+                <div class="voyant voyant-offline"></div>
+            </div>
+            <p class="statut">En ligne : Non</p>
+            <p class="titre-stream">Resident Evil • Assassin's Creed • GTA V • Farming Simulator</p>
+            <a href="https://www.twitch.tv/sylvain2500" target="_blank" class="btn-twitch">Regarder sur Twitch</a>
         </div>
-
     </div>
 
     <div class="partners-empty">
-         <p>
-            Intéressé(e) ? Contacte Quarz par email à
-            <a href="mailto:BoostPCbyQuarz@proton.me">BoostPCbyQuarz@proton.me</a>
-            ou via <a href="contact.html">Discord</a>.
-        </p>
+        <p>Intéressé(e) ? Contacte Quarz par email à <a href="mailto:BoostPCbyQuarz@proton.me">BoostPCbyQuarz@proton.me</a> ou via <a href="contact.html">Discord</a>.</p>
     </div>
 
 </section>
@@ -99,6 +91,30 @@
 <script src="../js/script.js"></script>
 <script data-goatcounter="https://boostpc.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+
+<script>
+async function checkTwitchStatus() {
+  try {
+    const response = await fetch("https://boostpc-twitch-status.histoiresportif.workers.dev/");
+    const data = await response.json();
+
+    if (data.live) {
+      document.querySelector(".voyant").className = "voyant voyant-online";
+      document.querySelector(".statut").textContent = "🔴 EN DIRECT";
+    } else {
+      document.querySelector(".voyant").className = "voyant voyant-offline";
+      document.querySelector(".statut").textContent = "En ligne : Non";
+    }
+
+  } catch (error) {
+    console.log("Erreur Twitch :", error);
+  }
+}
+
+checkTwitchStatus();
+setInterval(checkTwitchStatus, 30000);
+</script>
+
 </body>
 
 </html>

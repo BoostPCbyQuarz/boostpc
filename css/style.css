@@ -2229,3 +2229,51 @@ footer a:hover {
     text-decoration: underline;
 
 }
+/* CARTE TWITCH */
+
+.carte-twitch-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.carte-twitch-contenu {
+  padding: 15px;
+  flex: 1;
+  color: white;
+}
+
+.carte-twitch-contenu h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #efb800;
+}
+
+.statut {
+  margin: 5px 0;
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.titre-stream {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #a0a0a0;
+}
+
+.btn-twitch {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #9146ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-twitch:hover {
+  background: #7835cc;
+}
