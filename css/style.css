@@ -2231,6 +2231,23 @@ footer a:hover {
 }
 /* CARTE TWITCH */
 
+.carte-twitch {
+  display: flex;
+  border: 2px solid #9146ff;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1a1a1b;
+  max-width: 450px;
+  margin: 40px auto;
+  box-shadow: 0 4px 15px rgba(145, 70, 255, 0.3);
+  transition: 0.3s;
+}
+
+.carte-twitch:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(145, 70, 255, 0.5);
+}
+
 .carte-twitch-img {
   width: 120px;
   height: 120px;
@@ -2244,16 +2261,24 @@ footer a:hover {
   color: white;
 }
 
+.carte-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .carte-twitch-contenu h3 {
-  margin: 0 0 10px 0;
+  margin: 0;
   font-size: 18px;
   color: #efb800;
 }
 
 .statut {
-  margin: 5px 0;
+  margin: 8px 0;
   font-weight: bold;
-  color: #ff0000;
+  color: #ff4444;
+  font-size: 13px;
 }
 
 .titre-stream {
@@ -2276,4 +2301,34 @@ footer a:hover {
 
 .btn-twitch:hover {
   background: #7835cc;
+}
+
+/* VOYANT ROUGE FIXE quand pas en live */
+.voyant {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.voyant-offline {
+  background: #ff4444;
+  box-shadow: 0 0 6px rgba(255, 68, 68, 0.6);
+}
+
+/* VOYANT VERT CLIGNOTANT quand en live */
+.voyant-online {
+  background: #00ff00;
+  animation: clignote 1s ease-in-out infinite;
+}
+
+@keyframes clignote {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px #00ff00, 0 0 20px #00ff00;
+  }
+  50% {
+    opacity: 0.2;
+    box-shadow: none;
+  }
 }

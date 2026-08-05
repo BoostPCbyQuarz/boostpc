@@ -69,7 +69,9 @@
                 <div class="voyant voyant-offline"></div>
             </div>
             <p class="statut">En ligne : Non</p>
-            <p class="titre-stream">Resident Evil • Assassin's Creed • GTA V • Farming Simulator</p>
+            <p class="titre-stream">🎮 Bienvenue sur Sylvain Gaming ! 🎮Ici, on partage avant tout une passion : le jeu vidéo.
+                Au programme : 😱 Resident Evil Requiem 🏴‍☠️ Assassin's Creed Black Flag Resynced 🚔 GTA V (coop & braquages) 🚜 Farming Simulator 🌊 Subnautica 
+                ⚔️ Bientôt : The Elder Scrolls IV: Oblivion Remastered</p>
             <a href="https://www.twitch.tv/sylvain2500" target="_blank" class="btn-twitch">Regarder sur Twitch</a>
         </div>
     </div>
@@ -100,7 +102,7 @@ async function checkTwitchStatus() {
 
     if (data.live) {
       document.querySelector(".voyant").className = "voyant voyant-online";
-      document.querySelector(".statut").textContent = "🔴 EN DIRECT";
+      document.querySelector(".statut").textContent = "EN DIRECT";
     } else {
       document.querySelector(".voyant").className = "voyant voyant-offline";
       document.querySelector(".statut").textContent = "En ligne : Non";
