@@ -47,7 +47,11 @@ header {
 
 }
 
+.logo img {
 
+    border-radius: 50%;
+
+}
 nav a {
 
     font-size: 25px;
@@ -96,11 +100,15 @@ nav a:hover {
 
     margin-top: clamp(10px, 1.5vh, 20px);
 
-    font-size: clamp(16px, 1.5vw, 22px);
+    font-size: clamp(36px, 5vw, 60px);
 
     border-radius: 10px;
 
-    color: #d0d0d0;
+    color: #ffffff;
+
+    font-weight: bold;
+
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.3);
 
 }
 .hero span {
@@ -111,7 +119,7 @@ nav a:hover {
 
     color: #8B5CF6;
 
-    font-size: 18px;
+    font-size: clamp(16px, 2vw, 30px);
 
     font-weight: bold;
 
@@ -251,9 +259,11 @@ button:hover {
 
 .service-card p {
 
-    color: #d0d0d0;
+    color: #ffffff;
 
     line-height: 1.6;
+
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 
 }
  /* =========================
@@ -306,8 +316,6 @@ button:hover {
 
 }
 
-
-
 .result-card {
 
     width: 240px;
@@ -322,8 +330,17 @@ button:hover {
 
     transition: 0.3s;
 
-}
+    text-align: center;
 
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-height: 180px;
+
+}
 
 .result-card:hover {
 
@@ -343,6 +360,8 @@ button:hover {
 
     font-size: 18px;
 
+    text-align: center;
+
 }
 /* =========================
    RESULTATS AVANT / APRES
@@ -361,6 +380,8 @@ button:hover {
 
     font-weight: bold;
 
+    text-align: center;
+
 }
 .after {
 
@@ -373,6 +394,8 @@ button:hover {
     font-weight: bold;
 
     line-height: 1.4;
+
+    text-align: center;
 
 }
 /* =========================
@@ -628,7 +651,7 @@ button:hover {
 
     margin-top: 30px;
 
-    padding: 15px 40px;
+    padding: clamp(12px, 2vh, 20px) clamp(25px, 4vw, 55px);
 
     background: #8B5CF6;
 
@@ -638,7 +661,7 @@ button:hover {
 
     border-radius: 30px;
 
-    font-size: 18px;
+    font-size: clamp(16px, 2vw, 28px);
 
     font-weight: bold;
 
@@ -647,7 +670,6 @@ button:hover {
     transition: 1s;
 
 }
-
 
 .hero-button:hover {
 
@@ -743,7 +765,9 @@ button:hover {
 
 .method-card p {
 
-    color: #d0d0d0;
+    color: #ffffff;
+
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 
 }
 /* =========================
@@ -800,9 +824,11 @@ button:hover {
 
 .community-card p {
 
-    color: #d0d0d0;
+    color: #ffffff;
 
     line-height: 1.5;
+
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 
 }
 /* =========================
@@ -1327,8 +1353,9 @@ footer a:hover {
 
     line-height: 1.6;
 
-}
+    font-size: clamp(18px, 2vw, 32px);
 
+}
 
 .faq-container {
 
@@ -2331,4 +2358,120 @@ footer a:hover {
     opacity: 0.2;
     box-shadow: none;
   }
+}
+/* =========================
+   CENTRAGE RESULTATS
+========================= */
+
+.result-card {
+    text-align: center;
+}
+
+.result-card h3 {
+    text-align: center;
+}
+
+.before {
+    text-align: center;
+}
+
+.after {
+    text-align: center;
+}
+/* =========================
+   CENTRAGE RESULTATS FORCÉ
+========================= */
+
+.result-card * {
+    text-align: center !important;
+}
+/* =========================
+   ILLUMINATION TEXTE AVIS
+========================= */
+
+.testimonial-card p {
+
+    color: #ffffff;
+
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+
+}
+/* =========================
+   ILLUMINATION ET CENTRAGE A PROPOS
+========================= */
+
+.value-card,
+.trust-box {
+    text-align: center;
+}
+
+.value-card p,
+.trust-box p {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.value-card h3,
+.trust-box h3 {
+    color: #8B5CF6;
+}
+/* CENTRAGE VERTICAL VALUE-CARD ET TRUST-BOX */
+
+.value-card,
+.trust-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 150px;
+}
+/* =========================
+   ILLUMINATION ET CENTRAGE FAQ
+========================= */
+
+.faq-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 150px;
+    text-align: center;
+}
+
+.faq-card h3 {
+    text-align: center;
+}
+
+.faq-card p {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    text-align: center;
+}
+/* =========================
+   ZOOM AU SURVOL - CARTES SERVICES
+========================= */
+
+.services-container:hover .service-card {
+    transform: scale(0.9);
+    opacity: 0.6;
+}
+
+.services-container .service-card:hover {
+    transform: scale(1.25) translateY(-10px) !important;
+    opacity: 1 !important;
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+    z-index: 3;
+}
+/* =========================
+   ZOOM AU SURVOL - METHODE BOOSTPC
+========================= */
+
+.method-container:hover .method-card {
+    transform: scale(0.9);
+    opacity: 0.6;
+}
+
+.method-container .method-card:hover {
+    transform: scale(1.25) translateY(-10px) !important;
+    opacity: 1 !important;
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+    z-index: 3;
 }
