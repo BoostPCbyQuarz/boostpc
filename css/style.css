@@ -2475,3 +2475,16 @@ footer a:hover {
     box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
     z-index: 3;
 }
+/* =========================
+   CORRECTIF BOUTON DISCORD COMMUNAUTE
+========================= */
+
+.community-card .hero-button {
+    display: block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: clamp(14px, 1.5vw, 18px);
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+}
