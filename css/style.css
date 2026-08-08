@@ -2488,3 +2488,18 @@ footer a:hover {
     box-sizing: border-box;
     width: 100%;
 }
+/* =========================
+   CORRECTIF BOUTON EMAIL CONTACT
+========================= */
+
+.contact-box .hero-button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    word-break: break-all;
+    white-space: normal;
+    padding: 12px 15px;
+    font-size: clamp(13px, 1.3vw, 16px);
+    margin-top: 15px;
+}
