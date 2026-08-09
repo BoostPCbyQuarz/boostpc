@@ -2523,7 +2523,6 @@ footer a:hover {
     display: flex;
     flex-direction: row;
 }
-
 .partners-container-twitch {
     display: flex;
     flex-direction: row;
@@ -2531,4 +2530,38 @@ footer a:hover {
     flex-wrap: wrap;
     gap: 30px;
     margin: 40px auto;
+    align-items: flex-start;
+}
+
+.partners-container-twitch .carte-twitch {
+    flex: 0 0 auto;
+    width: 500px;
+    margin: 0;
+    align-self: stretch;
+}
+
+.partners-container-twitch {
+    align-items: stretch;
+}
+
+.partners-container-twitch .carte-twitch .carte-twitch-contenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.partners-container-twitch .carte-twitch .carte-twitch-contenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* =========================
+   CARTE EN LIVE - MIS EN AVANT
+========================= */
+
+.carte-live {
+    border: 2px solid #00ff00 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4) !important;
+    transform: scale(1.03);
 }

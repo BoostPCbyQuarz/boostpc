@@ -59,3 +59,6 @@ annonce sylvain :
 annonce Voldark :
 🎮 Bienvenue sur ma chaîne ! 🔥 Au programme : Counter-Strike, Rocket League, jeux solo & coop, découvertes et surtout beaucoup de fun ! 
                 😂 Viens discuter, jouer et partager de bons moments. Ici, on tryhard… mais pas trop ! 😎
+
+annonce Miss
+Hello bienvenue a toi ! Ici on fait principalement de la survie et de l'horreur mais on aime aussi la découverte alors n'hésite pas à proposer tes jeux préférés ! Je suis en stream tous les soirs a 21h , rejoins moi sur les autres réseaux et sur discord pour échanger en direct !

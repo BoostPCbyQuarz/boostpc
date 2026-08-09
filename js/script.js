@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const TWITCH_CLIENT_ID = "ijkbip2a9i70iu22tjl0hoi04u50y9";
 const TWITCH_TOKEN = "1q9bq1f4401hwmgj25bwqyh7rk5nyx";
 
-async function checkTwitchStatus(channel, voyantEl, statutEl) {
+async function checkTwitchStatus(channel, voyantEl, statutEl, carteEl) {
     try {
         const response = await fetch(`https://api.twitch.tv/helix/streams?user_login=${channel}`, {
             headers: {
@@ -79,14 +79,34 @@ async function checkTwitchStatus(channel, voyantEl, statutEl) {
             voyantEl.className = "voyant voyant-online";
             statutEl.textContent = "EN DIRECT";
             statutEl.className = "statut statut-live";
+            carteEl.classList.add("carte-live");
         } else {
             voyantEl.className = "voyant voyant-offline";
             statutEl.textContent = "En ligne : Non";
             statutEl.className = "statut";
+            carteEl.classList.remove("carte-live");
         }
+
+        // Trier les cartes : live en premier
+        trierCartes();
+
     } catch (error) {
         console.log("Erreur Twitch :", error);
     }
+}
+
+function trierCartes() {
+    const container = document.querySelector(".partners-container-twitch");
+    if (!container) return;
+
+    const cartes = Array.from(container.querySelectorAll(".carte-twitch"));
+
+    // Séparer live et offline
+    const cartesLive = cartes.filter(c => c.classList.contains("carte-live"));
+    const cartesOffline = cartes.filter(c => !c.classList.contains("carte-live"));
+
+    // Remettre dans le bon ordre : live d'abord puis offline
+    [...cartesLive, ...cartesOffline].forEach(carte => container.appendChild(carte));
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -95,26 +115,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (cartes.length > 0) {
 
-        // Carte 1 - Sylvain Gaming
         const voyant1 = cartes[0].querySelector(".voyant");
         const statut1 = cartes[0].querySelector(".statut");
 
-        // Carte 2 - Voldarks
         const voyant2 = cartes[1] ? cartes[1].querySelector(".voyant") : null;
         const statut2 = cartes[1] ? cartes[1].querySelector(".statut") : null;
 
-        // Vérifie les statuts au chargement
-        checkTwitchStatus("sylvain2500", voyant1, statut1);
-        if (voyant2 && statut2) {
-            checkTwitchStatus("voldarks81540", voyant2, statut2);
-        }
+        const voyant3 = cartes[2] ? cartes[2].querySelector(".voyant") : null;
+        const statut3 = cartes[2] ? cartes[2].querySelector(".statut") : null;
 
-        // Actualise toutes les 30 secondes
+        checkTwitchStatus("sylvain2500", voyant1, statut1, cartes[0]);
+        if (voyant2 && statut2) checkTwitchStatus("voldarks81540", voyant2, statut2, cartes[1]);
+        if (voyant3 && statut3) checkTwitchStatus("miss_dixon", voyant3, statut3, cartes[2]);
+
         setInterval(() => {
-            checkTwitchStatus("sylvain2500", voyant1, statut1);
-            if (voyant2 && statut2) {
-                checkTwitchStatus("voldarks81540", voyant2, statut2);
-            }
+            const cartesActuelles = document.querySelectorAll(".carte-twitch");
+            cartesActuelles.forEach(carte => {
+                const nom = carte.querySelector("h3").textContent.toLowerCase().replace(" ", "");
+                const voyant = carte.querySelector(".voyant");
+                const statut = carte.querySelector(".statut");
+
+                if (nom.includes("sylvain")) checkTwitchStatus("sylvain2500", voyant, statut, carte);
+                if (nom.includes("voldark")) checkTwitchStatus("voldarks81540", voyant, statut, carte);
+                if (nom.includes("miss_dixon") || nom.includes("dixon")) checkTwitchStatus("miss_dixon", voyant, statut, carte);
+            });
         }, 30000);
     }
 
