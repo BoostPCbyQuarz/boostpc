@@ -80,11 +80,13 @@ async function checkTwitchStatus(channel, voyantEl, statutEl, carteEl) {
             statutEl.textContent = "EN DIRECT";
             statutEl.className = "statut statut-live";
             carteEl.classList.add("carte-live");
+            carteEl.classList.remove("carte-offline"); 
         } else {
             voyantEl.className = "voyant voyant-offline";
             statutEl.textContent = "En ligne : Non";
             statutEl.className = "statut";
             carteEl.classList.remove("carte-live");
+            carteEl.classList.add("carte-offline");
         }
 
         // Trier les cartes : live en premier

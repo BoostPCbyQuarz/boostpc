@@ -2540,6 +2540,18 @@ footer a:hover {
     align-self: stretch;
 }
 
+@media (max-width: 768px) {
+    .partners-container-twitch {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .partners-container-twitch .carte-twitch {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
 .partners-container-twitch {
     align-items: stretch;
 }
@@ -2560,8 +2572,18 @@ footer a:hover {
    CARTE EN LIVE - MIS EN AVANT
 ========================= */
 
+.carte-twitch {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
 .carte-live {
     border: 2px solid #00ff00 !important;
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.4) !important;
-    transform: scale(1.03);
+    transform: scale(1.15);
+    opacity: 1;
+}
+
+.carte-offline {
+    transform: scale(0.92);
+    opacity: 0.6;
 }
