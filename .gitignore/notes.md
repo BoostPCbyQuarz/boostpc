@@ -48,3 +48,14 @@ git push
 texte pour presentation streamer
 
 Si ton PC rame, chauffe ou galère à suivre en jeu, va faire un tour sur BoostPC. C'est un service gratuit d'optimisation PC, exclusif à chaque personne qui demande de l'aide : analyse, réglages, explications à chaque étape, adaptés à ta configuration. Tout se passe en visio sur Discord. (Et pour l'instant... c'est pas payant ! 😄)
+https://boostpcbyquarz.github.io/boostpc/
+
+
+annonce sylvain : 
+🎮 Bienvenue sur Sylvain Gaming ! 🎮Ici, on partage avant tout une passion : le jeu vidéo.
+                Au programme : 😱 Resident Evil Requiem 🏴‍☠️ Assassin's Creed Black Flag Resynced 🚔 GTA V (coop & braquages) 🚜 Farming Simulator 🌊 Subnautica 
+                ⚔️ Bientôt : The Elder Scrolls IV: Oblivion Remastered
+
+annonce Voldark :
+🎮 Bienvenue sur ma chaîne ! 🔥 Au programme : Counter-Strike, Rocket League, jeux solo & coop, découvertes et surtout beaucoup de fun ! 
+                😂 Viens discuter, jouer et partager de bons moments. Ici, on tryhard… mais pas trop ! 😎

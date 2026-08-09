@@ -2503,3 +2503,32 @@ footer a:hover {
     font-size: clamp(13px, 1.3vw, 16px);
     margin-top: 15px;
 }
+/* =========================
+   EN DIRECT CLIGNOTANT
+========================= */
+
+.statut-live {
+    animation: clignoteTexte 1s ease-in-out infinite;
+    color: #ff4444;
+    font-weight: bold;
+}
+
+@keyframes clignoteTexte {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+/* CARTES TWITCH ALIGNÉES HORIZONTALEMENT */
+.partners-hero .carte-twitch {
+    display: flex;
+    flex-direction: row;
+}
+
+.partners-container-twitch {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 40px auto;
+}
