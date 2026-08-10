@@ -2544,11 +2544,24 @@ footer a:hover {
     .partners-container-twitch {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     .partners-container-twitch .carte-twitch {
         width: 90%;
         max-width: 400px;
+        margin: 0 auto;
+        transform-origin: center center;
+    }
+
+    .carte-live {
+        transform: scale(1.05) !important;
+        transform-origin: center center !important;
+    }
+
+    .carte-offline {
+        transform: scale(0.95) !important;
+        transform-origin: center center !important;
     }
 }
 
