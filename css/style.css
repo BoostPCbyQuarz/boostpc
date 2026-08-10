@@ -2545,6 +2545,7 @@ footer a:hover {
         flex-direction: column;
         align-items: center;
         width: 100%;
+        gap: 20px;
     }
 
     .partners-container-twitch .carte-twitch {
@@ -2555,12 +2556,12 @@ footer a:hover {
     }
 
     .carte-live {
-        transform: scale(1.05) !important;
+        transform: scale(1.02) !important;
         transform-origin: center center !important;
     }
 
     .carte-offline {
-        transform: scale(0.95) !important;
+        transform: scale(0.98) !important;
         transform-origin: center center !important;
     }
 }
@@ -2592,7 +2593,7 @@ footer a:hover {
 .carte-live {
     border: 2px solid #00ff00 !important;
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.4) !important;
-    transform: scale(1.15);
+    transform: scale(1.05);
     opacity: 1;
 }
 
