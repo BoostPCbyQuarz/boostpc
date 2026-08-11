@@ -126,9 +126,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const voyant3 = cartes[2] ? cartes[2].querySelector(".voyant") : null;
         const statut3 = cartes[2] ? cartes[2].querySelector(".statut") : null;
 
+        const voyant4 = cartes[3] ? cartes[3].querySelector(".voyant") : null;
+        const statut4 = cartes[3] ? cartes[3].querySelector(".statut") : null;
+
         checkTwitchStatus("sylvain2500", voyant1, statut1, cartes[0]);
         if (voyant2 && statut2) checkTwitchStatus("voldarks81540", voyant2, statut2, cartes[1]);
         if (voyant3 && statut3) checkTwitchStatus("miss_dixon", voyant3, statut3, cartes[2]);
+        if (voyant4 && statut4) checkTwitchStatus("titou0232", voyant4, statut4, cartes[3]);
 
         setInterval(() => {
             const cartesActuelles = document.querySelectorAll(".carte-twitch");
@@ -140,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (nom.includes("sylvain")) checkTwitchStatus("sylvain2500", voyant, statut, carte);
                 if (nom.includes("voldark")) checkTwitchStatus("voldarks81540", voyant, statut, carte);
                 if (nom.includes("miss_dixon") || nom.includes("dixon")) checkTwitchStatus("miss_dixon", voyant, statut, carte);
+                if (nom.includes("titou")) checkTwitchStatus("titou0232", voyant, statut, carte);
             });
         }, 30000);
     }
