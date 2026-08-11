@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (nom.includes("sylvain")) checkTwitchStatus("sylvain2500", voyant, statut, carte);
                 if (nom.includes("voldark")) checkTwitchStatus("voldarks81540", voyant, statut, carte);
                 if (nom.includes("miss_dixon") || nom.includes("dixon")) checkTwitchStatus("miss_dixon", voyant, statut, carte);
-                if (nom.includes("titou")) checkTwitchStatus("titou0232", voyant, statut, carte);
+                if (voyant4 && statut4) checkTwitchStatus("titou0232", voyant4, statut4, cartes[3]);
             });
         }, 30000);
     }
