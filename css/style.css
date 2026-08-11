@@ -2601,3 +2601,50 @@ footer a:hover {
     transform: scale(0.92);
     opacity: 0.6;
 }
+/* BOUTON DISCORD PARTENARIAT */
+.btn-discord {
+    display: block;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #5865F2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn-discord:hover {
+    background: #4752c4;
+}
+.carte-twitch-gauche .btn-discord {
+    background: #5865F2;
+    opacity: 1 !important;
+    padding: 10px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    animation: discordPulse 2s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carte-twitch-gauche .btn-discord:hover {
+    transform: scale(1.2) translateY(-3px);
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.8);
+    animation-play-state: paused;
+}
+
+@keyframes discordPulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(88, 101, 242, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(88, 101, 242, 0.9), 0 0 25px rgba(88, 101, 242, 0.5);
+    }
+}
