@@ -2654,3 +2654,129 @@ footer a:hover {
     align-items: center;
    
 }
+/* =========================
+   BANNIERE LIVE
+========================= */
+
+.banniere-live {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #9146ff, #00ff00);
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.banniere-btn {
+    background: white;
+    color: #9146ff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.banniere-btn:hover {
+    background: #9146ff;
+    color: white;
+}
+
+.banniere-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0 10px;
+}
+/* =========================
+   BLOC LIVE ACCUEIL
+========================= */
+
+.live-accueil {
+    margin: 15px auto;
+    padding: 12px 20px;
+    background: rgba(0, 255, 0, 0.08);
+    border: 2px solid #00ff00;
+    border-radius: 12px;
+    max-width: 500px;
+    text-align: center;
+    animation: pulseGlowGreen 2s ease-in-out infinite;
+}
+
+.live-accueil p {
+    color: #00ff00;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+#live-accueil-liste a {
+    display: inline-block;
+    margin: 5px;
+    padding: 6px 15px;
+    background: #9146ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+#live-accueil-liste a:hover {
+    background: #00ff00;
+    color: black;
+}
+
+@keyframes pulseGlowGreen {
+    0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 0, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.7); }
+}
+/* =========================
+   COMPTEUR LIVE PARTENARIAT
+========================= */
+
+.compteur-live {
+    display: inline-block;
+    margin: 10px auto;
+    padding: 8px 20px;
+    background: rgba(0, 255, 0, 0.08);
+    border: 2px solid #00ff00;
+    border-radius: 20px;
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.compteur-live #nb-live {
+    font-size: 22px;
+    color: #00ff00;
+}
+
+.compteur-live #nb-total {
+    color: #a0a0a0;
+}
+
+/* VIEWERS SOUS LE STATUT */
+.viewers {
+    font-size: 12px;
+    color: #ffcc00;
+    margin: 4px 0;
+}
