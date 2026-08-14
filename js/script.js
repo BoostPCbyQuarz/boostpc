@@ -30,8 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Zoom au scroll sur les cartes résultats (mobile)
 document.addEventListener('DOMContentLoaded', function () {
-    // Demande la permission pour les notifications
-    demanderPermissionNotification();
 
     const resultCards = document.querySelectorAll('.result-card');
 
@@ -269,6 +267,7 @@ async function checkLiveAccueil() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    demanderPermissionNotification();
     checkLiveAccueil();
     setInterval(checkLiveAccueil, 30000);
 });

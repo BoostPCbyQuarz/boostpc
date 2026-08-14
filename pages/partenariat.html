@@ -53,10 +53,13 @@
 
     <h2>Devenir partenaire</h2>
 
-    <p>BoostPC met en avant les créateurs de contenu. Un espace dédié à leur visibilité, en toute simplicité.</p>
+<p>BoostPC met en avant les créateurs de contenu. Un espace dédié à leur visibilité, en toute simplicité.</p>
 
+<div style="text-align:center;">
+    <a href="overclock.html" class="btn-overclock">Overclock Partenariat</a>
     <div class="compteur-live">
-    <span id="nb-live">0</span>/<span id="nb-total">4</span> partenaires en live
+        <span id="nb-live">0</span>/<span id="nb-total">4</span> partenaires en live
+    </div>
 </div>
 
     <div class="partners-container-twitch">
@@ -147,7 +150,9 @@
         </div>    
 
     </div>
-
+<a href="overclock.html" class="btn-overclock">
+    Overclock Partenariat
+</a>
     <div class="partners-empty">
         <p>Intéressé(e) ? Contacte Quarz par email à <a href="mailto:BoostPCbyQuarz@hotmail.com">BoostPCbyQuarz@hotmail.com</a> ou via <a href="contact.html">Discord</a>.</p>
     </div>
@@ -172,6 +177,8 @@
     <span id="banniere-texte">🔴 est en direct sur Twitch !</span>
     <a id="banniere-lien" href="#" target="_blank" class="banniere-btn">Regarder</a>
     <button onclick="document.getElementById('banniere-live').style.display='none'" class="banniere-close">✕</button>
+    document.getElementById('label-depart').textContent = niv.afficher(niv.valeurDepart);
+document.getElementById('label-objectif-txt').textContent = `🎯 ${niv.afficher(niv.objectif)}`;
 </div>
 
 </html>

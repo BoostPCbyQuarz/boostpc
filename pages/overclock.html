@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoostPC - Overclock Partenariat</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../images/piclumen-1785346111693.png">
+    <style>
+
+        .overclock-page {
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .overclock-title {
+            font-size: clamp(28px, 5vw, 56px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, #9146ff, #00bfff, #00ff00, #9146ff);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% center; }
+            100% { background-position: 300% center; }
+        }
+
+        .overclock-subtitle {
+            color: #a0a0a0;
+            font-size: clamp(13px, 1.5vw, 16px);
+            margin-bottom: 30px;
+        }
+
+        /* ========================= 
+           CHOIX PARTENAIRE
+        ========================= */
+
+        .choix-section { margin: 20px auto; max-width: 900px; }
+        .choix-titre { color: #00bfff; font-size: clamp(16px, 2vw, 22px); margin-bottom: 20px; font-weight: bold; }
+
+        .choix-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .choix-card {
+            width: 180px;
+            padding: 15px;
+            background: #111827;
+            border: 2px solid #1f2937;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .choix-card:hover { border-color: #9146ff; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(145,70,255,0.4); }
+        .choix-card.selectionne { border-color: #00ff00; box-shadow: 0 0 20px rgba(0,255,0,0.5); }
+        .choix-card img { width: 70px; height: 70px; border-radius: 50%; margin-bottom: 8px; }
+        .choix-card h3 { color: #efb800; font-size: 14px; margin-bottom: 5px; }
+
+        .grade-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .niveau-jeu-info {
+            font-size: 11px;
+            color: #00bfff;
+            margin-bottom: 5px;
+        }
+
+        .boost-bar-container { background: #0b1020; border-radius: 10px; height: 8px; margin-top: 8px; overflow: hidden; }
+        .boost-bar { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #9146ff, #00ff00); transition: width 0.5s ease; }
+        .boost-count { font-size: 11px; color: #a0a0a0; margin-top: 4px; }
+
+        /* ========================= 
+           JEU CLICS
+        ========================= */
+
+        .jeu-section { display: none; max-width: 700px; margin: 0 auto; }
+        .jeu-section.visible { display: block; }
+
+        .niveau-header {
+            background: linear-gradient(135deg, #0d1117, #1a1f35);
+            border: 2px solid #9146ff;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .niveau-titre {
+            font-size: 20px;
+            font-weight: 900;
+            color: #00bfff;
+        }
+
+        .niveau-badge-jeu {
+            background: #9146ff;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .timer-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timer {
+            font-size: 32px;
+            font-weight: 900;
+            color: #00ff00;
+            transition: color 0.3s;
+            min-width: 50px;
+        }
+
+        .timer.danger { color: #ff4444; animation: timerPulse 0.5s ease-in-out infinite; }
+
+        @keyframes timerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* ZONE DE CLIC */
+        .zone-clic-container {
+            background: linear-gradient(135deg, #0d1117, #1a1f35);
+            border: 2px solid #9146ff;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .zone-clic-container::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(145,70,255,0.05) 0%, transparent 60%);
+            animation: rotateBg 8s linear infinite;
+        }
+
+        @keyframes rotateBg { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .stat-principale {
+            font-size: clamp(60px, 12vw, 100px);
+            font-weight: 900;
+            margin: 10px 0;
+            transition: color 0.3s;
+            position: relative;
+            line-height: 1;
+        }
+
+        .stat-label-grand {
+            font-size: 18px;
+            color: #a0a0a0;
+            margin-bottom: 10px;
+        }
+
+        .stat-objectif {
+            font-size: 14px;
+            color: #efb800;
+            margin-bottom: 20px;
+        }
+
+        .barre-stat {
+    height: 20px;
+    background: #0b1020;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.barre-stat-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.1s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.barre-stat-fill.rouge { background: linear-gradient(90deg, #ff4444, #ff6666); }
+.barre-stat-fill.orange { background: linear-gradient(90deg, #ff8800, #ffaa00); }
+.barre-stat-fill.vert { background: linear-gradient(90deg, #00cc44, #00ff66); }
+
+        .barre-stat-objectif {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #00ff00;
+            z-index: 2;
+        }
+
+        /* BOUTON DE CLIC */
+        .btn-clic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid #9146ff;
+            background: linear-gradient(135deg, #1a0d35, #2a1555);
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            transition: all 0.05s ease;
+            box-shadow: 0 0 30px rgba(145,70,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .btn-clic:hover { box-shadow: 0 0 50px rgba(145,70,255,0.8); }
+
+        .btn-clic:active, .btn-clic.clique {
+            transform: scale(0.92);
+            box-shadow: 0 0 20px rgba(145,70,255,0.4);
+            background: linear-gradient(135deg, #2a1555, #3a2080);
+        }
+
+        .btn-clic.succes {
+            border-color: #00ff00;
+            box-shadow: 0 0 50px rgba(0,255,0,0.8);
+            background: linear-gradient(135deg, #0d3520, #1a5535);
+        }
+
+        /* COMPTEUR CLICS */
+        .clics-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .clic-stat {
+            text-align: center;
+        }
+
+        .clic-val {
+            font-size: 22px;
+            font-weight: 900;
+            color: #9146ff;
+        }
+
+        .clic-label {
+            font-size: 11px;
+            color: #a0a0a0;
+        }
+
+        /* PARTICULES */
+        .particule {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            font-weight: 900;
+            animation: particuleAnim 0.8s ease-out forwards;
+            z-index: 999;
+        }
+
+        @keyframes particuleAnim {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-60px) scale(0.5); }
+        }
+
+        /* MESSAGES */
+        .message-jeu {
+            background: rgba(145,70,255,0.1);
+            border: 1px solid #9146ff;
+            border-radius: 10px;
+            padding: 10px 15px;
+            color: #d0d0d0;
+            font-size: 14px;
+            margin-top: 15px;
+            min-height: 35px;
+        }
+
+        /* PROGRESSION NIVEAUX */
+        .niveaux-progression {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .niveau-dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid #1f2937;
+            background: #0b1020;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .niveau-dot.complete { border-color: #00ff00; background: rgba(0,255,0,0.15); }
+        .niveau-dot.actif { border-color: #9146ff; background: rgba(145,70,255,0.2); animation: dotPulse 1s ease-in-out infinite; }
+        .niveau-dot.echec { border-color: #ff4444; background: rgba(255,68,68,0.1); }
+
+        @keyframes dotPulse { 0%,100% { box-shadow: 0 0 5px rgba(145,70,255,0.5); } 50% { box-shadow: 0 0 15px rgba(145,70,255,0.9); } }
+
+        /* BOUTONS */
+        .btn-lancer {
+            background: linear-gradient(135deg, #9146ff, #00bfff);
+            color: white; border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+            box-shadow: 0 0 30px rgba(145,70,255,0.4);
+        }
+
+        .btn-lancer:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 50px rgba(145,70,255,0.7); }
+        .btn-lancer:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .btn-retry {
+            background: linear-gradient(135deg, #ff4444, #ff8800);
+            color: white; border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .btn-retry:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(255,68,68,0.5); }
+
+        .btn-rejouer {
+            background: linear-gradient(135deg, #00ff00, #00bfff);
+            color: black; border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .btn-rejouer:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(0,255,0,0.5); }
+
+        /* FIN DE PARTIE */
+        .fin-partie { display: none; background: linear-gradient(135deg, #0d1117, #1a1f35); border: 2px solid #00ff00; border-radius: 20px; padding: 30px; margin-bottom: 20px; }
+        .fin-partie.visible { display: block; }
+        .fin-titre { font-size: 32px; font-weight: 900; color: #00ff00; margin-bottom: 10px; text-shadow: 0 0 20px #00ff00; }
+        .fin-echec-titre { font-size: 32px; font-weight: 900; color: #ff4444; margin-bottom: 10px; text-shadow: 0 0 20px #ff4444; }
+        .fin-boosts { font-size: 24px; color: #efb800; margin: 10px 0; font-weight: bold; }
+
+        /* BOOST ANIMATION */
+        .boost-gagne {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 70px;
+            font-weight: 900;
+            color: #00ff00;
+            text-shadow: 0 0 40px #00ff00;
+            animation: boostAnim 1.5s ease-out forwards;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes boostAnim {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+            50% { opacity: 1; transform: translate(-50%, -80%) scale(1.3); }
+            100% { opacity: 0; transform: translate(-50%, -130%) scale(1); }
+        }
+
+        /* GRADES */
+        .grade-0  { background: #1f2937; color: #a0a0a0; }
+        .grade-1  { background: #3d1a6e; color: #cc99ff; }
+        .grade-2  { background: #1a3a6e; color: #99ccff; }
+        .grade-3  { background: #0d4d5a; color: #00ddff; }
+        .grade-4  { background: #0d5a2a; color: #00ff88; }
+        .grade-5  { background: linear-gradient(90deg, #5a4d00, #3d3d00); color: #ffd700; }
+        .grade-6  { background: linear-gradient(90deg, #5a2000, #3d1500); color: #ff8800; }
+        .grade-7  { background: linear-gradient(90deg, #9146ff, #00bfff); color: white; animation: rainbowBadge 3s linear infinite; background-size: 200% auto; }
+        .grade-8  { background: linear-gradient(90deg, #ff6600, #9146ff, #00bfff); color: white; animation: rainbowBadge 2s linear infinite; background-size: 200% auto; }
+        .grade-9  { background: linear-gradient(90deg, #ff0044, #ff6600, #9146ff); color: white; animation: rainbowBadge 1.5s linear infinite; background-size: 200% auto; }
+        .grade-10 { background: linear-gradient(90deg, #ff0044, #ff6600, #ffcc00, #00ff88, #00bfff, #9146ff); color: white; animation: rainbowBadge 1s linear infinite; background-size: 400% auto; }
+
+        @keyframes rainbowBadge { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+
+       /* NIVEAUX BRILLANCE - NEUTRALISÉS SUR OVERCLOCK */
+.choix-card.niveau-0,
+.choix-card.niveau-1,
+.choix-card.niveau-2,
+.choix-card.niveau-3,
+.choix-card.niveau-4,
+.choix-card.niveau-5,
+.choix-card.niveau-6,
+.choix-card.niveau-7,
+.choix-card.niveau-8,
+.choix-card.niveau-9,
+.choix-card.niveau-10 {
+    border-color: #1f2937 !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+        @keyframes brillance6 { 0%,100% { opacity:1; } 50% { opacity:0.85; } }
+        @keyframes brillance7 { 0%,100% { box-shadow: 0 0 50px rgba(145,70,255,0.8); } 50% { box-shadow: 0 0 80px rgba(145,70,255,1), 0 0 120px rgba(0,191,255,0.7); } }
+        @keyframes brillance8 { 0%,100% { box-shadow: 0 0 55px rgba(255,102,0,0.9); } 50% { box-shadow: 0 0 90px rgba(255,102,0,1), 0 0 140px rgba(145,70,255,0.7); } }
+        @keyframes brillance9 { 0%,100% { box-shadow: 0 0 65px rgba(255,0,68,0.9); transform: scale(1); } 50% { box-shadow: 0 0 100px rgba(255,0,68,1), 0 0 160px rgba(255,102,0,0.8); transform: scale(1.01); } }
+        @keyframes brillance10 { 0%,100% { box-shadow: 0 0 80px rgba(255,0,68,1); transform: scale(1); } 50% { box-shadow: 0 0 120px rgba(255,0,68,1), 0 0 200px rgba(255,102,0,1); transform: scale(1.02); } }
+
+        @media (max-width: 768px) {
+            .choix-card { width: 140px; }
+            .btn-clic { width: 140px; height: 140px; font-size: 40px; }
+            .stat-principale { font-size: clamp(50px, 15vw, 80px); }
+            .niveau-header { flex-direction: column; text-align: center; }
+        }
+        .barre-stat-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #a0a0a0;
+}
+    </style>
+</head>
+
+<body>
+
+<video class="bg-video" autoplay muted loop playsinline>
+    <source src="../videos/ventilos-bg.mp4" type="video/mp4">
+</video>
+<div class="bg-video-overlay"></div>
+
+<header>
+    <div class="logo">
+        <img src="../images/piclumen-1785346111693.png" alt="BoostPC" width="80">
+    </div>
+    <nav>
+        <a href="../index.html">Accueil</a>
+        <a href="services.html">Services</a>
+        <a href="resultats.html">Résultats</a>
+        <a href="avis.html">Avis</a>
+        <a href="communaute.html">Communauté</a>
+        <a href="apropos.html">À propos</a>
+        <a href="faq.html">FAQ</a>
+        <a href="partenariat.html">Partenariat</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<div class="overclock-page">
+
+    <h1 class="overclock-title">⚡ OVERCLOCK PARTENARIAT ⚡</h1>
+    <p class="overclock-subtitle">Clique comme un fou · Gagne des Boosts · Propulse ton partenaire en tête !</p>
+
+    <!-- CHOIX DU PARTENAIRE -->
+    <div class="choix-section" id="choix-section">
+        <p class="choix-titre">🎯 Choisis le partenaire à booster :</p>
+        <div class="choix-container">
+
+            <div class="choix-card niveau-0" data-channel="sylvain2500" onclick="selectionnerPartenaire(this)">
+                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/65e7e4b2-1130-4587-9d83-c944360a3a60-profile_image-300x300.jpeg" alt="Sylvain Gaming">
+                <h3>Sylvain Gaming</h3>
+                <span class="grade-badge grade-0" id="badge-sylvain2500">🔩 Débutant</span>
+                <div class="niveau-jeu-info" id="niveaujeu-sylvain2500">Niveau 1/6</div>
+                <div class="boost-bar-container">
+                    <div class="boost-bar" id="bar-sylvain2500" style="width:0%"></div>
+                </div>
+                <div class="boost-count" id="count-sylvain2500">0 / 10 boosts</div>
+            </div>
+
+            <div class="choix-card niveau-0" data-channel="voldarks81540" onclick="selectionnerPartenaire(this)">
+                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/12bbde13-8f8d-411d-8af8-dc83471254b9-profile_image-300x300.png" alt="Voldarks">
+                <h3>Voldarks</h3>
+                <span class="grade-badge grade-0" id="badge-voldarks81540">🔩 Débutant</span>
+                <div class="niveau-jeu-info" id="niveaujeu-voldarks81540">Niveau 1/6</div>
+                <div class="boost-bar-container">
+                    <div class="boost-bar" id="bar-voldarks81540" style="width:0%"></div>
+                </div>
+                <div class="boost-count" id="count-voldarks81540">0 / 10 boosts</div>
+            </div>
+
+            <div class="choix-card niveau-0" data-channel="miss_dixon" onclick="selectionnerPartenaire(this)">
+                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/b685f882-4206-4391-855b-2575b94c5dac-profile_image-300x300.jpeg" alt="Miss_dixon">
+                <h3>Miss_dixon</h3>
+                <span class="grade-badge grade-0" id="badge-miss_dixon">🔩 Débutant</span>
+                <div class="niveau-jeu-info" id="niveaujeu-miss_dixon">Niveau 1/6</div>
+                <div class="boost-bar-container">
+                    <div class="boost-bar" id="bar-miss_dixon" style="width:0%"></div>
+                </div>
+                <div class="boost-count" id="count-miss_dixon">0 / 10 boosts</div>
+            </div>
+
+            <div class="choix-card niveau-0" data-channel="titou0232" onclick="selectionnerPartenaire(this)">
+                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/6e5fbfa5-2a29-494c-891c-b6b5e3d7b90c-profile_image-300x300.png" alt="Titou0232">
+                <h3>Titou0232</h3>
+                <span class="grade-badge grade-0" id="badge-titou0232">🔩 Débutant</span>
+                <div class="niveau-jeu-info" id="niveaujeu-titou0232">Niveau 1/6</div>
+                <div class="boost-bar-container">
+                    <div class="boost-bar" id="bar-titou0232" style="width:0%"></div>
+                </div>
+                <div class="boost-count" id="count-titou0232">0 / 10 boosts</div>
+            </div>
+
+        </div>
+
+        <button class="btn-lancer" id="btn-lancer" onclick="lancerJeu()" disabled>
+            ⚡ Lancer l'Overclock !
+        </button>
+    </div>
+
+    <!-- JEU -->
+    <div class="jeu-section" id="jeu-section">
+
+        <!-- PROGRESSION NIVEAUX -->
+        <div class="niveaux-progression" id="niveaux-progression">
+            <div class="niveau-dot actif" id="dot-1">1</div>
+            <div class="niveau-dot" id="dot-2">2</div>
+            <div class="niveau-dot" id="dot-3">3</div>
+            <div class="niveau-dot" id="dot-4">4</div>
+            <div class="niveau-dot" id="dot-5">5</div>
+            <div class="niveau-dot" id="dot-6">6</div>
+        </div>
+
+        <!-- HEADER NIVEAU -->
+        <div class="niveau-header">
+            <div>
+                <div class="niveau-titre" id="niveau-titre">🌡️ Niveau 1 — Température</div>
+                <div style="color:#a0a0a0; font-size:13px;" id="niveau-desc">Clique pour refroidir le PC !</div>
+            </div>
+            <div class="timer-container">
+                <div style="color:#a0a0a0; font-size:13px;">Temps</div>
+                <div class="timer" id="timer">30</div>
+            </div>
+            <div class="niveau-badge-jeu" id="niveau-badge-jeu">Niveau 1/6</div>
+        </div>
+
+        <!-- ZONE DE CLIC -->
+        <div class="zone-clic-container">
+
+            <div class="stat-label-grand" id="stat-label-grand">🌡️ Température</div>
+            <div class="stat-principale" id="stat-principale">95°C</div>
+            <div class="stat-objectif" id="stat-objectif">Objectif : atteindre 40°C</div>
+
+           <div class="barre-stat-labels">
+            <span id="label-depart">95°C</span>
+            <span id="label-objectif-txt" style="color:#00ff00;">🎯 40°C</span>
+            </div>
+            <div class="barre-stat">
+            <div class="barre-stat-fill rouge" id="barre-fill" style="width: 95%"></div>
+            </div>
+            <div class="barre-stat-labels">
+            <span style="color:#a0a0a0;">Départ</span>
+            <span style="color:#a0a0a0;">Objectif</span>
+            </div>
+
+            <button class="btn-clic" id="btn-clic" onclick="clicAction(event)">
+                🌬️
+            </button>
+
+            <div class="clics-info">
+                <div class="clic-stat">
+                    <div class="clic-val" id="total-clics">0</div>
+                    <div class="clic-label">Clics</div>
+                </div>
+                <div class="clic-stat">
+                    <div class="clic-val" id="clics-sec">0</div>
+                    <div class="clic-label">Clics/sec</div>
+                </div>
+                <div class="clic-stat">
+                    <div class="clic-val" id="boosts-acquis">0</div>
+                    <div class="clic-label">Boosts</div>
+                </div>
+            </div>
+
+            <div class="message-jeu" id="message-jeu">
+                🔧 Clique sur le bouton pour refroidir ton PC !
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FIN DE PARTIE -->
+    <div class="fin-partie" id="fin-partie">
+        <div id="fin-titre-el"></div>
+        <div id="fin-partenaire" style="color:#efb800; font-size:18px; margin-bottom:15px;"></div>
+        <div class="fin-boosts" id="fin-boosts-val"></div>
+        <div id="fin-msg" style="color:#00ff00; font-size:16px; margin:10px 0;"></div>
+        <div id="fin-grade-msg" style="color:#efb800; font-size:14px; margin:8px 0;"></div>
+        <button class="btn-rejouer" onclick="rejouer()">🔄 Nouvelle session</button>
+        <button class="btn-lancer" onclick="window.location.href='partenariat.html'" style="font-size:14px; padding:10px 25px;">
+            👀 Voir le classement
+        </button>
+    </div>
+
+</div>
+
+<footer>
+    <div class="intervention-counter">
+        <p>🔧 <strong>16</strong> PC optimisés</p>
+        <a href="contact.html">Demander une aide →</a>
+    </div>
+    <p>&copy; 2026 BoostPC — <a href="mentions-legales.html">Mentions légales</a></p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script data-goatcounter="https://boostpc.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script>
+
+// =========================
+// CONFIG NIVEAUX
+// =========================
+
+const NIVEAUX = [
+    {
+        id: 1,
+        nom: "🌡️ Température",
+        icone: "🌬️",
+        desc: "Clique pour refroidir le PC !",
+        unite: "°C",
+        valeurDepart: 95,
+        objectif: 40,
+        remonteeParSec: 0.5,   // +0.5°C/sec
+        inverse: true,          // on veut descendre
+        couleurBarre: "rouge",
+        objectifPct: () => 40,  // position de la ligne verte sur la barre (%)
+        valToPct: (v) => v,     // % de remplissage de la barre
+        afficher: (v) => `${Math.round(v)}°C`,
+        succes: (v) => v <= 40
+    },
+    {
+        id: 2,
+        nom: "💾 RAM",
+        icone: "💾",
+        desc: "Libère la mémoire vive !",
+        unite: "%",
+        valeurDepart: 87,
+        objectif: 30,
+        remonteeParSec: 1,
+        inverse: true,
+        couleurBarre: "rouge",
+        objectifPct: () => 30,
+        valToPct: (v) => v,
+        afficher: (v) => `${Math.round(v)}%`,
+        succes: (v) => v <= 30
+    },
+    {
+        id: 3,
+        nom: "⚡ CPU",
+        icone: "⚙️",
+        desc: "Réduis la charge du processeur !",
+        unite: "%",
+        valeurDepart: 92,
+        objectif: 25,
+        remonteeParSec: 2,
+        inverse: true,
+        couleurBarre: "rouge",
+        objectifPct: () => 25,
+        valToPct: (v) => v,
+        afficher: (v) => `${Math.round(v)}%`,
+        succes: (v) => v <= 25
+    },
+    {
+        id: 4,
+        nom: "💿 Disque",
+        icone: "🧹",
+        desc: "Nettoie le disque dur !",
+        unite: "%",
+        valeurDepart: 78,
+        objectif: 20,
+        remonteeParSec: 2.5,
+        inverse: true,
+        couleurBarre: "orange",
+        objectifPct: () => 20,
+        valToPct: (v) => v,
+        afficher: (v) => `${Math.round(v)}%`,
+        succes: (v) => v <= 20
+    },
+    {
+        id: 5,
+        nom: "🎮 FPS",
+        icone: "🎮",
+        desc: "Booste les images par seconde !",
+        unite: " FPS",
+        valeurDepart: 45,
+        objectif: 200,
+        remonteeParSec: 2.8,     // chute de 5 FPS/sec
+        inverse: false,         // on veut monter
+        couleurBarre: "rouge",
+        objectifPct: () => (200 / 300) * 100,
+        valToPct: (v) => (v / 300) * 100,
+        afficher: (v) => `${Math.round(v)} FPS`,
+        succes: (v) => v >= 200
+    },
+    {
+        id: 6,
+        nom: "🌐 Réseau",
+        icone: "📡",
+        desc: "Stabilise la connexion réseau !",
+        unite: "%",
+        valeurDepart: 20,
+        objectif: 95,
+        remonteeParSec: 4,     // chute de 8%/sec
+        inverse: false,         // on veut monter
+        couleurBarre: "rouge",
+        objectifPct: () => 95,
+        valToPct: (v) => v,
+        afficher: (v) => `${Math.round(v)}%`,
+        succes: (v) => v >= 95
+    }
+];
+
+const GRADES = [
+    { nom: "🔩 Débutant",    classe: "grade-0"  },
+    { nom: "⚙️ Technicien",  classe: "grade-1"  },
+    { nom: "🔧 Expert",      classe: "grade-2"  },
+    { nom: "⚡ Overclockeur", classe: "grade-3"  },
+    { nom: "🚀 Turbo",       classe: "grade-4"  },
+    { nom: "💎 Pro",         classe: "grade-5"  },
+    { nom: "🔥 Elite",       classe: "grade-6"  },
+    { nom: "⭐ Légende",     classe: "grade-7"  },
+    { nom: "👑 Maître",      classe: "grade-8"  },
+    { nom: "🌟 Mythique",    classe: "grade-9"  },
+    { nom: "⚡ DIEU DU PC",  classe: "grade-10" }
+];
+
+// =========================
+// VARIABLES
+// =========================
+
+let partenaireSelectionne = null;
+let niveauActuel = 0;       // index dans NIVEAUX (0-5)
+let valeurStat = 0;
+let timerInterval = null;
+let jeuInterval = null;
+let tempsRestant = 30;
+let totalClics = 0;
+let clicsSeconde = 0;
+let clicsBuffer = 0;
+let boostsSession = 0;
+let jeuActif = false;
+
+// =========================
+// DONNÉES LOCALES
+// =========================
+
+function getCleJour() {
+    const d = new Date();
+    return `boostpc_${d.getFullYear()}_${d.getMonth()}_${d.getDate()}`;
+}
+
+function getBoosts() {
+    const data = localStorage.getItem(getCleJour());
+    const base = {
+        sylvain2500:   { boosts: 0, niveau: 0 },
+        voldarks81540: { boosts: 0, niveau: 0 },
+        miss_dixon:    { boosts: 0, niveau: 0 },
+        titou0232:     { boosts: 0, niveau: 0 }
+    };
+    return data ? { ...base, ...JSON.parse(data) } : base;
+}
+
+function sauvegarderBoosts(data) {
+    localStorage.setItem(getCleJour(), JSON.stringify(data));
+}
+
+function calculerNiveau(boosts) {
+    return Math.min(10, Math.floor(boosts / 10));
+}
+
+// =========================
+// AFFICHAGE CARTES
+// =========================
+
+function mettreAJourCartes() {
+    const data = getBoosts();
+    ['sylvain2500','voldarks81540','miss_dixon','titou0232'].forEach(ch => {
+        const d = data[ch] || { boosts: 0, niveau: 0 };
+        const niv = calculerNiveau(d.boosts);
+        const bDansNiv = d.boosts % 10;
+
+        const badge = document.getElementById(`badge-${ch}`);
+        if (badge) { badge.textContent = GRADES[niv].nom; badge.className = `grade-badge ${GRADES[niv].classe}`; }
+
+        const bar = document.getElementById(`bar-${ch}`);
+        if (bar) bar.style.width = `${(bDansNiv / 10) * 100}%`;
+
+        const count = document.getElementById(`count-${ch}`);
+        if (count) count.textContent = `${bDansNiv} / 10 boosts`;
+
+        const carte = document.querySelector(`[data-channel="${ch}"]`);
+        if (carte) {
+            carte.className = carte.className.replace(/niveau-\d+/g, '');
+            carte.classList.add(`niveau-${niv}`);
+        }
+    });
+}
+
+// =========================
+// SÉLECTION PARTENAIRE
+// =========================
+
+function selectionnerPartenaire(el) {
+    document.querySelectorAll('.choix-card').forEach(c => c.classList.remove('selectionne'));
+    el.classList.add('selectionne');
+    partenaireSelectionne = el.dataset.channel;
+    document.getElementById('btn-lancer').disabled = false;
+}
+
+// =========================
+// LANCEMENT
+// =========================
+
+function lancerJeu() {
+    if (!partenaireSelectionne) return;
+    niveauActuel = 0;
+    boostsSession = 0;
+    document.getElementById('choix-section').style.display = 'none';
+    document.getElementById('fin-partie').classList.remove('visible');
+    document.getElementById('jeu-section').classList.add('visible');
+    lancerNiveau();
+}
+
+function lancerNiveau() {
+    const niv = NIVEAUX[niveauActuel];
+    valeurStat = niv.valeurDepart;
+    tempsRestant = 30;
+    totalClics = 0;
+    clicsBuffer = 0;
+    clicsSeconde = 0;
+    jeuActif = true;
+
+    // Dots
+    for (let i = 1; i <= 6; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        dot.classList.remove('actif', 'complete', 'echec');
+        if (i < niveauActuel + 1) dot.classList.add('complete');
+        else if (i === niveauActuel + 1) dot.classList.add('actif');
+    }
+
+    // UI
+    document.getElementById('niveau-titre').textContent = `${niv.nom} — Niveau ${niv.id}`;
+    document.getElementById('niveau-desc').textContent = niv.desc;
+    document.getElementById('niveau-badge-jeu').textContent = `Niveau ${niv.id}/6`;
+    document.getElementById('stat-label-grand').textContent = niv.nom;
+    document.getElementById('stat-objectif').textContent = `Objectif : atteindre ${niv.afficher(niv.objectif)}`;
+    document.getElementById('label-depart').textContent = niv.afficher(niv.valeurDepart);
+    document.getElementById('label-objectif-txt').textContent = `🎯 ${niv.afficher(niv.objectif)}`;
+    document.getElementById('btn-clic').textContent = niv.icone;
+    document.getElementById('message-jeu').textContent = `🔧 ${niv.desc}`;
+    document.getElementById('boosts-acquis').textContent = boostsSession;
+
+    mettreAJourStatAffichage();
+
+    // Timer
+    clearInterval(timerInterval);
+    clearInterval(jeuInterval);
+
+    // Remontée automatique
+    jeuInterval = setInterval(() => {
+        if (!jeuActif) return;
+        if (niv.inverse) {
+            valeurStat = Math.min(niv.valeurDepart, valeurStat + niv.remonteeParSec / 10);
+        } else {
+            valeurStat = Math.max(0, valeurStat - niv.remonteeParSec / 10);
+        }
+        mettreAJourStatAffichage();
+
+        // Compte les clics/sec
+        clicsSeconde = clicsBuffer * 10;
+        clicsBuffer = 0;
+        document.getElementById('clics-sec').textContent = clicsSeconde;
+
+        // Vérif succès
+        if (niv.succes(valeurStat)) {
+            niveauReussi();
+        }
+    }, 100);
+
+    // Timer 30 sec
+    timerInterval = setInterval(() => {
+        tempsRestant--;
+        const timerEl = document.getElementById('timer');
+        timerEl.textContent = tempsRestant;
+        timerEl.className = tempsRestant <= 10 ? 'timer danger' : 'timer';
+
+        if (tempsRestant <= 0) {
+            niveauEchoue();
+        }
+    }, 1000);
+}
+
+// =========================
+// CLIC ACTION
+// =========================
+
+function clicAction(e) {
+    if (!jeuActif) return;
+    const niv = NIVEAUX[niveauActuel];
+
+    if (niv.inverse) {
+        valeurStat = Math.max(0, valeurStat - 1);
+    } else {
+        valeurStat = Math.min(999, valeurStat + 1);
+    }
+
+    totalClics++;
+    clicsBuffer++;
+
+    document.getElementById('total-clics').textContent = totalClics;
+    mettreAJourStatAffichage();
+
+    // Particule
+    creerParticule(e, niv.inverse ? '-1' : '+1', niv.inverse ? '#00ff88' : '#00bfff');
+
+    // Animation bouton
+    const btn = document.getElementById('btn-clic');
+    btn.classList.add('clique');
+    setTimeout(() => btn.classList.remove('clique'), 80);
+
+    if (niv.succes(valeurStat)) niveauReussi();
+}
+
+// =========================
+// AFFICHAGE STAT
+// =========================
+
+function mettreAJourStatAffichage() {
+    const niv = NIVEAUX[niveauActuel];
+    document.getElementById('stat-principale').textContent = niv.afficher(valeurStat);
+
+    const fill = document.getElementById('barre-fill');
+
+    let pct;
+    if (niv.inverse) {
+        // Descend : barre pleine à droite au départ, se vide vers la gauche
+        pct = ((valeurStat - niv.objectif) / (niv.valeurDepart - niv.objectif)) * 100;
+    } else {
+        // Monte : barre vide au départ, se remplit vers la droite
+        pct = ((valeurStat - niv.valeurDepart) / (niv.objectif - niv.valeurDepart)) * 100;
+    }
+
+    pct = Math.min(100, Math.max(0, pct));
+    fill.style.width = `${pct}%`;
+    
+    if (pct <= 20) fill.className = 'barre-stat-fill vert';
+    else if (pct <= 50) fill.className = 'barre-stat-fill orange';
+    else fill.className = 'barre-stat-fill rouge';
+
+    document.getElementById('total-clics').textContent = totalClics;
+}
+
+// =========================
+// SUCCÈS / ÉCHEC
+// =========================
+
+function niveauReussi() {
+    if (!jeuActif) return;
+    jeuActif = false;
+    clearInterval(timerInterval);
+    clearInterval(jeuInterval);
+
+    boostsSession++;
+    document.getElementById('boosts-acquis').textContent = boostsSession;
+    document.getElementById('btn-clic').classList.add('succes');
+    document.getElementById('message-jeu').textContent = `✅ Niveau ${niveauActuel + 1} réussi ! +1 Boost !`;
+
+    // Dot complete
+    document.getElementById(`dot-${niveauActuel + 1}`).classList.remove('actif');
+    document.getElementById(`dot-${niveauActuel + 1}`).classList.add('complete');
+
+    afficherAnimation('⚡ +1 BOOST !');
+
+    setTimeout(() => {
+        niveauActuel++;
+        document.getElementById('btn-clic').classList.remove('succes');
+        if (niveauActuel >= NIVEAUX.length) {
+            finSession();
+        } else {
+            lancerNiveau();
+        }
+    }, 1500);
+}
+
+function niveauEchoue() {
+    if (!jeuActif) return;
+    jeuActif = false;
+    clearInterval(timerInterval);
+    clearInterval(jeuInterval);
+
+    document.getElementById(`dot-${niveauActuel + 1}`).classList.remove('actif');
+    document.getElementById(`dot-${niveauActuel + 1}`).classList.add('echec');
+    document.getElementById('message-jeu').textContent = `❌ Temps écoulé ! Recommence ce niveau !`;
+
+    setTimeout(() => {
+        document.getElementById(`dot-${niveauActuel + 1}`).classList.remove('echec');
+        lancerNiveau();
+    }, 1500);
+}
+
+// =========================
+// FIN DE SESSION
+// =========================
+
+function finSession() {
+    clearInterval(timerInterval);
+    clearInterval(jeuInterval);
+
+    const data = getBoosts();
+    if (!data[partenaireSelectionne]) data[partenaireSelectionne] = { boosts: 0, niveau: 0 };
+
+    const ancienNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
+    data[partenaireSelectionne].boosts += boostsSession;
+    const nouveauNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
+
+    sauvegarderBoosts(data);
+    mettreAJourCartes();
+
+    document.getElementById('jeu-section').classList.remove('visible');
+    document.getElementById('fin-partie').classList.add('visible');
+
+    const noms = {
+        sylvain2500: 'Sylvain Gaming',
+        voldarks81540: 'Voldarks',
+        miss_dixon: 'Miss_dixon',
+        titou0232: 'Titou0232'
+    };
+
+    document.getElementById('fin-titre-el').innerHTML = `<div class="fin-titre">⚡ SESSION TERMINÉE !</div>`;
+    document.getElementById('fin-partenaire').textContent = `🎯 Boosts pour : ${noms[partenaireSelectionne]}`;
+    document.getElementById('fin-boosts-val').textContent = `+${boostsSession} Boost(s) gagnés sur 6 !`;
+
+    if (nouveauNiveau > ancienNiveau) {
+        document.getElementById('fin-msg').textContent = `🌟 NIVEAU UP ! Tu es maintenant ${GRADES[nouveauNiveau].nom} !`;
+        afficherAnimation('🌟 NIVEAU UP !');
+    } else {
+        const restant = 10 - (data[partenaireSelectionne].boosts % 10);
+        document.getElementById('fin-msg').textContent = `⚡ Plus que ${restant} boost(s) pour atteindre ${GRADES[Math.min(10, nouveauNiveau + 1)].nom} !`;
+    }
+
+    document.getElementById('fin-grade-msg').textContent = `Grade actuel : ${GRADES[nouveauNiveau].nom}`;
+}
+
+// =========================
+// PARTICULES
+// =========================
+
+function creerParticule(e, texte, couleur) {
+    const el = document.createElement('div');
+    el.className = 'particule';
+    el.textContent = texte;
+    el.style.color = couleur;
+    el.style.left = (e.clientX + Math.random() * 30 - 15) + 'px';
+    el.style.top = (e.clientY - 20) + 'px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 800);
+}
+
+function afficherAnimation(texte) {
+    const el = document.createElement('div');
+    el.className = 'boost-gagne';
+    el.textContent = texte;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1500);
+}
+
+// =========================
+// REJOUER
+// =========================
+
+function rejouer() {
+    clearInterval(timerInterval);
+    clearInterval(jeuInterval);
+    jeuActif = false;
+    document.getElementById('fin-partie').classList.remove('visible');
+    document.getElementById('jeu-section').classList.remove('visible');
+    document.getElementById('choix-section').style.display = 'block';
+    document.querySelectorAll('.choix-card').forEach(c => c.classList.remove('selectionne'));
+    document.getElementById('btn-lancer').disabled = true;
+    partenaireSelectionne = null;
+    mettreAJourCartes();
+}
+
+// Init
+mettreAJourCartes();
+</script>
+
+</body>
+</html>

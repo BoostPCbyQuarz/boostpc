@@ -2780,3 +2780,23 @@ footer a:hover {
     color: #ffcc00;
     margin: 4px 0;
 }
+/* BOUTON OVERCLOCK */
+.btn-overclock {
+    display: table;
+    margin: 20px auto;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #9146ff, #00bfff);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 0 30px rgba(145,70,255,0.5);
+    transition: 0.3s;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.btn-overclock:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 50px rgba(145,70,255,0.8);
+}
