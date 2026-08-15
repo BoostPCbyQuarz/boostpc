@@ -989,7 +989,7 @@ function mettreAJourStatAffichage() {
 // SUCCÈS / ÉCHEC
 // =========================
 
-function niveauReussi() {
+async function niveauReussi() {
     if (!jeuActif) return;
     jeuActif = false;
     clearInterval(timerInterval);
@@ -1010,7 +1010,7 @@ function niveauReussi() {
         niveauActuel++;
         document.getElementById('btn-clic').classList.remove('succes');
         if (niveauActuel >= NIVEAUX.length) {
-            finSession();
+            await finSession();
         } else {
             lancerNiveau();
         }
