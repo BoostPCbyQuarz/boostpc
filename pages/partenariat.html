@@ -65,6 +65,33 @@
             0%, 100% { box-shadow: 0 0 100px rgba(255,204,0,0.9); transform: scale(1); }
             50% { box-shadow: 0 0 150px rgba(255,204,0,1), 0 0 200px rgba(255,0,68,0.6); transform: scale(1.02); }
         }
+
+        /* BADGES DES GRADES */
+        .grade-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .grade-0  { background: #1f2937; color: #a0a0a0; }
+        .grade-1  { background: #3d1a6e; color: #cc99ff; }
+        .grade-2  { background: #1a3a6e; color: #99ccff; }
+        .grade-3  { background: #0d4d5a; color: #00ddff; }
+        .grade-4  { background: #0d5a2a; color: #00ff88; }
+        .grade-5  { background: linear-gradient(90deg, #5a4d00, #3d3d00); color: #ffd700; }
+        .grade-6  { background: linear-gradient(90deg, #5a2000, #3d1500); color: #ff8800; }
+        .grade-7  { background: linear-gradient(90deg, #9146ff, #00bfff); color: white; animation: rainbowBadge 3s linear infinite; background-size: 200% auto; }
+        .grade-8  { background: linear-gradient(90deg, #ff6600, #9146ff, #00bfff); color: white; animation: rainbowBadge 2s linear infinite; background-size: 200% auto; }
+        .grade-9  { background: linear-gradient(90deg, #ff0044, #ff6600, #9146ff); color: white; animation: rainbowBadge 1.5s linear infinite; background-size: 200% auto; }
+        .grade-10 { background: linear-gradient(90deg, #ff0044, #ff6600, #ffcc00, #00ff88, #00bfff, #9146ff); color: white; animation: rainbowBadge 1s linear infinite; background-size: 400% auto; }
+
+        @keyframes rainbowBadge {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
     </style>
 
 </head>
@@ -127,6 +154,7 @@
                     <h3>Sylvain Gaming</h3>
                     <div class="voyant voyant-offline"></div>
                 </div>
+                <span class="grade-badge grade-0" id="badge-partenaire-sylvain2500">🎮 Noob</span>
                 <p class="statut">En ligne : Non</p>
                 <p class="titre-stream">🎮 Bienvenue sur Sylvain Gaming ! 🎮 Ici, on partage avant tout une passion : le jeu vidéo. Au programme : 😱 Resident Evil Requiem 🏴‍☠️ Assassin's Creed Black Flag Resynced 🚔 GTA V (coop & braquages) 🚜 Farming Simulator 🌊 Subnautica ⚔️ Bientôt : The Elder Scrolls IV: Oblivion Remastered</p>
                 <a href="https://www.twitch.tv/sylvain2500" target="_blank" class="btn-twitch">Regarder sur Twitch</a>
@@ -148,6 +176,7 @@
                     <h3>Voldarks</h3>
                     <div class="voyant voyant-offline"></div>
                 </div>
+                <span class="grade-badge grade-0" id="badge-partenaire-voldarks81540">🎮 Noob</span>
                 <p class="statut">En ligne : Non</p>
                 <p class="titre-stream">🎮 Bienvenue sur ma chaîne ! 🔥 Au programme : Counter-Strike, Rocket League, jeux solo & coop, découvertes et surtout beaucoup de fun ! 😂 Viens discuter, jouer et partager de bons moments. Ici, on tryhard… mais pas trop ! 😎</p>
                 <a href="https://www.twitch.tv/voldarks81540" target="_blank" class="btn-twitch">Regarder sur Twitch</a>
@@ -169,6 +198,7 @@
                     <h3>Miss_dixon</h3>
                     <div class="voyant voyant-offline"></div>
                 </div>
+                <span class="grade-badge grade-0" id="badge-partenaire-miss_dixon">🎮 Noob</span>
                 <p class="statut">En ligne : Non</p>
                 <p class="titre-stream">Hello bienvenue à toi ! 👋 Ici on fait principalement de la survie et de l'horreur mais on aime aussi la découverte ! 🎮 Je suis en stream tous les soirs à 21h 🕘 Rejoins moi pour échanger en direct !</p>
                 <a href="https://www.twitch.tv/miss_dixon" target="_blank" class="btn-twitch">Regarder sur Twitch</a>
@@ -190,6 +220,7 @@
                     <h3>Titou0232</h3>
                     <div class="voyant voyant-offline"></div>
                 </div>
+                <span class="grade-badge grade-0" id="badge-partenaire-titou0232">🎮 Noob</span>
                 <p class="statut">En ligne : Non</p>
                 <p class="titre-stream">🎮 Joueur de 32 ans 🧔‍♂️ 🕹️ Multigaming, tout dépend de mon humeur 😎 mais aussi des dispos des copains de jeux 👥🎧 Vous trouverez sur cette chaîne du 🏴‍☠️ Sea of Thieves, du 🪖 World of Tanks et bien d'autres jeux encore ! 🎮🔥 ⚓ Alors installe-toi, prends tes quartiers et profite du stream ! 👋 Bienvenue à toi ;p 😜</p>
                 <a href="https://www.twitch.tv/titou0232" target="_blank" class="btn-twitch">Regarder sur Twitch</a>
@@ -228,6 +259,28 @@
 
 <script>
 // =========================
+// GRADES GAMING
+// =========================
+
+const GRADES = [
+    { nom: "🎮 Noob",          classe: "grade-0"  },
+    { nom: "🕹️ Joueur",        classe: "grade-1"  },
+    { nom: "⚔️ Guerrier",      classe: "grade-2"  },
+    { nom: "🏆 Challenger",    classe: "grade-3"  },
+    { nom: "💪 Tryharder",     classe: "grade-4"  },
+    { nom: "🔥 Pro Gamer",     classe: "grade-5"  },
+    { nom: "👾 Elite",         classe: "grade-6"  },
+    { nom: "⭐ Légende",       classe: "grade-7"  },
+    { nom: "👑 Maître",        classe: "grade-8"  },
+    { nom: "🌟 Mythique",      classe: "grade-9"  },
+    { nom: "⚡ DIEU DU GAMING", classe: "grade-10" }
+];
+
+function calculerNiveau(boosts) {
+    return Math.min(10, Math.floor(boosts / 10));
+}
+
+// =========================
 // SYNCHRONISATION DES CARTES PARTENARIAT
 // =========================
 
@@ -257,15 +310,25 @@ async function mettreAJourCartesPartenariat() {
         return;
     }
 
-    // 3. Appliquer les niveaux aux cartes
+    // 3. Appliquer les niveaux et badges aux cartes
     document.querySelectorAll('.carte-twitch').forEach(carte => {
         const channel = carte.dataset.channel;
         if (channel && data[channel]) {
             const boosts = data[channel].boosts || 0;
-            const niveau = Math.min(10, Math.floor(boosts / 10));
+            const niveau = calculerNiveau(boosts);
+            
+            // Appliquer la classe de brillance
             carte.className = carte.className.replace(/niveau-\d+/g, '');
             carte.classList.add(`niveau-${niveau}`);
-            console.log(`✅ ${channel} → niveau ${niveau} (${boosts} boosts)`);
+            
+            // Mettre à jour le badge de grade
+            const badge = document.getElementById(`badge-partenaire-${channel}`);
+            if (badge) {
+                badge.textContent = GRADES[niveau].nom;
+                badge.className = `grade-badge ${GRADES[niveau].classe}`;
+            }
+            
+            console.log(`✅ ${channel} → niveau ${niveau} (${boosts} boosts) - ${GRADES[niveau].nom}`);
         }
     });
 }

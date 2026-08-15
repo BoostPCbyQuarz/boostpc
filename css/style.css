@@ -2800,3 +2800,28 @@ footer a:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 0 50px rgba(145,70,255,0.8);
 }
+.grade-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.grade-0  { background: #1f2937; color: #a0a0a0; }
+.grade-1  { background: #3d1a6e; color: #cc99ff; }
+.grade-2  { background: #1a3a6e; color: #99ccff; }
+.grade-3  { background: #0d4d5a; color: #00ddff; }
+.grade-4  { background: #0d5a2a; color: #00ff88; }
+.grade-5  { background: linear-gradient(90deg, #5a4d00, #3d3d00); color: #ffd700; }
+.grade-6  { background: linear-gradient(90deg, #5a2000, #3d1500); color: #ff8800; }
+.grade-7  { background: linear-gradient(90deg, #9146ff, #00bfff); color: white; animation: rainbowBadge 3s linear infinite; background-size: 200% auto; }
+.grade-8  { background: linear-gradient(90deg, #ff6600, #9146ff, #00bfff); color: white; animation: rainbowBadge 2s linear infinite; background-size: 200% auto; }
+.grade-9  { background: linear-gradient(90deg, #ff0044, #ff6600, #9146ff); color: white; animation: rainbowBadge 1.5s linear infinite; background-size: 200% auto; }
+.grade-10 { background: linear-gradient(90deg, #ff0044, #ff6600, #ffcc00, #00ff88, #00bfff, #9146ff); color: white; animation: rainbowBadge 1s linear infinite; background-size: 400% auto; }
+
+@keyframes rainbowBadge {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
