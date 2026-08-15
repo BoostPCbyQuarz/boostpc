@@ -655,11 +655,11 @@ const NIVEAUX = [
         unite: "°C",
         valeurDepart: 95,
         objectif: 40,
-        remonteeParSec: 0.5,   // +0.5°C/sec
-        inverse: true,          // on veut descendre
+        remonteeParSec: 0.5,
+        inverse: true,
         couleurBarre: "rouge",
-        objectifPct: () => 40,  // position de la ligne verte sur la barre (%)
-        valToPct: (v) => v,     // % de remplissage de la barre
+        objectifPct: () => 40,
+        valToPct: (v) => v,
         afficher: (v) => `${Math.round(v)}°C`,
         succes: (v) => v <= 40
     },
@@ -719,8 +719,8 @@ const NIVEAUX = [
         unite: " FPS",
         valeurDepart: 45,
         objectif: 200,
-        remonteeParSec: 2.8,     // chute de 5 FPS/sec
-        inverse: false,         // on veut monter
+        remonteeParSec: 2.8,
+        inverse: false,
         couleurBarre: "rouge",
         objectifPct: () => (200 / 300) * 100,
         valToPct: (v) => (v / 300) * 100,
@@ -735,8 +735,8 @@ const NIVEAUX = [
         unite: "%",
         valeurDepart: 20,
         objectif: 95,
-        remonteeParSec: 4,     // chute de 8%/sec
-        inverse: false,         // on veut monter
+        remonteeParSec: 4,
+        inverse: false,
         couleurBarre: "rouge",
         objectifPct: () => 95,
         valToPct: (v) => v,
@@ -764,7 +764,7 @@ const GRADES = [
 // =========================
 
 let partenaireSelectionne = null;
-let niveauActuel = 0;       // index dans NIVEAUX (0-5)
+let niveauActuel = 0;
 let valeurStat = 0;
 let timerInterval = null;
 let jeuInterval = null;
@@ -801,6 +801,80 @@ function sauvegarderBoosts(data) {
 
 function calculerNiveau(boosts) {
     return Math.min(10, Math.floor(boosts / 10));
+}
+
+// =========================
+// SYNCHRONISATION GITHUB (JSON)
+// =========================
+
+async function lireBoostsGithub() {
+    try {
+        const response = await fetch('https://api.github.com/repos/BoostPCbyQuarz/boostpc/contents/data/boosts.json', {
+            headers: { 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (!response.ok) {
+            console.warn('❌ Fichier JSON non trouvé sur GitHub');
+            return null;
+        }
+        const data = await response.json();
+        const contenu = JSON.parse(atob(data.content));
+        return {
+            contenu: contenu,
+            sha: data.sha
+        };
+    } catch (error) {
+        console.error('Erreur lecture GitHub:', error);
+        return null;
+    }
+}
+
+async function ecrireBoostsGithub(data, sha) {
+    try {
+        let token = localStorage.getItem('github_token');
+        if (!token) {
+            token = prompt(
+                '🔑 Entrez votre token GitHub pour sauvegarder les boosts :\n\n' +
+                '1. GitHub → Settings → Developer settings\n' +
+                '2. Personal access tokens → Tokens (classic)\n' +
+                '3. Générer avec permission "repo"\n' +
+                '4. Collez le token ici :'
+            );
+            if (token) {
+                localStorage.setItem('github_token', token);
+            } else {
+                console.warn('⚠️ Sauvegarde en local uniquement');
+                return false;
+            }
+        }
+
+        const contenuBase64 = btoa(JSON.stringify(data, null, 2));
+        const response = await fetch('https://api.github.com/repos/BoostPCbyQuarz/boostpc/contents/data/boosts.json', {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${token}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.github.v3+json'
+            },
+            body: JSON.stringify({
+                message: `📊 Mise à jour boosts - ${new Date().toLocaleDateString()}`,
+                content: contenuBase64,
+                sha: sha,
+                branch: 'main'
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            console.error('❌ Erreur GitHub:', error.message);
+            return false;
+        }
+
+        console.log('✅ Boosts sauvegardés sur GitHub !');
+        return true;
+    } catch (error) {
+        console.error('Erreur écriture GitHub:', error);
+        return false;
+    }
 }
 
 // =========================
@@ -857,6 +931,7 @@ function lancerJeu() {
 }
 
 function lancerNiveau() {
+    if (niveauActuel >= NIVEAUX.length) return;
     const niv = NIVEAUX[niveauActuel];
     valeurStat = niv.valeurDepart;
     tempsRestant = 30;
@@ -961,6 +1036,7 @@ function clicAction(e) {
 // =========================
 
 function mettreAJourStatAffichage() {
+    if (niveauActuel >= NIVEAUX.length) return;
     const niv = NIVEAUX[niveauActuel];
     document.getElementById('stat-principale').textContent = niv.afficher(valeurStat);
 
@@ -968,10 +1044,8 @@ function mettreAJourStatAffichage() {
 
     let pct;
     if (niv.inverse) {
-        // Descend : barre pleine à droite au départ, se vide vers la gauche
         pct = ((valeurStat - niv.objectif) / (niv.valeurDepart - niv.objectif)) * 100;
     } else {
-        // Monte : barre vide au départ, se remplit vers la droite
         pct = ((valeurStat - niv.valeurDepart) / (niv.objectif - niv.valeurDepart)) * 100;
     }
 
@@ -1006,7 +1080,7 @@ async function niveauReussi() {
 
     afficherAnimation('⚡ +1 BOOST !');
 
-    setTimeout(() => {
+    setTimeout(async () => {
         niveauActuel++;
         document.getElementById('btn-clic').classList.remove('succes');
         if (niveauActuel >= NIVEAUX.length) {
@@ -1041,10 +1115,9 @@ async function finSession() {
     clearInterval(timerInterval);
     clearInterval(jeuInterval);
 
-    // Lecture GitHub
     const github = await lireBoostsGithub();
-    const data = github ? github.contenu : getBoosts();
-    const sha = github ? github.sha : null;
+    let data = github ? github.contenu : getBoosts();
+    let sha = github ? github.sha : null;
 
     if (!data[partenaireSelectionne]) data[partenaireSelectionne] = { boosts: 0 };
 
@@ -1052,7 +1125,6 @@ async function finSession() {
     data[partenaireSelectionne].boosts += boostsSession;
     const nouveauNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
 
-    // Sauvegarde GitHub + local
     if (sha) await ecrireBoostsGithub(data, sha);
     sauvegarderBoosts(data);
     mettreAJourCartes();
@@ -1113,6 +1185,8 @@ function rejouer() {
     clearInterval(timerInterval);
     clearInterval(jeuInterval);
     jeuActif = false;
+    niveauActuel = 0;
+    boostsSession = 0;
     document.getElementById('fin-partie').classList.remove('visible');
     document.getElementById('jeu-section').classList.remove('visible');
     document.getElementById('choix-section').style.display = 'block';
