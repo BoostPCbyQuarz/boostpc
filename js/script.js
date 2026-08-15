@@ -144,7 +144,7 @@ function afficherBanniere(nom, lien) {
     if ("Notification" in window && Notification.permission === "granted") {
         envoyerNotification(nom, lien);
     }
-
+}
 // Demander la permission pour les notifications navigateur
 function demanderPermissionNotification() {
     if ("Notification" in window) {

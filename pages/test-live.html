@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoostPC - Mode Test Live</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../images/piclumen-1785346111693.png">
+    <style>
+        .test-page {
+            max-width: 600px;
+            margin: 80px auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .test-titre {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ff8800;
+            margin-bottom: 10px;
+        }
+
+        .test-sous-titre {
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+
+        .test-card {
+            background: #111827;
+            border: 2px solid #ff8800;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .test-card h3 {
+            color: #efb800;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .btn-test {
+            display: inline-block;
+            margin: 8px;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .btn-activer {
+            background: #00ff00;
+            color: black;
+        }
+
+        .btn-activer:hover {
+            background: #00cc00;
+            transform: translateY(-2px);
+        }
+
+        .btn-desactiver {
+            background: #ff4444;
+        }
+
+        .btn-desactiver:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        .btn-retour {
+            background: #9146ff;
+        }
+
+        .btn-retour:hover {
+            background: #7835cc;
+            transform: translateY(-2px);
+        }
+
+        .statut-test {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .statut-actif {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+        }
+
+        .statut-inactif {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid #ff4444;
+            color: #ff4444;
+        }
+
+        .warning {
+            background: rgba(255, 136, 0, 0.1);
+            border: 1px solid #ff8800;
+            border-radius: 10px;
+            padding: 12px;
+            color: #ff8800;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<video class="bg-video" autoplay muted loop playsinline>
+    <source src="../videos/ventilos-bg.mp4" type="video/mp4">
+</video>
+<div class="bg-video-overlay"></div>
+
+<header>
+    <div class="logo">
+        <img src="../images/piclumen-1785346111693.png" alt="BoostPC" width="80">
+    </div>
+    <nav>
+        <a href="../index.html">Accueil</a>
+        <a href="partenariat.html">Partenariat</a>
+    </nav>
+</header>
+
+<div class="test-page">
+
+    <div class="test-titre">🧪 Mode Test Live</div>
+    <p class="test-sous-titre">Simule un streamer en live pour tester l'affichage</p>
+
+    <div class="test-card">
+        <h3>Choisir le streamer à simuler :</h3>
+
+        <div>
+            <button class="btn-test btn-activer" onclick="activerTest('sylvain2500', 'Sylvain Gaming')">
+                🟢 Sylvain Gaming
+            </button>
+            <button class="btn-test btn-activer" onclick="activerTest('voldarks81540', 'Voldarks')">
+                🟢 Voldarks
+            </button>
+            <button class="btn-test btn-activer" onclick="activerTest('miss_dixon', 'Miss_dixon')">
+                🟢 Miss_dixon
+            </button>
+            <button class="btn-test btn-activer" onclick="activerTest('titou0232', 'Titou0232')">
+                🟢 Titou0232
+            </button>
+        </div>
+
+        <div id="statut-affichage" class="statut-test statut-inactif">
+            ❌ Aucune simulation active
+        </div>
+
+        <br>
+        <button class="btn-test btn-desactiver" onclick="desactiverTest()">
+            🔴 Désactiver la simulation
+        </button>
+    </div>
+
+    <button class="btn-test btn-retour" onclick="window.location.href='partenariat.html'">
+        👀 Voir la page Partenariat
+    </button>
+
+    <div class="warning">
+        ⚠️ La simulation est sauvegardée dans le navigateur. Elle reste active même si tu changes de page. N'oublie pas de la désactiver avant de passer en production !
+    </div>
+
+</div>
+
+<script>
+    // Affiche le statut actuel au chargement
+    const testActuel = localStorage.getItem('boostpc_test_live');
+    if (testActuel) {
+        document.getElementById('statut-affichage').textContent = `✅ Simulation active : ${testActuel}`;
+        document.getElementById('statut-affichage').className = 'statut-test statut-actif';
+    }
+
+    function activerTest(channel, nom) {
+        localStorage.setItem('boostpc_test_live', channel);
+        document.getElementById('statut-affichage').textContent = `✅ Simulation active : ${nom}`;
+        document.getElementById('statut-affichage').className = 'statut-test statut-actif';
+    }
+
+    function desactiverTest() {
+        localStorage.removeItem('boostpc_test_live');
+        document.getElementById('statut-affichage').textContent = '❌ Aucune simulation active';
+        document.getElementById('statut-affichage').className = 'statut-test statut-inactif';
+    }
+</script>
+
+</body>
+</html>
