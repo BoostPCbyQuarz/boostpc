@@ -140,9 +140,10 @@ function afficherBanniere(nom, lien) {
         }, 10000);
     }
 
-    // Envoie aussi une notification navigateur
-    envoyerNotification(nom, lien);
-}
+    // Demande la permission et envoie la notification seulement si l'utilisateur a déjà accepté
+    if ("Notification" in window && Notification.permission === "granted") {
+        envoyerNotification(nom, lien);
+    }
 
 // Demander la permission pour les notifications navigateur
 function demanderPermissionNotification() {
@@ -267,7 +268,6 @@ async function checkLiveAccueil() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    demanderPermissionNotification();
     checkLiveAccueil();
     setInterval(checkLiveAccueil, 30000);
 });
