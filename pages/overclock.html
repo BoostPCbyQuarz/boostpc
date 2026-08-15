@@ -1037,17 +1037,23 @@ function niveauEchoue() {
 // FIN DE SESSION
 // =========================
 
-function finSession() {
+async function finSession() {
     clearInterval(timerInterval);
     clearInterval(jeuInterval);
 
-    const data = getBoosts();
-    if (!data[partenaireSelectionne]) data[partenaireSelectionne] = { boosts: 0, niveau: 0 };
+    // Lecture GitHub
+    const github = await lireBoostsGithub();
+    const data = github ? github.contenu : getBoosts();
+    const sha = github ? github.sha : null;
+
+    if (!data[partenaireSelectionne]) data[partenaireSelectionne] = { boosts: 0 };
 
     const ancienNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
     data[partenaireSelectionne].boosts += boostsSession;
     const nouveauNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
 
+    // Sauvegarde GitHub + local
+    if (sha) await ecrireBoostsGithub(data, sha);
     sauvegarderBoosts(data);
     mettreAJourCartes();
 
