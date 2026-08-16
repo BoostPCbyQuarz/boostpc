@@ -1,4 +1,7 @@
-// Lightbox pour les images d'avis Discord
+// =========================
+// LIGHTBOX POUR LES IMAGES D'AVIS DISCORD
+// =========================
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const sideImages = document.querySelectorAll('.testimonials-side-images img');
@@ -28,7 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// Zoom au scroll sur les cartes résultats (mobile)
+// =========================
+// ZOOM AU SCROLL SUR LES CARTES RÉSULTATS (MOBILE)
+// =========================
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const resultCards = document.querySelectorAll('.result-card');
@@ -60,7 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// Vérification du statut Twitch via API officielle
+// =========================
+// VÉRIFICATION DU STATUT TWITCH VIA API
+// =========================
+
 const TWITCH_CLIENT_ID = "ijkbip2a9i70iu22tjl0hoi04u50y9";
 const TWITCH_TOKEN = "1q9bq1f4401hwmgj25bwqyh7rk5nyx";
 
@@ -125,6 +134,10 @@ async function checkTwitchStatus(channel, voyantEl, statutEl, carteEl, nom, lien
     }
 }
 
+// =========================
+// BANNIERE LIVE
+// =========================
+
 function afficherBanniere(nom, lien) {
     const banniere = document.getElementById("banniere-live");
     const texte = document.getElementById("banniere-texte");
@@ -145,7 +158,11 @@ function afficherBanniere(nom, lien) {
         envoyerNotification(nom, lien);
     }
 }
-// Demander la permission pour les notifications navigateur
+
+// =========================
+// NOTIFICATIONS NAVIGATEUR
+// =========================
+
 function demanderPermissionNotification() {
     if ("Notification" in window) {
         if (Notification.permission === "default") {
@@ -154,7 +171,6 @@ function demanderPermissionNotification() {
     }
 }
 
-// Envoyer une notification navigateur
 function envoyerNotification(nom, lien) {
     if ("Notification" in window && Notification.permission === "granted") {
         const notification = new Notification(`🔴 ${nom} est en direct !`, {
@@ -162,16 +178,18 @@ function envoyerNotification(nom, lien) {
             icon: "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c1.png",
         });
 
-        // Ouvre le lien Twitch en cliquant sur la notification
         notification.onclick = function () {
             window.open(lien, "_blank");
             notification.close();
         };
 
-        // Ferme la notification après 8 secondes
         setTimeout(() => notification.close(), 8000);
     }
 }
+
+// =========================
+// TRI DES CARTES (LIVE D'ABORD)
+// =========================
 
 function trierCartes() {
     const container = document.querySelector(".partners-container-twitch");
@@ -179,13 +197,15 @@ function trierCartes() {
 
     const cartes = Array.from(container.querySelectorAll(".carte-twitch"));
 
-    // Séparer live et offline
     const cartesLive = cartes.filter(c => c.classList.contains("carte-live"));
     const cartesOffline = cartes.filter(c => !c.classList.contains("carte-live"));
 
-    // Remettre dans le bon ordre : live d'abord puis offline
     [...cartesLive, ...cartesOffline].forEach(carte => container.appendChild(carte));
 }
+
+// =========================
+// INITIALISATION TWITCH SUR PARTENARIAT
+// =========================
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -193,41 +213,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (cartes.length > 0) {
 
-        const voyant1 = cartes[0].querySelector(".voyant");
-        const statut1 = cartes[0].querySelector(".statut");
+        // Définir les streamers avec leurs identifiants
+        const streamersConfig = [
+            { channel: "sylvain2500", nom: "Sylvain Gaming", lien: "https://www.twitch.tv/sylvain2500" },
+            { channel: "voldarks81540", nom: "Voldarks", lien: "https://www.twitch.tv/voldarks81540" },
+            { channel: "miss_dixon", nom: "Miss_dixon", lien: "https://www.twitch.tv/miss_dixon" },
+            { channel: "titou0232", nom: "Titou0232", lien: "https://www.twitch.tv/titou0232" }
+        ];
 
-        const voyant2 = cartes[1] ? cartes[1].querySelector(".voyant") : null;
-        const statut2 = cartes[1] ? cartes[1].querySelector(".statut") : null;
-
-        const voyant3 = cartes[2] ? cartes[2].querySelector(".voyant") : null;
-        const statut3 = cartes[2] ? cartes[2].querySelector(".statut") : null;
-
-        const voyant4 = cartes[3] ? cartes[3].querySelector(".voyant") : null;
-        const statut4 = cartes[3] ? cartes[3].querySelector(".statut") : null;
-
-        checkTwitchStatus("sylvain2500", voyant1, statut1, cartes[0], "Sylvain Gaming", "https://www.twitch.tv/sylvain2500");
-if (voyant2 && statut2) checkTwitchStatus("voldarks81540", voyant2, statut2, cartes[1], "Voldarks", "https://www.twitch.tv/voldarks81540");
-if (voyant3 && statut3) checkTwitchStatus("miss_dixon", voyant3, statut3, cartes[2], "Miss_dixon", "https://www.twitch.tv/miss_dixon");
-if (voyant4 && statut4) checkTwitchStatus("titou0232", voyant4, statut4, cartes[3], "Titou0232", "https://www.twitch.tv/titou0232");
-
-        setInterval(() => {
-            const cartesActuelles = document.querySelectorAll(".carte-twitch");
-            cartesActuelles.forEach(carte => {
-                const nom = carte.querySelector("h3").textContent.toLowerCase().replace(" ", "");
+        // Parcourir les cartes et vérifier chaque streamer
+        cartes.forEach((carte, index) => {
+            if (index < streamersConfig.length) {
+                const config = streamersConfig[index];
                 const voyant = carte.querySelector(".voyant");
                 const statut = carte.querySelector(".statut");
 
-                if (nom.includes("sylvain")) checkTwitchStatus("sylvain2500", voyant, statut, carte);
-                if (nom.includes("voldark")) checkTwitchStatus("voldarks81540", voyant, statut, carte);
-                if (nom.includes("miss_dixon") || nom.includes("dixon")) checkTwitchStatus("miss_dixon", voyant, statut, carte);
-                if (voyant4 && statut4) checkTwitchStatus("titou0232", voyant, statut, cartes);
+                if (voyant && statut) {
+                    checkTwitchStatus(config.channel, voyant, statut, carte, config.nom, config.lien);
+                }
+            }
+        });
+
+        // Mise à jour périodique toutes les 30 secondes
+        setInterval(() => {
+            const cartesActuelles = document.querySelectorAll(".carte-twitch");
+            cartesActuelles.forEach((carte, index) => {
+                if (index < streamersConfig.length) {
+                    const config = streamersConfig[index];
+                    const voyant = carte.querySelector(".voyant");
+                    const statut = carte.querySelector(".statut");
+                    if (voyant && statut) {
+                        checkTwitchStatus(config.channel, voyant, statut, carte, config.nom, config.lien);
+                    }
+                }
             });
         }, 30000);
+
+        // Demander la permission pour les notifications
+        demanderPermissionNotification();
     }
 
 });
-// Vérification des live pour la page d'accueil
-const streamers = [
+
+// =========================
+// VÉRIFICATION DES LIVE POUR LA PAGE D'ACCUEIL
+// =========================
+
+const streamersAccueil = [
     { channel: "sylvain2500", nom: "Sylvain Gaming", lien: "https://www.twitch.tv/sylvain2500" },
     { channel: "voldarks81540", nom: "Voldarks", lien: "https://www.twitch.tv/voldarks81540" },
     { channel: "miss_dixon", nom: "Miss_dixon", lien: "https://www.twitch.tv/miss_dixon" },
@@ -243,7 +275,7 @@ async function checkLiveAccueil() {
     liste.innerHTML = "";
     let nbLive = 0;
 
-    for (const streamer of streamers) {
+    for (const streamer of streamersAccueil) {
         try {
             const response = await fetch(`https://api.twitch.tv/helix/streams?user_login=${streamer.channel}`, {
                 headers: {
@@ -263,7 +295,6 @@ async function checkLiveAccueil() {
         }
     }
 
-    // Affiche le bloc seulement si quelqu'un est en live
     bloc.style.display = nbLive > 0 ? "block" : "none";
 }
 
