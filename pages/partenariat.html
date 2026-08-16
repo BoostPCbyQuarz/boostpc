@@ -338,7 +338,28 @@ mettreAJourCartesPartenariat();
 
 // Mise à jour toutes les 10 secondes
 setInterval(mettreAJourCartesPartenariat, 10000);
-</script>
+// =========================
+// VÉRIFICATION RÉINITIALISATION HEBDOMADAIRE (Partenariat)
+// =========================
 
+async function verifierReinitHebdoPartenariat() {
+    const maintenant = new Date();
+    const jour = maintenant.getDay(); // 0 = dimanche
+    const derniereReinit = localStorage.getItem('derniere_reinit_hebdo_partenariat');
+    const aujourdHui = `${maintenant.getFullYear()}-${maintenant.getMonth()}-${maintenant.getDate()}`;
+    
+    if (jour === 0 && derniereReinit !== aujourdHui) {
+        console.log('🔄 Réinitialisation hebdomadaire sur Partenariat...');
+        localStorage.setItem('derniere_reinit_hebdo_partenariat', aujourdHui);
+        
+        // Forcer un rechargement des données
+        await mettreAJourCartesPartenariat();
+    }
+}
+
+// Appeler au chargement
+verifierReinitHebdoPartenariat();
+
+</script>
 </body>
 </html>

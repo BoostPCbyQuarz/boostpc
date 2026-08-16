@@ -772,12 +772,51 @@ let boostsSession = 0;
 let jeuActif = false;
 
 // =========================
+// VÉRIFICATION RÉINITIALISATION HEBDOMADAIRE
+// =========================
+
+async function verifierReinitialisationHebdomadaire() {
+    const maintenant = new Date();
+    const jour = maintenant.getDay(); // 0 = dimanche
+    
+    const derniereReinit = localStorage.getItem('derniere_reinit_hebdo');
+    const aujourdHui = `${maintenant.getFullYear()}-${maintenant.getMonth()}-${maintenant.getDate()}`;
+    
+    if (jour === 0 && derniereReinit !== aujourdHui) {
+        console.log('🔄 Réinitialisation hebdomadaire automatique...');
+        
+        const dataZero = {
+            sylvain2500: { boosts: 0 },
+            voldarks81540: { boosts: 0 },
+            miss_dixon: { boosts: 0 },
+            titou0232: { boosts: 0 }
+        };
+        
+        const github = await lireBoostsGithub();
+        if (github) {
+            await ecrireBoostsGithub(dataZero, github.sha);
+        }
+        sauvegarderBoosts(dataZero);
+        mettreAJourCartes();
+        
+        localStorage.setItem('derniere_reinit_hebdo', aujourdHui);
+        console.log('✅ Réinitialisation hebdomadaire effectuée !');
+    }
+}
+
+// =========================
 // DONNÉES LOCALES
 // =========================
 
 function getCleJour() {
     const d = new Date();
-    return `boostpc_${d.getFullYear()}_${d.getMonth()}_${d.getDate()}`;
+    // Obtenir le début de la semaine (dimanche)
+    const jour = d.getDay(); // 0 = dimanche, 1 = lundi...
+    const debutSemaine = new Date(d);
+    debutSemaine.setDate(d.getDate() - jour);
+    debutSemaine.setHours(0, 0, 0, 0);
+    
+    return `boostpc_${debutSemaine.getFullYear()}_${debutSemaine.getMonth()}_${debutSemaine.getDate()}`;
 }
 
 function getBoosts() {
@@ -1111,29 +1150,36 @@ async function finSession() {
     clearInterval(timerInterval);
     clearInterval(jeuInterval);
 
+    // ⭐ AJOUTE CETTE VÉRIFICATION ⭐
+    // Vérifier si on est dimanche minuit et réinitialiser si besoin
+    const maintenant = new Date();
+    const jour = maintenant.getDay(); // 0 = dimanche
+    const heures = maintenant.getHours();
+    const minutes = maintenant.getMinutes();
+    
+    // Si c'est dimanche entre 00:00 et 00:05 → réinitialisation
+    if (jour === 0 && heures === 0 && minutes < 5) {
+        console.log('🔄 Réinitialisation hebdomadaire en cours...');
+        const dataZero = {
+            sylvain2500: { boosts: 0 },
+            voldarks81540: { boosts: 0 },
+            miss_dixon: { boosts: 0 },
+            titou0232: { boosts: 0 }
+        };
+        
+        // Sauvegarder la réinitialisation sur GitHub
+        const github = await lireBoostsGithub();
+        if (github) {
+            await ecrireBoostsGithub(dataZero, github.sha);
+        }
+        sauvegarderBoosts(dataZero);
+        mettreAJourCartes();
+        return;
+    }
+
     const github = await lireBoostsGithub();
-    let data = github ? github.contenu : getBoosts();
-    let sha = github ? github.sha : null;
 
-    if (!data[partenaireSelectionne]) data[partenaireSelectionne] = { boosts: 0 };
-
-    const ancienNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
-    data[partenaireSelectionne].boosts += boostsSession;
-    const nouveauNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
-
-    if (sha) await ecrireBoostsGithub(data, sha);
-    sauvegarderBoosts(data);
-    mettreAJourCartes();
-
-    document.getElementById('jeu-section').classList.remove('visible');
-    document.getElementById('fin-partie').classList.add('visible');
-
-    const noms = {
-        sylvain2500: 'Sylvain Gaming',
-        voldarks81540: 'Voldarks',
-        miss_dixon: 'Miss_dixon',
-        titou0232: 'Titou0232'
-    };
+}
 
     document.getElementById('fin-titre-el').innerHTML = `<div class="fin-titre">⚡ SESSION TERMINÉE !</div>`;
     document.getElementById('fin-partenaire').textContent = `🎯 Boosts pour : ${noms[partenaireSelectionne]}`;
@@ -1148,7 +1194,7 @@ async function finSession() {
     }
 
     document.getElementById('fin-grade-msg').textContent = `Grade actuel : ${GRADES[nouveauNiveau].nom}`;
-}
+
 
 // =========================
 // PARTICULES
@@ -1193,6 +1239,7 @@ function rejouer() {
 }
 
 // Init
+verifierReinitialisationHebdomadaire();
 mettreAJourCartes();
 </script>
 
