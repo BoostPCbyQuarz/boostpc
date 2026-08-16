@@ -2555,12 +2555,21 @@ footer a:hover {
         transform-origin: center center;
     }
 
+    /* Mobile - Cartes en live */
     .carte-live {
+        transform: scale(1) !important;
         transform-origin: center center !important;
+        opacity: 1 !important;
+        border: 3px solid #ff4444 !important;
+        box-shadow: 0 0 30px rgba(255, 68, 68, 0.6) !important;
     }
 
+    /* Mobile - Cartes hors ligne (dézoomées) */
     .carte-offline {
+        transform: scale(0.92) !important;
         transform-origin: center center !important;
+        opacity: 0.5 !important;
+        filter: grayscale(0.3) !important;
     }
 }
 
@@ -2604,12 +2613,43 @@ footer a:hover {
     animation: livePulse 0.8s ease-in-out infinite !important;
 }
 
-.carte-offline {
-    opacity: 0.7 !important;
+/* =========================
+   EFFET OFFLINE - DÉZOOMÉ ET ATTÉNUÉ
+   ========================= */
+
+/* Carte offline - dézoomée et atténuée */
+.carte-twitch.carte-offline {
+    transform: scale(0.92) !important;
+    opacity: 0.6 !important;
+    filter: grayscale(0.3) !important;
+    transition: all 0.4s ease !important;
 }
 
-.carte-live {
+/* Carte en live - normale et mise en avant */
+.carte-twitch.carte-live {
+    transform: scale(1) !important;
     opacity: 1 !important;
+    filter: none !important;
+    border: 3px solid #ff4444 !important;
+    box-shadow: 0 0 40px rgba(255, 68, 68, 0.6), 0 0 80px rgba(255, 68, 68, 0.3) !important;
+    animation: livePulse 1s ease-in-out infinite !important;
+}
+
+/* Cas spécial : offline mais avec un niveau élevé (on garde la couleur mais on dézoome) */
+.carte-twitch.carte-offline.niveau-1,
+.carte-twitch.carte-offline.niveau-2,
+.carte-twitch.carte-offline.niveau-3,
+.carte-twitch.carte-offline.niveau-4,
+.carte-twitch.carte-offline.niveau-5,
+.carte-twitch.carte-offline.niveau-6,
+.carte-twitch.carte-offline.niveau-7,
+.carte-twitch.carte-offline.niveau-8,
+.carte-twitch.carte-offline.niveau-9,
+.carte-twitch.carte-offline.niveau-10 {
+    transform: scale(0.92) !important;
+    opacity: 0.6 !important;
+    filter: grayscale(0.3) !important;
+    /* On garde la couleur du niveau */
 }
 
 @keyframes livePulse {
