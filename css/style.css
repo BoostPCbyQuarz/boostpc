@@ -2875,16 +2875,28 @@ footer a:hover {
         box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 80px rgba(255, 255, 255, 0.3);
     }
 }
+/* =========================
+   BORDURE BLANCHE POUR NIVEAU 0 (PARTENARIAT)
+   ========================= */
 
-/* ILLUMINATION DU TEXTE (grade) pour niveaux 1 à 5 */
-.carte-twitch.niveau-1 .grade-badge,
-.carte-twitch.niveau-2 .grade-badge,
-.carte-twitch.niveau-3 .grade-badge,
-.carte-twitch.niveau-4 .grade-badge,
-.carte-twitch.niveau-5 .grade-badge {
-    animation: texteIllumine 1.5s ease-in-out infinite !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+/* Niveau 0 - Bordure blanche lumineuse */
+.carte-twitch.niveau-0 {
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+    animation: bordureBlancheNiveau0 1.5s ease-in-out infinite !important;
 }
+
+@keyframes bordureBlancheNiveau0 {
+    0%, 100% {
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+    }
+    50% {
+        border-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 0 60px rgba(255, 255, 255, 0.2);
+    }
+}
+
 
 @keyframes texteIllumine {
     0%, 100% {
