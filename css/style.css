@@ -8,7 +8,6 @@
     box-sizing: border-box;
 }
 
-
 /* =========================
    BASE DU SITE
 ========================= */
@@ -19,157 +18,95 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
 /* =========================
    HEADER / MENU
 ========================= */
 
 header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     padding: clamp(8px, 1.5vh, 15px) 50px;
-
     background: transparent;
-
 }
 .logo {
-
     font-size: 30px;
-
     font-weight: bold;
-
     color: #00bfff;
-
 }
 
 .logo img {
-
     border-radius: 50%;
-
 }
 nav a {
-
     font-size: 25px;
-
     color: white;
-
     text-decoration: none;
-
     margin-left: 30px;
-
 }
-
 
 nav a:hover {
-
     color: #00bfff;
-
 }
-
 
 /* =========================
    ACCUEIL
 ========================= */
 
 .hero {
-
     text-align: center;
-
     padding: clamp(10px, 2vh, 25px) 20px;
-
 }
-
 
 .hero h1 {
-
     margin-top: clamp(10px, 2vh, 20px);
-
     font-size: clamp(30px, 4vw, 45px);
-
     color: #00bfff;
-
 }
-
 
 .hero p {
-
     margin-top: clamp(10px, 1.5vh, 20px);
-
     font-size: clamp(36px, 5vw, 60px);
-
     border-radius: 10px;
-
     color: #ffffff;
-
     font-weight: bold;
-
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.3);
-
 }
 .hero span {
-
     display: block;
-
     margin-top: 15px;
-
     color: #8B5CF6;
-
     font-size: clamp(16px, 2vw, 30px);
-
     font-weight: bold;
-
 }
 /* =========================
    BOUTONS GENERAUX
 ========================= */
 
 button {
-
     margin-top: 40px;
-
     background: #00bfff;
-
     color: white;
-
     border: none;
-
     padding: 15px 40px;
-
     border-radius: 10px;
-
     font-size: 18px;
-
     cursor: pointer;
-
 }
-
 
 button:hover {
-
     background: #0095cc;
-
 }
-
 
 /* =========================
    BLOCS DE PRESENTATION
 ========================= */
 
 .description {
-
     max-width: 700px;
-
     margin: 30px auto;
-
     font-size: 18px;
-
     line-height: 1.6;
-
 }
 .intro-text {
     width: 280px;
@@ -194,755 +131,432 @@ button:hover {
    SERVICES
 ========================= */
 .services {
-
     text-align: center;
-
     padding: clamp(10px, 2vh, 20px) 20px;
-
 }
-
 
 .services h2 {
-
     color: #00bfff;
-
     font-size: clamp(28px, 3.5vw, 40px);
-
     margin-bottom: clamp(15px, 2.5vh, 30px);
-
 }
-
 
 .services-container {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: clamp(8px, 1.5vw, 15px);
-
 }
 .service-card {
-
     background: #111827;
-
     width: 250px;
-
     padding: clamp(15px, 2.5vh, 25px);
-
     border-radius: 15px;
-
     transition: 0.3s;
-
     border: 1px solid #1f2937;
-
 }
 .service-card:hover {
-
     transform: translateY(-10px);
-
     border-color: #8B5CF6;
-
 }
-
 
 .service-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 15px;
-
 }
 
-
 .service-card p {
-
     color: #ffffff;
-
     line-height: 1.6;
-
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-
 }
  /* =========================
    RESULTATS
 ========================= */
 .results {
-
     text-align: center;
-
     padding: clamp(15px, 3vh, 30px) 20px;
-
     background: transparent;
-
 }
 .results h2 {
-
     color: #00bfff;
-
     font-size: clamp(28px, 4vw, 42px);
-
     margin-bottom: clamp(8px, 1.5vh, 15px);
-
 }
-
 
 .results-intro {
-
     max-width: 700px;
-
     margin: auto;
-
     color: #d0d0d0;
-
     font-size: clamp(16px, 1.8vw, 20px);
-
     line-height: 1.5;
-
 }
 .results-container {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: clamp(10px, 1.5vw, 20px);
-
     margin-top: clamp(15px, 2.5vh, 25px);
-
 }
 
 .result-card {
-
     width: 240px;
-
     padding: clamp(12px, 2vh, 20px);
-
     background: #0b1020;
-
     border-radius: 15px;
-
     border: 1px solid #1f2937;
-
     transition: 0.3s;
-
     text-align: center;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     min-height: 180px;
-
 }
 
 .result-card:hover {
-
     transform: translateY(-10px);
-
     border-color: #8B5CF6;
-
 }
 
-
-
 .result-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: clamp(10px, 1.5vh, 18px);
-
     font-size: 18px;
-
     text-align: center;
-
 }
 /* =========================
    RESULTATS AVANT / APRES
 ========================= */
 .before {
-
     color: #ff3b3b;
-
     margin: 10px;
-
     font-size: 15px;
-
     line-height: 1.4;
-
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.9);
-
     font-weight: bold;
-
     text-align: center;
-
 }
 .after {
-
     color: #00bfff;
-
     margin: 10px;
-
     font-size: 15px;
-
     font-weight: bold;
-
     line-height: 1.4;
-
     text-align: center;
-
 }
 /* =========================
    COMMUNAUTE
 ========================= */
 
 .community {
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
-
     min-height: calc(100vh - 140px);
-
     text-align: center;
-
     padding: clamp(20px, 3.5vh, 35px) 20px;
-
 }
 .community h2 {
-
     color: #8B5CF6;
-
     font-size: clamp(28px, 3.5vw, 40px);
-
     margin-bottom: 8px;
-
 }
 
-
 .community > p {
-
     max-width: 750px;
-
     margin: 0 auto;
-
     color: #d0d0d0;
-
     font-size: clamp(15px, 1.6vw, 18px);
-
     line-height: 1.5;
-
 }
 /* =========================
    A PROPOS
 ========================= */
 .about {
-
     text-align: center;
-
     padding: clamp(20px, 3vh, 35px) 20px;
-
     background: transparent;
-
 }
 .about h2 {
-
     color: #00bfff;
-
     font-size: clamp(32px, 4.5vw, 46px);
-
     margin-bottom: clamp(12px, 2vh, 20px);
-
 }
-
 
 .about > p {
-
     max-width: 850px;
-
     margin: clamp(10px, 1.5vh, 16px) auto;
-
     color: #d0d0d0;
-
     font-size: clamp(17px, 1.8vw, 20px);
-
     line-height: 1.6;
-
     transition: transform 0.25s ease;
-
     cursor: default;
-
 }
 
-
 .about > p:hover {
-
     transform: scale(1.05);
-
     color: #ffffff;
-
 }
 /* =========================
    VALEURS A PROPOS
 ========================= */
 .values {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: clamp(12px, 1.8vw, 20px);
-
     margin-top: clamp(15px, 2.5vh, 25px);
-
 }
 .value-card {
-
     width: 180px;
-
     background: #0b1020;
-
     padding: 12px;
-
     border-radius: 12px;
-
     border: 1px solid #1f2937;
-
     text-align: left;
-
     box-sizing: border-box;
-
     transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-
 }
 .value-card:hover {
-
     transform: scale(1.35) translateY(-10px);
-
     background: #1a1f35;
-
     border-color: #8B5CF6;
-
     box-shadow: 0 15px 35px rgba(139, 92, 246, 0.45);
-
     z-index: 3;
-
     position: relative;
-
 }
 
 .value-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 15px;
-
 }
 /* =========================
    CONTACT
 ========================= */
 .contact {
-
     text-align: center;
-
     padding: clamp(20px, 3.5vh, 35px) 20px;
-
 }
-
 
 .contact h2 {
-
     color: #00bfff;
-
     font-size: clamp(30px, 4vw, 42px);
-
     margin-bottom: clamp(10px, 1.5vh, 18px);
-
 }
-
 
 .contact > p {
-
     max-width: 700px;
-
     margin: 0 auto;
-
     color: #d0d0d0;
-
     font-size: clamp(15px, 1.6vw, 18px);
-
     line-height: 1.5;
-
 }
 .contact-box {
-
     max-width: 500px;
-
     margin: clamp(15px, 2.5vh, 25px) auto;
-
     padding: clamp(18px, 2.5vh, 25px);
-
     background: #111827;
-
     border-radius: 15px;
-
     border: 1px solid #1f2937;
-
     transition: 0.3s;
-
 }
-
 
 .contact-box:hover {
-
     transform: translateY(-8px);
-
     border-color: #8B5CF6;
-
 }
-
 
 .contact-box h3 {
-
     color: #8B5CF6;
-
     font-size: clamp(17px, 1.8vw, 20px);
-
 }
-
 
 .contact-box p {
-
     font-size: clamp(14px, 1.5vw, 16px);
-
     line-height: 1.5;
-
 }
 
-
 .contact-box li {
-
     color: #d0d0d0;
-
     margin: 8px;
-
     font-size: clamp(14px, 1.5vw, 16px);
-
 }
 /* =========================
    BOUTON HERO BOOSTPC
 ========================= */
 
 .hero-button {
-
     display: inline-block;
-
     margin-top: 30px;
-
     padding: clamp(12px, 2vh, 20px) clamp(25px, 4vw, 55px);
-
     background: #8B5CF6;
-
     color: white;
-
     text-decoration: none;
-
     border-radius: 30px;
-
     font-size: clamp(16px, 2vw, 28px);
-
     font-weight: bold;
-
     box-shadow: 0 0 150px rgba(139, 92, 246, 0.5);
-
     transition: 1s;
-
 }
 
 .hero-button:hover {
-
     transform: translateY(-5px);
-
     background: #00bfff;
-
     box-shadow:
     0 0 1px rgba(0, 191, 255, 0.6),
     0 0 150px rgba(246, 92, 92, 0.5);
-
 }
 /* =========================
    METHODE BOOSTPC
 ========================= */
 .method {
-
     text-align: center;
-
     padding: clamp(15px, 2.5vh, 30px) 20px;
-
 }
-
 
 .method h2 {
-
     color: #00bfff;
-
     font-size: clamp(28px, 3.5vw, 40px);
-
     margin-bottom: clamp(10px, 2vh, 20px);
-
 }
 .method-intro {
-
     max-width: 700px;
-
     margin: auto;
-
     color: #d0d0d0;
-
     line-height: 1.6;
-
 }
 .method-container {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: clamp(10px, 1.5vw, 20px);
-
     margin-top: clamp(15px, 2.5vh, 30px);
-
 }
-
-
 
 .method-card {
-
     width: 220px;
-
     padding: clamp(12px, 2vh, 20px);
-
     background: #111827;
-
     border-radius: 15px;
-
     transition: 0.3s;
-
     border: 1px solid #1f2937;
-
 }
-
 
 .method-card:hover {
-
     transform: translateY(-10px);
-
     border-color: #8B5CF6;
-
 }
 .method-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 15px;
-
 }
 
-
 .method-card p {
-
     color: #ffffff;
-
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-
 }
 /* =========================
    CARTES COMMUNAUTE
 ========================= */
 
 .community-container {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: clamp(14px, 2vw, 22px);
-
     margin-top: clamp(20px, 3vh, 30px);
-
 }
-
 
 .community-card {
-
     width: 250px;
-
     padding: clamp(15px, 2.5vh, 22px);
-
     background: #111827;
-
     border-radius: 15px;
-
     border: 1px solid #1f2937;
-
     transition: 0.3s;
-
 }
-
 
 .community-card:hover {
-
     transform: translateY(-10px);
-
     border-color: #8B5CF6;
-
 }
 .community-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 15px;
-
 }
 
-
 .community-card p {
-
     color: #ffffff;
-
     line-height: 1.5;
-
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-
 }
 /* =========================
    ENGAGEMENT BOOSTPC
 ========================= */
 .trust-box {
-
     width: 180px;
-
     text-align: left;
-
     padding: 12px;
-
     background: #0b1020;
-
     border-radius: 12px;
-
     border: 1px solid #1f2937;
-
     box-sizing: border-box;
-
     transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-
 }
 .trust-box:hover {
-
     transform: scale(1.35) translateY(-10px);
-
     background: #1a1f35;
-
     border-color: #8B5CF6;
-
     box-shadow: 0 15px 35px rgba(139, 92, 246, 0.45);
-
     z-index: 3;
-
     position: relative;
-
 }
 
 .trust-box h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 15px;
-
 }
 
-
 .trust-box p {
-
     color: #d0d0d0;
-
     line-height: 1.5;
-
 }
 /* =========================
    ELEMENTS COMMUNS
 ========================= */
 .service-card,
 .community-card {
-
     background: #111827;
-
     border-radius: 15px;
-
     padding: 25px;
-
     border: 1px solid rgba(139, 92, 246, 0.3);
-
     transition: 0.3s;
-
 }
 .service-card:hover,
 .community-card:hover {
-
     transform: translateY(-5px);
-
 }
 /* =========================
    ANIMATION MENU
 ========================= */
 
-
 nav a {
-
     animation: menuPulse 3s infinite;
-
 }
 
-
 @keyframes menuPulse {
-
     0% {
-
         text-shadow: 0 0 2px #8B5CF6;
-
     }
-
-
     50% {
-
         text-shadow:
         0 0 8px #8B5CF6,
         0 0 15px #8B5CF6,
         0 0 25px #8B5CF6;
-
     }
-
-
     100% {
-
         text-shadow: 0 0 120px #8B5CF6;
-
     }
 }
 
@@ -951,79 +565,44 @@ nav a {
 ========================= */
 
 .advantages {
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     padding: clamp(40px, 6vh, 70px) 20px;
-
     margin-top: clamp(20px, 4vh, 40px);
-
     perspective: 1200px;
-
 }
-
 
 .advantages-container {
-
     position: relative;
-
     width: clamp(230px, 23vw, 300px);
-
     height: clamp(170px, 17vh, 210px);
-
     transform-style: preserve-3d;
-
     transform: rotateX(8deg);
-
     animation: orbitRotate 14s linear infinite;
-
 }
-
 
 .advantages-container:hover {
-
     animation-play-state: paused;
-
 }
-
 
 .advantages-container .intro-text,
 .advantages-container .advantage-card {
-
     position: absolute;
-
     top: 0;
-
     left: 0;
-
     width: 100%;
-
     height: 100%;
-
     backface-visibility: hidden;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     background: #111827;
-
     padding: 20px;
-
     border-radius: 15px;
-
     border: 1px solid #1f2937;
-
     box-sizing: border-box;
-
 }
-
 
 .advantages-container .intro-text {
     transform: rotateY(0deg) translateZ(clamp(160px, 18vw, 220px));
@@ -1041,35 +620,23 @@ nav a {
     transform: rotateY(270deg) translateZ(clamp(160px, 18vw, 220px));
 }
 
-
 @keyframes orbitRotate {
-
     from {
         transform: rotateX(8deg) rotateY(0deg);
     }
-
     to {
         transform: rotateX(8deg) rotateY(360deg);
     }
-
 }
-
 
 .advantage-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 15px;
-
 }
 
-
 .advantage-card p {
-
     color: #d0d0d0;
-
     line-height: 1.5;
-
 }
 
 /* =========================
@@ -1077,124 +644,74 @@ nav a {
 ========================= */
 
 .why-boostpc {
-
     text-align: center;
-
     padding: 40px 20px;
-
     background: #111827;
-
 }
-
 
 .why-boostpc h2 {
-
     color: #00bfff;
-
     font-size: 35px;
-
     margin-bottom: 20px;
-
 }
-
 
 .why-boostpc > p {
-
     max-width: 800px;
-
     margin: auto;
-
     color: #d0d0d0;
-
     line-height: 1.6;
-
 }
-
 
 .why-container {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: 25px;
-
     margin-top: 35px;
-
 }
-
 
 .why-card {
-
     width: 280px;
-
     padding: 25px;
-
     background: #0b1020;
-
     border-radius: 15px;
-
     border: 1px solid #1f2937;
-
 }
-
 
 .why-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 15px;
-
 }
 
-
 .why-card p {
-
     color: #d0d0d0;
-
     line-height: 1.5;
-
 }
 /* =========================
    FOOTER
 ========================= */
 
 footer {
-
     text-align: center;
-
     padding: 0px;
-
     background: transparent;
-
     color: #d0d0d0;
-
     font-size: 14px;
-
 }
 
 footer a {
-
     color: #00bfff;
-
     text-decoration: none;
-
 }
 
-
 footer a:hover {
-
     text-decoration: underline;
-
 }
 /* =========================
    RESPONSIVE MOBILE
 ========================= */
 
 @media (max-width: 768px) {
-
     header {
         flex-direction: column;
         padding: 15px 20px;
@@ -1241,184 +758,104 @@ footer a:hover {
         width: 90%;
         max-width: 320px;
     }
-
 }
 /* =========================
    AVIS / TEMOIGNAGES
 ========================= */
 .testimonials {
-
     text-align: center;
-
     padding: clamp(50px, 8vh, 20px) 20px;
-
 }
-
 
 .testimonials h2 {
-
     color: #00bfff;
-
     font-size: clamp(34px, 4.5vw, 48px);
-
     margin-bottom: clamp(18px, 3vh, 30px);
-
 }
-
 
 .testimonials-intro {
-
     max-width: 750px;
-
     margin: auto;
-
     color: #d0d0d0;
-
     font-size: clamp(17px, 2vw, 22px);
-
     line-height: 1.6;
-
 }
-
-
-
-
 
 .testimonials-container:hover .testimonial-card {
-
     transform: scale(0.9);
-
     opacity: 0.55;
-
 }
-
 
 .testimonials-container .testimonial-card:hover {
-
     transform: scale(1.2) translateY(-15px) !important;
-
     opacity: 1 !important;
-
     border-color: #8B5CF6;
-
     box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
-
     z-index: 2;
-
 }
 .testimonial-author {
-
     display: block;
-
     margin-top: 15px;
-
     color: #8B5CF6;
-
     font-weight: bold;
-
     font-style: normal;
-
 }
 /* =========================
    FAQ
 ========================= */
 
 .faq {
-
     text-align: center;
-
     padding: 80px 20px;
-
 }
-
 
 .faq h2 {
-
     color: #00bfff;
-
     font-size: 40px;
-
     margin-bottom: 20px;
-
 }
 
-
 .faq-intro {
-
     max-width: 700px;
-
     margin: auto;
-
     color: #d0d0d0;
-
     line-height: 1.6;
-
     font-size: clamp(18px, 2vw, 32px);
-
 }
 
 .faq-container {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: 25px;
-
     margin-top: 50px;
-
 }
 .faq-card {
-
     width: 300px;
-
     padding: 25px;
-
     background: #111827;
-
     border-radius: 15px;
-
     border: 1px solid #1f2937;
-
     text-align: left;
-
     transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-
 }
-
 
 .faq-card:hover {
-
     transform: scale(1.1) translateY(-10px);
-
     background: #1a1f35;
-
     border-color: #8B5CF6;
-
     box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
-
     z-index: 3;
-
     position: relative;
-
 }
 .faq-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 15px;
-
 }
 
-
 .faq-card p {
-
     color: #d0d0d0;
-
     line-height: 1.6;
-
 }
 /* =========================
    ANIMATIONS D'APPARITION
@@ -1434,46 +871,34 @@ footer a:hover {
 .method,
 .testimonials,
 .faq {
-
     animation: fadeInUp 0.8s ease-out;
-
 }
 
-
 @keyframes fadeInUp {
-
     from {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 /* =========================
    CLIGNOTEMENT DISCORD
 ========================= */
 
 .blink-text {
-
     animation: blinkText 1.5s ease-in-out infinite;
-
 }
 
-
 @keyframes blinkText {
-
     0%, 100% {
         opacity: 1;
     }
-
     50% {
         opacity: 0.4;
     }
-
 }
 /* =========================
    AJUSTEMENT TAILLE TEXTE CARTES A PROPOS
@@ -1481,28 +906,20 @@ footer a:hover {
 
 .value-card h3,
 .trust-box h3 {
-
     font-size: 15px;
-
     margin-bottom: 8px;
-
 }
-
 
 .value-card p,
 .trust-box p {
-
     font-size: 13px;
-
     line-height: 1.4;
-
 }
 /* =========================
    CORRECTIF MOBILE - AVIS / TRUST / FAQ
 ========================= */
 
 @media (max-width: 768px) {
-
     .testimonials-container {
         flex-wrap: wrap;
     }
@@ -1513,101 +930,67 @@ footer a:hover {
         width: 90%;
         max-width: 320px;
     }
-
 }
 /* =========================
    MISE EN AVANT BLOC DISCORD CONTACT
 ========================= */
 
 .contact-box-featured {
-
     max-width: 550px;
-
     border: 2px solid #8B5CF6;
-
     box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
-
     animation: pulseGlow 2.5s ease-in-out infinite;
-
 }
-
 
 .contact-box-featured:hover {
-
     transform: scale(1.1) translateY(-10px);
-
     box-shadow: 0 0 45px rgba(139, 92, 246, 0.7);
-
     animation-play-state: paused;
-
 }
 
-
 @keyframes pulseGlow {
-
     0%, 100% {
         box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
     }
-
     50% {
         box-shadow: 0 0 35px rgba(139, 92, 246, 0.6);
     }
-
 }
 /* =========================
    IMAGES DE FOND - RESULTATS
 ========================= */
 
 .result-card {
-
     position: relative;
-
     background-size: cover;
-
     background-position: center;
-
     overflow: hidden;
-
     isolation: isolate;
-
 }
-
 
 .result-card::before {
-
     content: "";
-
     position: absolute;
-
     inset: 0;
-
     background: linear-gradient(180deg, rgba(11, 16, 32, 0.55) 0%, rgba(11, 16, 32, 0.92) 100%);
-
     z-index: -1;
-
 }
-
 
 .result-card:nth-child(1) {
     background-image: url("../images/resultats/resultat-windows.png");
 }
-
 .result-card:nth-child(2) {
     background-image: url("../images/resultats/resultat-gaming.png");
 }
-
 .result-card:nth-child(3) {
     background-image: url("../images/resultats/resultat-systeme.png");
 }
-
 .result-card:nth-child(4) {
     background-image: url("../images/resultats/resultat-energie.png");
 }
-
 .result-card:nth-child(5) {
     background-image: url("../images/resultats/resultat-reseau.jpeg");
 }
-
 .result-card:nth-child(6) {
     background-image: url("../images/resultats/resultat-refroidissement.jpg");
 }
@@ -1616,169 +999,97 @@ footer a:hover {
 ========================= */
 
 .result-card {
-
     transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-
 }
-
 
 .results-container:hover .result-card {
-
     transform: scale(0.9);
-
     opacity: 0.6;
-
 }
 
-
 .results-container .result-card:hover {
-
     transform: scale(1.25) translateY(-10px) !important;
-
     opacity: 1 !important;
-
     box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
-
     z-index: 3;
-
 }
 /* =========================
    LOGO HERO ACCUEIL
 ========================= */
 
 .hero-logo {
-
     width: clamp(140px, 12vw, 220px);
-
     height: auto;
-
     margin-top: clamp(5px, 1.5vh, 15px);
-
 }
 /* =========================
    LAYOUT AVIS - CARTES + IMAGES
 ========================= */
 
 .testimonials-layout {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-start;
-
     gap: clamp(20px, 3vw, 40px);
-
     margin-top: clamp(30px, 5vh, 50px);
-
     width: 92vw;
-
     margin-left: 5vw;
-
     margin-right: auto;
-
 }
 .testimonials-container {
-
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: clamp(12px, 1.5vw, 20px);
-
     flex: 1;
-
     min-width: 0;
-
 }
 
 .testimonial-card {
-
     width: 100%;
-
     padding: clamp(16px, 2.5vh, 24px);
-
     background: #111827;
-
     border-radius: 15px;
-
     border: 1px solid #1f2937;
-
     text-align: left;
-
     transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-
 }
-
 
 .testimonial-card:hover {
-
     transform: scale(1.08) translateY(-8px);
-
     background: #1a1f35;
-
     border-color: #8B5CF6;
-
     box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
-
     z-index: 3;
-
     position: relative;
-
 }
-
 
 .testimonials-side-images {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 20px;
-
     width: clamp(280px, 26vw, 420px);
-
     flex-shrink: 0;
-
     margin-top: -165px;
-
 }
-
 
 .testimonials-side-images img {
-
     width: 100%;
-
     height: auto;
-
     border-radius: 15px;
-
     border: 1px solid #1f2937;
-
     opacity: 0.95;
-
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-
 }
-
 
 .testimonials-side-images img:hover {
-
     transform: scale(1.08) translateY(-8px);
-
     border-color: #8B5CF6;
-
     box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
-
     z-index: 3;
-
     position: relative;
-
 }
 
-
 @media (max-width: 900px) {
-
     .testimonials-layout {
         flex-direction: column;
         align-items: center;
@@ -1798,296 +1109,172 @@ footer a:hover {
         margin-top: 30px;
         margin-left: 0;
     }
-
 }
 /* =========================
    LIGHTBOX IMAGES AVIS
 ========================= */
 
 .lightbox-overlay {
-
     position: fixed;
-
     top: 0;
-
     left: 0;
-
     width: 100%;
-
     height: 100%;
-
     background: rgba(11, 16, 32, 0.92);
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     opacity: 0;
-
     visibility: hidden;
-
     transition: opacity 0.3s ease;
-
     z-index: 100;
-
     cursor: zoom-out;
-
 }
-
 
 .lightbox-overlay.active {
-
     opacity: 1;
-
     visibility: visible;
-
 }
 
-
 .lightbox-overlay img {
-
     max-width: 92vw;
-
     max-height: 92vh;
-
     border-radius: 10px;
-
     border: 2px solid #8B5CF6;
-
     box-shadow: 0 0 60px rgba(139, 92, 246, 0.5);
-
 }
 /* =========================
    VIDEO DE FOND - TOUTES LES PAGES
 ========================= */
 
 .bg-video {
-
     position: fixed;
-
     top: 0;
-
     left: 0;
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
     object-position: 100% center;
-
     z-index: -2;
-
 }
 .bg-video-overlay {
-
     position: fixed;
-
     top: 0;
-
     left: 0;
-
     width: 100%;
-
     height: 100%;
-
     background: rgba(11, 16, 32, 0.85);
-
     z-index: -1;
-
 }
 /* =========================
    CORRECTIF VIDEO DE FOND MOBILE
 ========================= */
 
 @media (max-width: 768px) {
-
     .bg-video {
         object-position: center center;
     }
-
 }
 /* =========================
    PARTENARIAT
 ========================= */
 
 .partners-hero {
-
     text-align: center;
-
     padding: clamp(40px, 6vh, 70px) 20px;
-
 }
-
 
 .partners-hero h2 {
-
     color: #8B5CF6;
-
     font-size: clamp(36px, 5vw, 54px);
-
     margin-bottom: clamp(15px, 2.5vh, 25px);
-
     text-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
-
 }
-
 
 .partners-hero > p {
-
     max-width: 750px;
-
     margin: 0 auto;
-
     color: #d0d0d0;
-
     font-size: clamp(17px, 1.8vw, 21px);
-
     line-height: 1.6;
-
 }
-
 
 .partners-container {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: clamp(14px, 2vw, 22px);
-
     margin-top: clamp(30px, 4vh, 45px);
-
 }
-
 
 .partner-card {
-
     width: 280px;
-
     padding: clamp(20px, 3vh, 28px);
-
     background: #111827;
-
     border-radius: 15px;
-
     border: 2px solid #8B5CF6;
-
     box-shadow: 0 0 25px rgba(139, 92, 246, 0.3);
-
     transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-
 }
-
 
 .partner-card:hover {
-
     transform: scale(1.08) translateY(-8px);
-
     background: #1a1f35;
-
     box-shadow: 0 15px 45px rgba(139, 92, 246, 0.55);
-
     z-index: 3;
-
     position: relative;
-
 }
-
 
 .partner-card h3 {
-
     color: #8B5CF6;
-
     margin-bottom: 12px;
-
     font-size: 20px;
-
 }
-
 
 .partner-card p {
-
     color: #d0d0d0;
-
     line-height: 1.5;
-
 }
-
 
 .partners-empty {
-
     max-width: 550px;
-
     margin: 40px auto 0;
-
     padding: clamp(20px, 3vh, 28px);
-
     background: transparent;
-
     border-radius: 15px;
-
     border: 2px dashed #8B5CF6;
-
     color: #d0d0d0;
-
     font-style: italic;
-
     font-size: clamp(15px, 1.6vw, 17px);
-
 }
 .partners-empty a {
-
     color: #00bfff;
-
     font-style: normal;
-
 }
-
 
 .partners-empty p {
-
     margin-bottom: 10px;
-
 }
 
-
 .partners-empty p:last-child {
-
     margin-bottom: 0;
-
 }
 /* =========================
    PAIRE EMAIL / DISCORD CONTACT
 ========================= */
 
 .contact-pair {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: clamp(20px, 3vw, 40px);
-
 }
-
 
 .contact-pair .contact-box {
-
     margin: 0;
-
 }
 
-
 @media (max-width: 768px) {
-
     .contact-pair {
         flex-direction: column;
         align-items: center;
@@ -2099,34 +1286,23 @@ footer a:hover {
         width: 90%;
         max-width: 400px;
     }
-
 }
 /* =========================
    AJUSTEMENT BLOC EXPERTISE (CERCLE ACCUEIL)
 ========================= */
 
 .advantages-container .intro-text {
-
     padding: 14px;
-
 }
-
 
 .advantages-container .intro-text h2 {
-
     font-size: 18px;
-
     margin-bottom: 8px;
-
 }
 
-
 .advantages-container .intro-text p {
-
     font-size: 13px;
-
     line-height: 1.4;
-
 }
 /* =========================
    LUEUR BLOCS EXPERTISE / AVANTAGES ACCUEIL
@@ -2134,11 +1310,8 @@ footer a:hover {
 
 .advantages-container .intro-text,
 .advantages-container .advantage-card {
-
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
-
     border-color: #8B5CF6;
-
 }
 /* =========================
    FORME ARRONDIE BLOCS EXPERTISE / AVANTAGES
@@ -2146,16 +1319,13 @@ footer a:hover {
 
 .advantages-container .intro-text,
 .advantages-container .advantage-card {
-
     border-radius: 25%;
-
 }
 /* =========================
    ADAPTATION BOUTON EMAIL MOBILE
 ========================= */
 
 @media (max-width: 480px) {
-
     .contact-pair .contact-box .hero-button {
         font-size: 14px;
         padding: 12px 20px;
@@ -2163,14 +1333,12 @@ footer a:hover {
         white-space: normal;
         line-height: 1.4;
     }
-
 }
 /* =========================
    CORRECTIF ZOOM RESULTATS MOBILE
 ========================= */
 
 @media (max-width: 768px) {
-
     .results-container:hover .result-card {
         transform: scale(0.95);
     }
@@ -2178,83 +1346,57 @@ footer a:hover {
     .results-container .result-card:hover {
         transform: scale(1.18) translateY(-5px) !important;
     }
-
 }
 /* =========================
    ZOOM AU SCROLL - RESULTATS MOBILE
 ========================= */
 
 @media (max-width: 768px) {
-
     .result-card.in-view {
         transform: scale(1.18) translateY(-5px);
         box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
         z-index: 3;
         position: relative;
     }
-
 }
 /* =========================
    ESPACE SUPPLEMENTAIRE FIN RESULTATS MOBILE
 ========================= */
 
 @media (max-width: 768px) {
-
     .results {
         padding-bottom: 50vh;
     }
-
 }
 /* =========================
    COMPTEUR D'INTERVENTIONS
 ========================= */
 
 .intervention-counter {
-
     margin-bottom: 15px;
-
     padding-bottom: 15px;
-
     border-bottom: 1px solid #1f2937;
-
 }
-
 
 .intervention-counter p {
-
     font-size: 19px;
-
     color: #d0d0d0;
-
     margin-bottom: 10px;
-
 }
-
 
 .intervention-counter strong {
-
     color: #00bfff;
-
     font-size: 26px;
-
 }
-
 
 .intervention-counter a {
-
     color: #8B5CF6;
-
     font-size: 17px;
-
     text-decoration: none;
-
 }
 
-
 .intervention-counter a:hover {
-
     text-decoration: underline;
-
 }
 /* CARTE TWITCH */
 
@@ -2390,11 +1532,8 @@ footer a:hover {
 ========================= */
 
 .testimonial-card p {
-
     color: #ffffff;
-
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-
 }
 /* =========================
    ILLUMINATION ET CENTRAGE A PROPOS
@@ -2590,77 +1729,44 @@ footer a:hover {
     justify-content: space-between;
 }
 /* =========================
-   CARTE EN LIVE - MIS EN AVANT
+   EFFETS LIVE / OFFLINE (CORRIGÉ)
 ========================= */
 
-/* =========================
-   EFFET LIVE STABLE (sans bugs)
-   ========================= */
-
+/* Toutes les cartes sont normales par défaut */
 .carte-twitch {
-    transition: box-shadow 0.3s ease, opacity 0.3s ease !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
 }
 
-.carte-twitch.carte-live {
-    border: 3px solid #ff4444 !important;
-    box-shadow: 0 0 40px rgba(255, 68, 68, 0.6), 0 0 80px rgba(255, 68, 68, 0.3) !important;
-    animation: livePulse 1s ease-in-out infinite !important;
-}
-
-.carte-twitch.carte-live.niveau-0 {
-    border: 3px solid #8f8f8f !important;
-    box-shadow: 0 0 50px rgba(97, 97, 97, 0.8) !important;
-    animation: livePulse 0.8s ease-in-out infinite !important;
-}
-
-/* =========================
-   EFFET OFFLINE - DÉZOOMÉ ET ATTÉNUÉ
-   ========================= */
-
-/* Carte offline - dézoomée et atténuée */
+/* OFFLINE : dézoomé et atténué */
 .carte-twitch.carte-offline {
     transform: scale(0.92) !important;
     opacity: 0.6 !important;
-    filter: grayscale(0.3) !important;
-    transition: all 0.4s ease !important;
+    filter: grayscale(0.2) !important;
 }
 
-/* Carte en live - normale et mise en avant */
+/* LIVE : normal + bordure rouge qui clignote */
 .carte-twitch.carte-live {
     transform: scale(1) !important;
     opacity: 1 !important;
     filter: none !important;
     border: 3px solid #ff4444 !important;
-    box-shadow: 0 0 40px rgba(255, 68, 68, 0.6), 0 0 80px rgba(255, 68, 68, 0.3) !important;
+    box-shadow: 0 0 40px rgba(255, 68, 68, 0.6) !important;
     animation: livePulse 1s ease-in-out infinite !important;
 }
 
-/* Cas spécial : offline mais avec un niveau élevé (on garde la couleur mais on dézoome) */
-.carte-twitch.carte-offline.niveau-1,
-.carte-twitch.carte-offline.niveau-2,
-.carte-twitch.carte-offline.niveau-3,
-.carte-twitch.carte-offline.niveau-4,
-.carte-twitch.carte-offline.niveau-5,
-.carte-twitch.carte-offline.niveau-6,
-.carte-twitch.carte-offline.niveau-7,
-.carte-twitch.carte-offline.niveau-8,
-.carte-twitch.carte-offline.niveau-9,
-.carte-twitch.carte-offline.niveau-10 {
-    transform: scale(0.92) !important;
-    opacity: 0.6 !important;
-    filter: grayscale(0.3) !important;
-    /* On garde la couleur du niveau */
-}
-
+/* Animation clignotante rouge */
 @keyframes livePulse {
     0%, 100% {
         box-shadow: 0 0 30px rgba(255, 68, 68, 0.4);
     }
     50% {
-        box-shadow: 0 0 60px rgba(255, 68, 68, 0.8), 0 0 120px rgba(255, 68, 68, 0.3);
+        box-shadow: 0 0 60px rgba(255, 68, 68, 0.8), 0 0 100px rgba(255, 68, 68, 0.3);
     }
 }
-/* BOUTON DISCORD PARTENARIAT */
+/* =========================
+   BOUTON DISCORD PARTENARIAT
+========================= */
 .btn-discord {
     display: block;
     margin-top: 8px;
@@ -2711,7 +1817,6 @@ footer a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-   
 }
 /* =========================
    BANNIERE LIVE
@@ -2935,37 +2040,6 @@ footer a:hover {
     }
 }
 /* =========================
-   BORDURE BLANCHE POUR NIVEAU 0 (PARTENARIAT)
-   ========================= */
-
-/* Niveau 0 - Bordure blanche lumineuse */
-.carte-twitch.niveau-0 {
-    border: 2px solid rgba(255, 255, 255, 0.6) !important;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
-    animation: bordureBlancheNiveau0 1.5s ease-in-out infinite !important;
-}
-
-@keyframes bordureBlancheNiveau0 {
-    0%, 100% {
-        border-color: rgba(255, 255, 255, 0.4);
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
-    }
-    50% {
-        border-color: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 0 60px rgba(255, 255, 255, 0.2);
-    }
-}
-@keyframes texteIllumine {
-    0%, 100% {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-        opacity: 0.8;
-    }
-    50% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.4);
-        opacity: 1;
-    }
-}
-/* ========================= 
    BRILLANCE BLANCHE POUR NIVEAU 0 (NOOB)
    ========================= */
 
@@ -3010,7 +2084,6 @@ footer a:hover {
     border: 3px solid #ff4444 !important;
     box-shadow: 0 0 40px rgba(255, 68, 68, 0.6), 0 0 80px rgba(255, 68, 68, 0.3) !important;
     animation: livePulse 1s ease-in-out infinite !important;
-    /* transform: scale(1.03) !important;  ← SUPPRIMÉ */
 }
 
 /* Effet spécial si le streamer en live est aussi niveau 0 (Noob) */
@@ -3018,18 +2091,15 @@ footer a:hover {
     border: 3px solid #8f8f8f !important;
     box-shadow: 0 0 50px rgba(97, 97, 97, 0.8), 0 0 100px rgba(255, 68, 68, 0.4), 0 0 150px rgba(255, 68, 68, 0.2) !important;
     animation: livePulse 0.8s ease-in-out infinite !important;
-    /* transform: scale(1.05) !important;  ← SUPPRIMÉ */
 }
 
 /* Animation de pulsation live */
 @keyframes livePulse {
     0%, 100% {
         box-shadow: 0 0 30px rgba(255, 68, 68, 0.4), 0 0 60px rgba(255, 68, 68, 0.2);
-        transform: scale(1.02);
     }
     50% {
         box-shadow: 0 0 60px rgba(255, 68, 68, 0.8), 0 0 120px rgba(255, 68, 68, 0.4), 0 0 180px rgba(255, 68, 68, 0.2);
-        transform: scale(1.06);
     }
 }
 /* =========================
