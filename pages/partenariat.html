@@ -19,9 +19,46 @@
 
     <style>
         /* ========================= 
+   BRILLANCE BLANCHE POUR NIVEAU 0 (NOOB)
+   ========================= */
+
+/* Niveau 0 - Bordure blanche clignotante */
+.carte-twitch.niveau-0 {
+    border: 2px solid rgba(255, 255, 255, 0.8) !important;
+    animation: bordureBlancheNoob 1.2s ease-in-out infinite !important;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3) !important;
+}
+
+@keyframes bordureBlancheNoob {
+    0%, 100% {
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+    }
+    50% {
+        border-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 80px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Illumination du badge Noob */
+.carte-twitch.niveau-0 .grade-badge {
+    animation: texteIllumineNoob 1.2s ease-in-out infinite !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+
+@keyframes texteIllumineNoob {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        opacity: 0.8;
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.4);
+        opacity: 1;
+    }
+}
+        /* ========================= 
            BRILLANCE DES CARTES PARTENAIRES
         ========================= */
-        .carte-twitch.niveau-0 { border: 2px solid #1f2937 !important; box-shadow: none !important; }
         .carte-twitch.niveau-1 { border: 2px solid #3d1a6e !important; box-shadow: 0 0 30px rgba(145,70,255,0.3) !important; }
         .carte-twitch.niveau-2 { border: 2px solid #1a3a6e !important; box-shadow: 0 0 30px rgba(0,191,255,0.3) !important; }
         .carte-twitch.niveau-3 { border: 2px solid #0d4d5a !important; box-shadow: 0 0 40px rgba(0,221,255,0.4) !important; }
