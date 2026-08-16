@@ -2556,12 +2556,10 @@ footer a:hover {
     }
 
     .carte-live {
-        transform: scale(1.02) !important;
         transform-origin: center center !important;
     }
 
     .carte-offline {
-        transform: scale(0.98) !important;
         transform-origin: center center !important;
     }
 }
@@ -2586,20 +2584,41 @@ footer a:hover {
    CARTE EN LIVE - MIS EN AVANT
 ========================= */
 
+/* =========================
+   EFFET LIVE STABLE (sans bugs)
+   ========================= */
+
 .carte-twitch {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    transition: box-shadow 0.3s ease, opacity 0.3s ease !important;
 }
 
-.carte-live {
-    border: 2px solid #00ff00 !important;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4) !important;
-    transform: scale(1.05);
-    opacity: 1;
+.carte-twitch.carte-live {
+    border: 3px solid #ff4444 !important;
+    box-shadow: 0 0 40px rgba(255, 68, 68, 0.6), 0 0 80px rgba(255, 68, 68, 0.3) !important;
+    animation: livePulse 1s ease-in-out infinite !important;
+}
+
+.carte-twitch.carte-live.niveau-0 {
+    border: 3px solid #8f8f8f !important;
+    box-shadow: 0 0 50px rgba(97, 97, 97, 0.8) !important;
+    animation: livePulse 0.8s ease-in-out infinite !important;
 }
 
 .carte-offline {
-    transform: scale(0.92);
-    opacity: 0.6;
+    opacity: 0.7 !important;
+}
+
+.carte-live {
+    opacity: 1 !important;
+}
+
+@keyframes livePulse {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 68, 68, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(255, 68, 68, 0.8), 0 0 120px rgba(255, 68, 68, 0.3);
+    }
 }
 /* BOUTON DISCORD PARTENARIAT */
 .btn-discord {
@@ -2946,12 +2965,12 @@ footer a:hover {
    EFFET SPÉCIAL POUR LES STREAMERS EN LIVE
    ========================= */
 
-/* Carte en live - effet renforcé */
+/* Carte en live - effet renforcé (sans scale pour éviter bugs) */
 .carte-twitch.carte-live {
     border: 3px solid #ff4444 !important;
     box-shadow: 0 0 40px rgba(255, 68, 68, 0.6), 0 0 80px rgba(255, 68, 68, 0.3) !important;
     animation: livePulse 1s ease-in-out infinite !important;
-    transform: scale(1.03) !important;
+    /* transform: scale(1.03) !important;  ← SUPPRIMÉ */
 }
 
 /* Effet spécial si le streamer en live est aussi niveau 0 (Noob) */
@@ -2959,7 +2978,7 @@ footer a:hover {
     border: 3px solid #8f8f8f !important;
     box-shadow: 0 0 50px rgba(97, 97, 97, 0.8), 0 0 100px rgba(255, 68, 68, 0.4), 0 0 150px rgba(255, 68, 68, 0.2) !important;
     animation: livePulse 0.8s ease-in-out infinite !important;
-    transform: scale(1.05) !important;
+    /* transform: scale(1.05) !important;  ← SUPPRIMÉ */
 }
 
 /* Animation de pulsation live */
@@ -2972,4 +2991,26 @@ footer a:hover {
         box-shadow: 0 0 60px rgba(255, 68, 68, 0.8), 0 0 120px rgba(255, 68, 68, 0.4), 0 0 180px rgba(255, 68, 68, 0.2);
         transform: scale(1.06);
     }
+}
+/* =========================
+   CORRECTION BUGS GRAPHIQUES CARTES
+   ========================= */
+
+/* Évite les débordements de texte */
+.carte-twitch {
+    overflow: hidden !important;
+    will-change: transform, box-shadow !important;
+}
+
+/* Empêche le texte de bouger pendant les animations */
+.carte-twitch .carte-twitch-contenu {
+    overflow: hidden !important;
+}
+
+/* Stabilise le texte */
+.carte-twitch h3,
+.carte-twitch .grade-badge,
+.carte-twitch .statut,
+.carte-twitch .titre-stream {
+    will-change: auto !important;
 }
