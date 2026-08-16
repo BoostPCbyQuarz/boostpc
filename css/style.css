@@ -2124,3 +2124,59 @@ footer a:hover {
 .carte-twitch .titre-stream {
     will-change: auto !important;
 }
+/* ========================= 
+   EFFET LIVE SUR LE NIVEAU 10 (PRIORITÉ)
+   ========================= */
+
+/* Niveau 10 en live - effet renforcé */
+.carte-twitch.carte-live.niveau-10 {
+    border: 3px solid #ff4444 !important;
+    box-shadow: 0 0 60px rgba(255, 68, 68, 0.9), 0 0 120px rgba(255, 68, 68, 0.5), 0 0 200px rgba(255, 204, 0, 0.4) !important;
+    animation: livePulseNiveau10 0.8s ease-in-out infinite !important;
+    transform: scale(1.04) !important;
+}
+
+/* Animation clignotante pour niveau 10 en live */
+@keyframes livePulseNiveau10 {
+    0%, 100% {
+        box-shadow: 0 0 40px rgba(255, 68, 68, 0.6), 0 0 80px rgba(255, 204, 0, 0.3);
+        transform: scale(1.02);
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(255, 68, 68, 1), 0 0 160px rgba(255, 68, 68, 0.6), 0 0 250px rgba(255, 204, 0, 0.5);
+        transform: scale(1.08);
+    }
+}
+/* ========================= 
+   EFFET LIVE SUR TOUS LES NIVEAUX
+   ========================= */
+
+.carte-twitch.carte-live.niveau-0 {
+    border: 3px solid #ff4444 !important;
+    box-shadow: 0 0 50px rgba(255, 68, 68, 0.8) !important;
+    animation: livePulseAll 1s ease-in-out infinite !important;
+}
+
+.carte-twitch.carte-live.niveau-1,
+.carte-twitch.carte-live.niveau-2,
+.carte-twitch.carte-live.niveau-3,
+.carte-twitch.carte-live.niveau-4,
+.carte-twitch.carte-live.niveau-5,
+.carte-twitch.carte-live.niveau-6,
+.carte-twitch.carte-live.niveau-7,
+.carte-twitch.carte-live.niveau-8,
+.carte-twitch.carte-live.niveau-9 {
+    border: 3px solid #ff4444 !important;
+    box-shadow: 0 0 40px rgba(255, 68, 68, 0.7), 0 0 80px rgba(255, 68, 68, 0.3) !important;
+    animation: livePulseAll 1s ease-in-out infinite !important;
+}
+
+/* Animation commune pour tous les niveaux en live */
+@keyframes livePulseAll {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 68, 68, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(255, 68, 68, 0.8), 0 0 120px rgba(255, 68, 68, 0.3);
+    }
+}
