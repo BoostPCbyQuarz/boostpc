@@ -19,43 +19,42 @@
 
     <style>
         /* ========================= 
-   BRILLANCE BLANCHE POUR NIVEAU 0 (NOOB)
-   ========================= */
+           BRILLANCE BLANCHE POUR NIVEAU 0 (NOOB)
+        ========================= */
 
-/* Niveau 0 - Bordure blanche clignotante */
-.carte-twitch.niveau-0 {
-    border: 2px solid rgba(255, 255, 255, 0.8) !important;
-    animation: bordureBlancheNoob 1.2s ease-in-out infinite !important;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3) !important;
-}
+        .carte-twitch.niveau-0 {
+            border: 2px solid rgba(255, 255, 255, 0.8) !important;
+            animation: bordureBlancheNoob 1.2s ease-in-out infinite !important;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3) !important;
+        }
 
-@keyframes bordureBlancheNoob {
-    0%, 100% {
-        border-color: rgba(255, 255, 255, 0.4);
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
-    }
-    50% {
-        border-color: rgba(255, 255, 255, 1);
-        box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 80px rgba(255, 255, 255, 0.3);
-    }
-}
+        @keyframes bordureBlancheNoob {
+            0%, 100% {
+                border-color: rgba(255, 255, 255, 0.4);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+            }
+            50% {
+                border-color: rgba(255, 255, 255, 1);
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.6), 0 0 80px rgba(255, 255, 255, 0.3);
+            }
+        }
 
-/* Illumination du badge Noob */
-.carte-twitch.niveau-0 .grade-badge {
-    animation: texteIllumineNoob 1.2s ease-in-out infinite !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
-}
+        .carte-twitch.niveau-0 .grade-badge {
+            animation: texteIllumineNoob 1.2s ease-in-out infinite !important;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+        }
 
-@keyframes texteIllumineNoob {
-    0%, 100% {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-        opacity: 0.8;
-    }
-    50% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.4);
-        opacity: 1;
-    }
-}
+        @keyframes texteIllumineNoob {
+            0%, 100% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+                opacity: 0.8;
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.4);
+                opacity: 1;
+            }
+        }
+
         /* ========================= 
            BRILLANCE DES CARTES PARTENAIRES
         ========================= */
@@ -375,6 +374,7 @@ mettreAJourCartesPartenariat();
 
 // Mise à jour toutes les 10 secondes
 setInterval(mettreAJourCartesPartenariat, 10000);
+
 // =========================
 // VÉRIFICATION RÉINITIALISATION HEBDOMADAIRE (Partenariat)
 // =========================
