@@ -92,10 +92,11 @@ async function checkTwitchStatus(channel, voyantEl, statutEl, carteEl, nom, lien
             voyantEl.className = "voyant voyant-online";
             statutEl.textContent = "EN DIRECT";
             statutEl.className = "statut statut-live";
+            
+            // ⭐ AJOUTE CES DEUX LIGNES ⭐
             carteEl.classList.add("carte-live");
             carteEl.classList.remove("carte-offline");
 
-            // Affiche le nombre de viewers
             let viewersEl = carteEl.querySelector(".viewers");
             if (!viewersEl) {
                 viewersEl = document.createElement("p");
@@ -113,16 +114,17 @@ async function checkTwitchStatus(channel, voyantEl, statutEl, carteEl, nom, lien
             voyantEl.className = "voyant voyant-offline";
             statutEl.textContent = "En ligne : Non";
             statutEl.className = "statut";
+            
+            // ⭐ AJOUTE CES DEUX LIGNES ⭐
             carteEl.classList.remove("carte-live");
             carteEl.classList.add("carte-offline");
+            
             streamersEnLive[channel] = false;
 
-            // Supprime le nombre de viewers si hors ligne
             const viewersEl = carteEl.querySelector(".viewers");
             if (viewersEl) viewersEl.remove();
         }
 
-        // Mise à jour du compteur
         const nbLive = document.querySelectorAll(".carte-live").length;
         const nbLiveEl = document.getElementById("nb-live");
         if (nbLiveEl) nbLiveEl.textContent = nbLive;
