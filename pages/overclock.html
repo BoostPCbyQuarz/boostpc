@@ -78,12 +78,6 @@
             margin-bottom: 5px;
         }
 
-        .niveau-jeu-info {
-            font-size: 11px;
-            color: #00bfff;
-            margin-bottom: 5px;
-        }
-
         .boost-bar-container { background: #0b1020; border-radius: 10px; height: 8px; margin-top: 8px; overflow: hidden; }
         .boost-bar { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #9146ff, #00ff00); transition: width 0.5s ease; }
         .boost-count { font-size: 11px; color: #a0a0a0; margin-top: 4px; }
@@ -772,39 +766,6 @@ let boostsSession = 0;
 let jeuActif = false;
 
 // =========================
-// VÉRIFICATION RÉINITIALISATION HEBDOMADAIRE
-// =========================
-
-async function verifierReinitialisationHebdomadaire() {
-    const maintenant = new Date();
-    const jour = maintenant.getDay(); // 0 = dimanche
-    
-    const derniereReinit = localStorage.getItem('derniere_reinit_hebdo');
-    const aujourdHui = `${maintenant.getFullYear()}-${maintenant.getMonth()}-${maintenant.getDate()}`;
-    
-    if (jour === 0 && derniereReinit !== aujourdHui) {
-        console.log('🔄 Réinitialisation hebdomadaire automatique...');
-        
-        const dataZero = {
-            sylvain2500: { boosts: 0 },
-            voldarks81540: { boosts: 0 },
-            miss_dixon: { boosts: 0 },
-            titou0232: { boosts: 0 }
-        };
-        
-        const github = await lireBoostsGithub();
-        if (github) {
-            await ecrireBoostsGithub(dataZero, github.sha);
-        }
-        sauvegarderBoosts(dataZero);
-        mettreAJourCartes();
-        
-        localStorage.setItem('derniere_reinit_hebdo', aujourdHui);
-        console.log('✅ Réinitialisation hebdomadaire effectuée !');
-    }
-}
-
-// =========================
 // DONNÉES LOCALES
 // =========================
 
@@ -1143,6 +1104,39 @@ function niveauEchoue() {
 }
 
 // =========================
+// VÉRIFICATION RÉINITIALISATION HEBDOMADAIRE
+// =========================
+
+async function verifierReinitialisationHebdomadaire() {
+    const maintenant = new Date();
+    const jour = maintenant.getDay(); // 0 = dimanche
+    
+    const derniereReinit = localStorage.getItem('derniere_reinit_hebdo');
+    const aujourdHui = `${maintenant.getFullYear()}-${maintenant.getMonth()}-${maintenant.getDate()}`;
+    
+    if (jour === 0 && derniereReinit !== aujourdHui) {
+        console.log('🔄 Réinitialisation hebdomadaire automatique...');
+        
+        const dataZero = {
+            sylvain2500: { boosts: 0 },
+            voldarks81540: { boosts: 0 },
+            miss_dixon: { boosts: 0 },
+            titou0232: { boosts: 0 }
+        };
+        
+        const github = await lireBoostsGithub();
+        if (github) {
+            await ecrireBoostsGithub(dataZero, github.sha);
+        }
+        sauvegarderBoosts(dataZero);
+        mettreAJourCartes();
+        
+        localStorage.setItem('derniere_reinit_hebdo', aujourdHui);
+        console.log('✅ Réinitialisation hebdomadaire effectuée !');
+    }
+}
+
+// =========================
 // FIN DE SESSION
 // =========================
 
@@ -1150,7 +1144,6 @@ async function finSession() {
     clearInterval(timerInterval);
     clearInterval(jeuInterval);
 
-    // ⭐ AJOUTE CETTE VÉRIFICATION ⭐
     // Vérifier si on est dimanche minuit et réinitialiser si besoin
     const maintenant = new Date();
     const jour = maintenant.getDay(); // 0 = dimanche
@@ -1167,7 +1160,6 @@ async function finSession() {
             titou0232: { boosts: 0 }
         };
         
-        // Sauvegarder la réinitialisation sur GitHub
         const github = await lireBoostsGithub();
         if (github) {
             await ecrireBoostsGithub(dataZero, github.sha);
@@ -1177,9 +1169,31 @@ async function finSession() {
         return;
     }
 
+    // Lecture GitHub
     const github = await lireBoostsGithub();
+    const data = github ? github.contenu : getBoosts();
+    const sha = github ? github.sha : null;
 
-}
+    if (!data[partenaireSelectionne]) data[partenaireSelectionne] = { boosts: 0 };
+
+    const ancienNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
+    data[partenaireSelectionne].boosts += boostsSession;
+    const nouveauNiveau = calculerNiveau(data[partenaireSelectionne].boosts);
+
+    // Sauvegarde GitHub + local
+    if (sha) await ecrireBoostsGithub(data, sha);
+    sauvegarderBoosts(data);
+    mettreAJourCartes();
+
+    document.getElementById('jeu-section').classList.remove('visible');
+    document.getElementById('fin-partie').classList.add('visible');
+
+    const noms = {
+        sylvain2500: 'Sylvain Gaming',
+        voldarks81540: 'Voldarks',
+        miss_dixon: 'Miss_dixon',
+        titou0232: 'Titou0232'
+    };
 
     document.getElementById('fin-titre-el').innerHTML = `<div class="fin-titre">⚡ SESSION TERMINÉE !</div>`;
     document.getElementById('fin-partenaire').textContent = `🎯 Boosts pour : ${noms[partenaireSelectionne]}`;
@@ -1194,7 +1208,7 @@ async function finSession() {
     }
 
     document.getElementById('fin-grade-msg').textContent = `Grade actuel : ${GRADES[nouveauNiveau].nom}`;
-
+}
 
 // =========================
 // PARTICULES
