@@ -2132,23 +2132,86 @@ footer a:hover {
    CENTRAGE DES BLOCS AVANTAGES
 ========================= */
 
+/* =========================
+   BLOCS AVANTAGES - BORDS ARRONDIS + ILLUMINATION VIOLET
+========================= */
+
 .advantages-container .intro-text,
 .advantages-container .advantage-card {
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(17, 24, 39, 0.92);
+    padding: 20px;
+    border-radius: 30px;
+    border: 2px solid rgba(139, 92, 246, 0.6);
+    box-sizing: border-box;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
 }
 
-.advantages-container .intro-text h2,
+/* EFFET AU SURVOL */
+.advantages-container .intro-text:hover,
+.advantages-container .advantage-card:hover {
+    border-color: #8B5CF6;
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.8), 0 0 120px rgba(139, 92, 246, 0.4);
+    z-index: 10;
+}
+
+/* ANIMATION DE LUEUR VIOLET CONTINUE */
+.advantages-container .intro-text {
+    animation: glowViolet 3s ease-in-out infinite;
+}
+
+.advantages-container .advantage-card:nth-of-type(2) {
+    animation: glowViolet 3s ease-in-out infinite 0.5s;
+}
+
+.advantages-container .advantage-card:nth-of-type(3) {
+    animation: glowViolet 3s ease-in-out infinite 1s;
+}
+
+.advantages-container .advantage-card:nth-of-type(4) {
+    animation: glowViolet 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes glowViolet {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        border-color: rgba(139, 92, 246, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(139, 92, 246, 0.6), 0 0 80px rgba(139, 92, 246, 0.3);
+        border-color: rgba(139, 92, 246, 0.9);
+    }
+}
+
+/* TEXTE */
+.advantages-container .intro-text h2 {
+    color: #8B5CF6;
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
 .advantages-container .advantage-card h3 {
-    text-align: center !important;
-    width: 100% !important;
+    color: #8B5CF6;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
 }
 
 .advantages-container .intro-text p,
 .advantages-container .advantage-card p {
-    text-align: center !important;
-    width: 100% !important;
+    color: #d0d0d0;
+    font-size: 13px;
+    line-height: 1.4;
 }
