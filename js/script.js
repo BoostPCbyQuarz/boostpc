@@ -220,7 +220,8 @@ document.addEventListener('DOMContentLoaded', function () {
             { channel: "sylvain2500", nom: "Sylvain Gaming", lien: "https://www.twitch.tv/sylvain2500" },
             { channel: "voldarks81540", nom: "Voldarks", lien: "https://www.twitch.tv/voldarks81540" },
             { channel: "miss_dixon", nom: "Miss_dixon", lien: "https://www.twitch.tv/miss_dixon" },
-            { channel: "titou0232", nom: "Titou0232", lien: "https://www.twitch.tv/titou0232" }
+            { channel: "titou0232", nom: "Titou0232", lien: "https://www.twitch.tv/titou0232" },
+            { channel: "luunaa_tv", nom: "Luunaa_TV", lien: "https://www.twitch.tv/luunaa_tv" }
         ];
 
         // Parcourir les cartes et vérifier chaque streamer

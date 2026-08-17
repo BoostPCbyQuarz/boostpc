@@ -525,6 +525,15 @@
                 <div class="boost-count" id="count-titou0232">0 / 10 boosts</div>
             </div>
 
+                        <div class="choix-card niveau-0" data-channel="luunaa_tv" onclick="selectionnerPartenaire(this)">
+                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/a0c4cdef-1df3-4906-8423-b652ec6b12b4-profile_image-70x70.png" alt="Luunaa_TV">
+                <h3>Luunaa_TV</h3>
+                <span class="grade-badge grade-0" id="badge-luunaa_tv">🎮 Noob</span>
+                <div class="boost-bar-container">
+                    <div class="boost-bar" id="bar-luunaa_tv" style="width:0%"></div>
+                </div>
+                <div class="boost-count" id="count-luunaa_tv">0 / 10 boosts</div>
+            </div>
         </div>
 
         <button class="btn-lancer" id="btn-lancer" onclick="lancerJeu()" disabled>
@@ -786,7 +795,8 @@ function getBoosts() {
         sylvain2500:   { boosts: 0, niveau: 0 },
         voldarks81540: { boosts: 0, niveau: 0 },
         miss_dixon:    { boosts: 0, niveau: 0 },
-        titou0232:     { boosts: 0, niveau: 0 }
+        titou0232:     { boosts: 0, niveau: 0 },
+        luunaa_tv:     { boosts: 0, niveau: 0 }
     };
     return data ? { ...base, ...JSON.parse(data) } : base;
 }
@@ -879,7 +889,7 @@ async function ecrireBoostsGithub(data, sha) {
 
 function mettreAJourCartes() {
     const data = getBoosts();
-    ['sylvain2500','voldarks81540','miss_dixon','titou0232'].forEach(ch => {
+    ['sylvain2500','voldarks81540','miss_dixon','titou0232','luunaa_tv'].forEach(ch => {
         const d = data[ch] || { boosts: 0, niveau: 0 };
         const niv = calculerNiveau(d.boosts);
         const bDansNiv = d.boosts % 10;
@@ -1121,7 +1131,8 @@ async function verifierReinitialisationHebdomadaire() {
             sylvain2500: { boosts: 0 },
             voldarks81540: { boosts: 0 },
             miss_dixon: { boosts: 0 },
-            titou0232: { boosts: 0 }
+            titou0232: { boosts: 0 },
+            luunaa_tv: { boosts: 0 }
         };
         
         const github = await lireBoostsGithub();
@@ -1192,7 +1203,8 @@ async function finSession() {
         sylvain2500: 'Sylvain Gaming',
         voldarks81540: 'Voldarks',
         miss_dixon: 'Miss_dixon',
-        titou0232: 'Titou0232'
+        titou0232: 'Titou0232',
+        luunaa_tv: 'Luunaa_TV'
     };
 
     document.getElementById('fin-titre-el').innerHTML = `<div class="fin-titre">⚡ SESSION TERMINÉE !</div>`;
