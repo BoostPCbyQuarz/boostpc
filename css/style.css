@@ -2215,3 +2215,480 @@ footer a:hover {
     font-size: 13px;
     line-height: 1.4;
 }
+/* =========================
+   CINÉMATIQUE D'ENTRÉE SPECTACULAIRE
+========================= */
+
+#cinematic-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0b1020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 1.5s ease;
+    overflow: hidden;
+}
+
+#cinematic-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Fond lumineux animé */
+.cinematic-bg-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.3), transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(0, 191, 255, 0.2), transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(255, 0, 68, 0.1), transparent 40%);
+    animation: cinematicGlow 6s ease-in-out infinite;
+}
+
+@keyframes cinematicGlow {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    33% {
+        transform: translate(30px, -20px) scale(1.1) rotate(2deg);
+    }
+    66% {
+        transform: translate(-20px, 30px) scale(0.9) rotate(-2deg);
+    }
+}
+
+/* CONTENU */
+.cinematic-content {
+    text-align: center;
+    z-index: 10;
+    animation: cinematicFloat 3s ease-in-out infinite;
+}
+
+@keyframes cinematicFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* LOGO - SANS CADRE DE FOND */
+.cinematic-logo {
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.cinematic-logo img {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: none !important;
+}
+
+.cinematic-logo img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10%;
+    animation: cinematicLogo 10s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+    transform: scale(0.3) rotate(-30deg);
+    box-shadow: 0 0 80px rgba(139, 92, 246, 0.4);
+}
+
+@keyframes cinematicLogo {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-30deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* TITRE GÉANT */
+.cinematic-title {
+    font-size: clamp(60px, 12vw, 120px);
+    font-weight: 900;
+    letter-spacing: 15px;
+    animation: cinematicTitle 15s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+    text-shadow: 0 0 60px rgba(139, 92, 246, 0.5), 0 0 120px rgba(139, 92, 246, 0.2);
+}
+
+.cinematic-title span {
+    color: #00bfff;
+    text-shadow: 0 0 60px rgba(0, 191, 255, 0.5), 0 0 120px rgba(0, 191, 255, 0.2);
+}
+
+@keyframes cinematicTitle {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* SOUS-TITRE */
+.cinematic-subtitle {
+    font-size: clamp(20px, 3vw, 32px);
+    color: #a0a0a0;
+    margin-top: 15px;
+    letter-spacing: 8px;
+    animation: cinematicSubtitle 10s ease-out 0.5s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+@keyframes cinematicSubtitle {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* BARRE DE CHARGEMENT */
+.cinematic-loader {
+    width: 400px;
+    max-width: 80vw;
+    height: 4px;
+    background: rgba(139, 92, 246, 0.15);
+    border-radius: 10px;
+    margin: 40px auto 20px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
+}
+
+.cinematic-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #8B5CF6, #00bfff, #8B5CF6);
+    background-size: 200% 100%;
+    border-radius: 10px;
+    animation: cinematicBar 3s ease-in-out forwards, barShine 2s linear infinite;
+}
+
+@keyframes cinematicBar {
+    0% { width: 0%; }
+    30% { width: 35%; }
+    60% { width: 65%; }
+    85% { width: 85%; }
+    100% { width: 100%; }
+}
+
+@keyframes barShine {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+}
+
+/* TEXTE "CLIQUEZ POUR ENTRER" */
+.cinematic-enter {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    letter-spacing: 4px;
+    animation: cinematicEnter 2s ease-in-out infinite;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cinematic-enter:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes cinematicEnter {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+}
+
+/* =========================
+   PARTICULES DE LA CINÉMATIQUE
+   ========================= */
+
+.cinematic-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(1);
+    }
+}
+/* =========================
+   EFFETS DE FOND SUPPLÉMENTAIRES
+========================= */
+
+/* ÉTOILES */
+.cinematic-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: starTwinkle var(--duration) ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: 0.1;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* FLASH LUMINEUX */
+.cinematic-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(139, 92, 246, 0.15), transparent 60%);
+    animation: flashPulse 4s ease-in-out infinite;
+}
+
+@keyframes flashPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* TRAÎNÉES COLORÉES */
+.cinematic-trails {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.trail {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, var(--trail-color), transparent);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: trailMove var(--trail-duration) linear infinite;
+    filter: blur(3px);
+}
+
+@keyframes trailMove {
+    0% {
+        transform: translateY(100vh) rotate(var(--trail-angle));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(var(--trail-angle));
+        opacity: 0;
+    }
+}
+/* =========================
+   FUMÉE DE LA CINÉMATIQUE
+========================= */
+
+.cinematic-smoke {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.smoke-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.15), rgba(0, 191, 255, 0.05), transparent);
+    filter: blur(20px);
+    animation: smokeFloat var(--smoke-duration) ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes smokeFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5) rotate(0deg);
+    }
+    20% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(calc(-100vh - 200px)) scale(2) rotate(720deg);
+    }
+}
+/* =========================
+   CORRECTIF CINÉMATIQUE POUR IPHONE
+========================= */
+
+@media (max-width: 768px) {
+
+    /* Réduire la taille de la cinématique */
+    #cinematic-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10000;
+        background: #0b1020;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 1.5s ease;
+    }
+
+    /* Logo plus petit */
+    .cinematic-logo img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Titre plus petit */
+    .cinematic-title {
+        font-size: 36px !important;
+        letter-spacing: 8px !important;
+    }
+
+    /* Sous-titre plus petit */
+    .cinematic-subtitle {
+        font-size: 14px !important;
+        letter-spacing: 4px !important;
+    }
+
+    /* Barre de chargement plus petite */
+    .cinematic-loader {
+        width: 250px !important;
+        height: 3px !important;
+        margin: 30px auto 15px !important;
+    }
+
+    /* Bouton plus petit */
+    .cinematic-enter-btn {
+        padding: 12px 30px !important;
+        font-size: 16px !important;
+    }
+
+    /* Réduire les particules */
+    .particle {
+        opacity: 0.3 !important;
+    }
+
+    /* Désactiver certains effets lourds sur mobile */
+    .cinematic-bg-glow {
+        animation-duration: 10s !important;
+    }
+
+    .cinematic-content {
+        animation: none !important;
+    }
+
+    /* Supprimer les traînées sur mobile */
+    .cinematic-trails {
+        display: none !important;
+    }
+
+    /* Réduire la fumée sur mobile */
+    .smoke-particle {
+        filter: blur(10px) !important;
+        opacity: 0.2 !important;
+    }
+
+    /* Désactiver le flash sur mobile */
+    .cinematic-flash {
+        display: none !important;
+    }
+
+    /* Réduire les étoiles sur mobile */
+    .star {
+        opacity: 0.3 !important;
+    }
+
+    /* Forcer l'affichage */
+    #cinematic-overlay.hidden {
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+}

@@ -25,6 +25,23 @@
 
 <body>
 
+    <!-- CINÉMATIQUE D'ENTRÉE SPECTACULAIRE -->
+    <div id="cinematic-overlay">
+        <div class="cinematic-bg-glow"></div>
+        <div class="cinematic-particles" id="cinematic-particles"></div>
+        <div class="cinematic-content">
+            <div class="cinematic-logo">
+                <img src="images/Boost_PC_logo.png" alt="BoostPC">
+            </div>
+            <div class="cinematic-title">BOOST<span>PC</span></div>
+            <div class="cinematic-subtitle">LIBÉREZ LE POTENTIEL DE VOTRE ORDINATEUR</div>
+            <div class="cinematic-loader">
+                <div class="cinematic-bar"></div>
+            </div>
+            <button class="cinematic-enter-btn" onclick="closeCinematic()">ENTRER SUR LE SITE</button>
+        </div>
+    </div>
+
     <!-- VIDEO DE FOND -->
     <video class="bg-video" autoplay muted loop playsinline>
         <source src="videos/ventilos-bg.mp4" type="video/mp4">
@@ -74,37 +91,38 @@
 
     </section>
 
+    <!-- SECTION AVANTAGES -->
     <section class="advantages">
 
-    <div class="advantages-container">
+        <div class="advantages-container">
 
-        <div class="intro-text">
-            <h2>Une expertise accessible à tous</h2>
-            <p>
-                BoostPC propose actuellement ses services gratuitement
-                afin de développer une communauté, partager ses connaissances
-                et aider les utilisateurs à tirer le meilleur de leur matériel.
-            </p>
+            <div class="intro-text">
+                <h2>Une expertise accessible à tous</h2>
+                <p>
+                    BoostPC propose actuellement ses services gratuitement
+                    afin de développer une communauté, partager ses connaissances
+                    et aider les utilisateurs à tirer le meilleur de leur matériel.
+                </p>
+            </div>
+
+            <div class="advantage-card">
+                <h3>Performances optimisées</h3>
+                <p>Amélioration de la réactivité, de la stabilité et de l'efficacité du système.</p>
+            </div>
+
+            <div class="advantage-card">
+                <h3>Assistance personnalisée</h3>
+                <p>Des conseils adaptés à votre matériel et à vos besoins.</p>
+            </div>
+
+            <div class="advantage-card">
+                <h3>Modifications expliquées</h3>
+                <p>Chaque optimisation est expliquée et peut être annulée à tout moment.</p>
+            </div>
+
         </div>
 
-        <div class="advantage-card">
-            <h3>Performances optimisées</h3>
-            <p>Amélioration de la réactivité, de la stabilité et de l'efficacité du système.</p>
-        </div>
-
-        <div class="advantage-card">
-            <h3>Assistance personnalisée</h3>
-            <p>Des conseils adaptés à votre matériel et à vos besoins.</p>
-        </div>
-
-        <div class="advantage-card">
-            <h3>Modifications expliquées</h3>
-            <p>Chaque optimisation est expliquée et peut être annulée à tout moment.</p>
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
     <!-- FOOTER -->
     <footer>
@@ -119,6 +137,63 @@
     <script src="js/script.js"></script>
     <script data-goatcounter="https://boostpc.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
+    <script>
+    // =========================
+    // CINÉMATIQUE D'ENTRÉE SPECTACULAIRE
+    // =========================
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const overlay = document.getElementById('cinematic-overlay');
+
+        // =========================
+        // GÉNÉRER LES PARTICULES
+        // =========================
+
+        const particlesContainer = document.getElementById('cinematic-particles');
+        const colors = ['#8B5CF6', '#00bfff', '#ff0044', '#00ff88', '#ffd700'];
+
+        for (let i = 0; i < 60; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 6 + 2;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const duration = Math.random() * 8 + 6;
+            const delay = Math.random() * 10;
+            particle.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                background: ${color};
+                left: ${Math.random() * 100}%;
+                bottom: -10px;
+                animation-duration: ${duration}s;
+                animation-delay: ${delay}s;
+                box-shadow: 0 0 ${size * 3}px ${color};
+                opacity: ${Math.random() * 0.6 + 0.2};
+            `;
+            particlesContainer.appendChild(particle);
+        }
+
+        // =========================
+        // FERMER LA CINÉMATIQUE
+        // =========================
+
+        window.closeCinematic = function() {
+            overlay.classList.add('hidden');
+            setTimeout(function() {
+                overlay.style.display = 'none';
+            }, 1500);
+        };
+
+        
+        // Clic sur l'écran pour fermer plus tôt
+        overlay.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON') return;
+            clearTimeout(autoClose);
+            window.closeCinematic();
+        });
+
+    });
     </script>
 
 </body>
