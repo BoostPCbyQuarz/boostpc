@@ -28,6 +28,8 @@
     <!-- CINÉMATIQUE D'ENTRÉE SPECTACULAIRE -->
     <div id="cinematic-overlay">
         <div class="cinematic-bg-glow"></div>
+        <div class="cinematic-smoke" id="cinematic-smoke"></div>
+        <div class="cinematic-trails"></div>
         <div class="cinematic-particles" id="cinematic-particles"></div>
         <div class="cinematic-content">
             <div class="cinematic-logo">
@@ -54,7 +56,7 @@
             <img src="images/piclumen-1785346111693.png" alt="BoostPC" width="80">
         </div>
         <nav>
-            <a href="../index.html">Accueil</a>
+            <a href="index.html">Accueil</a>
             <a href="pages/services.html">Services</a>
             <a href="pages/resultats.html">Résultats</a>
             <a href="pages/avis.html">Avis</a>
@@ -145,34 +147,96 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         const overlay = document.getElementById('cinematic-overlay');
+        if (!overlay) return;
 
         // =========================
         // GÉNÉRER LES PARTICULES
         // =========================
 
         const particlesContainer = document.getElementById('cinematic-particles');
-        const colors = ['#8B5CF6', '#00bfff', '#ff0044', '#00ff88', '#ffd700'];
+        if (particlesContainer) {
+            const colors = ['#8B5CF6', '#00bfff', '#ff0044', '#00ff88', '#ffd700'];
 
-        for (let i = 0; i < 60; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            const size = Math.random() * 6 + 2;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const duration = Math.random() * 8 + 6;
-            const delay = Math.random() * 10;
-            particle.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                background: ${color};
-                left: ${Math.random() * 100}%;
-                bottom: -10px;
-                animation-duration: ${duration}s;
-                animation-delay: ${delay}s;
-                box-shadow: 0 0 ${size * 3}px ${color};
-                opacity: ${Math.random() * 0.6 + 0.2};
-            `;
-            particlesContainer.appendChild(particle);
+            for (let i = 0; i < 60; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 6 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const duration = Math.random() * 8 + 6;
+                const delay = Math.random() * 10;
+                particle.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: ${color};
+                    left: ${Math.random() * 100}%;
+                    bottom: -10px;
+                    animation-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                    box-shadow: 0 0 ${size * 3}px ${color};
+                    opacity: ${Math.random() * 0.6 + 0.2};
+                `;
+                particlesContainer.appendChild(particle);
+            }
         }
+
+        // =========================
+        // GÉNÉRER LA FUMÉE
+        // =========================
+
+        function generateSmoke() {
+            const container = document.getElementById('cinematic-smoke');
+            if (!container) return;
+
+            for (let i = 0; i < 25; i++) {
+                const smoke = document.createElement('div');
+                smoke.className = 'smoke-particle';
+                const size = Math.random() * 300 + 100;
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * 20;
+                smoke.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${Math.random() * 100}%;
+                    bottom: -${Math.random() * 200 + 50}px;
+                    --smoke-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                    opacity: ${Math.random() * 0.3 + 0.1};
+                `;
+                container.appendChild(smoke);
+            }
+        }
+
+        generateSmoke();
+
+        // =========================
+        // GÉNÉRER LA FUMÉE - DEUXIÈME COUCHE
+        // =========================
+
+        function generateSmokeLayer2() {
+            const container = document.getElementById('cinematic-smoke');
+            if (!container) return;
+
+            for (let i = 0; i < 15; i++) {
+                const smoke = document.createElement('div');
+                smoke.className = 'smoke-particle';
+                const size = Math.random() * 200 + 80;
+                const duration = Math.random() * 25 + 20;
+                const delay = Math.random() * 15;
+                smoke.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${Math.random() * 100}%;
+                    bottom: -${Math.random() * 100 + 30}px;
+                    --smoke-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                    opacity: ${Math.random() * 0.2 + 0.05};
+                    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.05), rgba(139, 92, 246, 0.02), transparent);
+                `;
+                container.appendChild(smoke);
+            }
+        }
+
+        generateSmokeLayer2();
 
         // =========================
         // FERMER LA CINÉMATIQUE
@@ -185,13 +249,22 @@
             }, 1500);
         };
 
-        
         // Clic sur l'écran pour fermer plus tôt
         overlay.addEventListener('click', function(e) {
             if (e.target.tagName === 'BUTTON') return;
             clearTimeout(autoClose);
             window.closeCinematic();
         });
+
+        // Empêcher le scroll pendant la cinématique
+        document.body.style.overflow = 'hidden';
+
+        // Réactiver le scroll quand la cinématique est fermée
+        const originalClose = window.closeCinematic;
+        window.closeCinematic = function() {
+            document.body.style.overflow = '';
+            originalClose();
+        };
 
     });
     </script>
