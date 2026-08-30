@@ -825,14 +825,11 @@ function calculerNiveau(boosts) {
 // SYNCHRONISATION GITHUB (JSON)
 // =========================
 
+const WORKER_URL = "https://boostpc-twitch-status.histoiresportif.workers.dev/boosts";
+
 async function lireBoostsGithub() {
     try {
-        const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`, {
-            headers: {
-                "Authorization": `token ${GITHUB_TOKEN}`,
-                "Accept": "application/vnd.github.v3+json"
-            }
-        });
+        const response = await fetch(WORKER_URL);
         const data = await response.json();
         const contenu = JSON.parse(atob(data.content));
         const sha = data.sha;
@@ -861,52 +858,19 @@ async function lireBoostsGithub() {
     }
 }
 
-async function ecrireBoostsGithub(data, sha) {
+async function ecrireBoostsGithub(contenu, sha) {
     try {
-        let token = localStorage.getItem('github_token');
-        if (!token) {
-            token = prompt(
-                '🔑 Entrez votre token GitHub pour sauvegarder les boosts :\n\n' +
-                '1. GitHub → Settings → Developer settings\n' +
-                '2. Personal access tokens → Tokens (classic)\n' +
-                '3. Générer avec permission "repo"\n' +
-                '4. Collez le token ici :'
-            );
-            if (token) {
-                localStorage.setItem('github_token', token);
-            } else {
-                console.warn('⚠️ Sauvegarde en local uniquement');
-                return false;
-            }
-        }
-
-        const contenuBase64 = btoa(JSON.stringify(data, null, 2));
-        const response = await fetch('https://api.github.com/repos/BoostPCbyQuarz/boostpc/contents/data/boosts.json', {
-            method: 'PUT',
-            headers: {
-                'Authorization': `token ${token}`,
-                'Content-Type': 'application/json',
-                'Accept': 'application/vnd.github.v3+json'
-            },
+        await fetch(WORKER_URL, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                message: `📊 Mise à jour boosts - ${new Date().toLocaleDateString()}`,
-                content: contenuBase64,
-                sha: sha,
-                branch: 'main'
+                message: "Mise à jour boosts",
+                content: btoa(JSON.stringify(contenu, null, 2)),
+                sha: sha
             })
         });
-
-        if (!response.ok) {
-            const error = await response.json();
-            console.error('❌ Erreur GitHub:', error.message);
-            return false;
-        }
-
-        console.log('✅ Boosts sauvegardés sur GitHub !');
-        return true;
     } catch (error) {
-        console.error('Erreur écriture GitHub:', error);
-        return false;
+        console.log("Erreur écriture GitHub :", error);
     }
 }
 
