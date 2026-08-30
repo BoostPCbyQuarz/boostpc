@@ -221,7 +221,8 @@ document.addEventListener('DOMContentLoaded', function () {
             { channel: "voldarks81540", nom: "Voldarks", lien: "https://www.twitch.tv/voldarks81540" },
             { channel: "miss_dixon", nom: "Miss_dixon", lien: "https://www.twitch.tv/miss_dixon" },
             { channel: "titou0232", nom: "Titou0232", lien: "https://www.twitch.tv/titou0232" },
-            { channel: "luunaa_tv", nom: "Luunaa_TV", lien: "https://www.twitch.tv/luunaa_tv" }
+            { channel: "luunaa_tv", nom: "Luunaa_TV", lien: "https://www.twitch.tv/luunaa_tv" },
+            { channel: "inariie_", nom: "Inariie_", lien: "https://www.twitch.tv/inariie_" }
         ];
 
         // Parcourir les cartes et vérifier chaque streamer
@@ -267,7 +268,8 @@ const streamersAccueil = [
     { channel: "voldarks81540", nom: "Voldarks", lien: "https://www.twitch.tv/voldarks81540" },
     { channel: "miss_dixon", nom: "Miss_dixon", lien: "https://www.twitch.tv/miss_dixon" },
     { channel: "titou0232", nom: "Titou0232", lien: "https://www.twitch.tv/titou0232" },
-    { channel: "luunaa_tv", nom: "Luunaa_TV", lien: "https://www.twitch.tv/luunaa_tv" }
+        { channel: "luunaa_tv", nom: "Luunaa_TV", lien: "https://www.twitch.tv/luunaa_tv" },
+    { channel: "inariie_", nom: "Inariie_", lien: "https://www.twitch.tv/inariie_" }
 ];
 
 async function checkLiveAccueil() {
@@ -304,5 +306,5 @@ async function checkLiveAccueil() {
 
 document.addEventListener('DOMContentLoaded', function () {
     checkLiveAccueil();
-    setInterval(checkLiveAccueil, 30000);
+    setInterval(checkLiveAccueil, 20000);
 });
