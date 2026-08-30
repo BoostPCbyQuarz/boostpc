@@ -899,8 +899,10 @@ async function ecrireBoostsGithub(data, sha) {
 // AFFICHAGE CARTES
 // =========================
 
-function mettreAJourCartes() {
-    const data = getBoosts();
+async function mettreAJourCartes() {
+    const github = await lireBoostsGithub();
+    const data = github ? github.contenu : getBoosts();
+
     ['sylvain2500','voldarks81540','miss_dixon','titou0232','luunaa_tv','inariie_'].forEach(ch => {
         const d = data[ch] || { boosts: 0, niveau: 0 };
         const niv = calculerNiveau(d.boosts);
@@ -1278,7 +1280,7 @@ function rejouer() {
 
 // Init
 verifierReinitialisationHebdomadaire();
-mettreAJourCartes();
+mettreAJourCartes().then();
 </script>
 
 </body>
