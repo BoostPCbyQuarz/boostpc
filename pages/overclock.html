@@ -874,7 +874,7 @@ async function mettreAJourCartes() {
         if (bar) bar.style.width = `${(bDansNiv / 10) * 100}%`;
 
         const niveauInfo = document.getElementById(`niveaujeu-${ch}`);
-        if (niveauInfo) niveauInfo.textContent = `Grade : ${GRADES[niv].nom}`;
+        if (niveauInfo) niveauInfo.textContent = `Grade : ${niv}/10`;
 
         const carte = document.querySelector(`[data-channel="${ch}"]`);
         if (carte) {
