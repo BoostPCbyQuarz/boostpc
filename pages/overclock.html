@@ -833,24 +833,6 @@ async function lireBoostsGithub() {
         const data = await response.json();
         const contenu = JSON.parse(atob(data.content));
         const sha = data.sha;
-        const today = new Date().toDateString();
-
-        const partenaires = ['sylvain2500', 'voldarks81540', 'miss_dixon', 'titou0232', 'luunaa_tv', 'inariie_'];
-        let modifie = false;
-
-        partenaires.forEach(ch => {
-            if (!contenu[ch]) {
-                contenu[ch] = { boosts: 0, date: today };
-                modifie = true;
-            } else if (contenu[ch].date !== today) {
-                contenu[ch].boosts = 0;
-                contenu[ch].date = today;
-                modifie = true;
-            }
-        });
-
-        if (modifie) await ecrireBoostsGithub(contenu, sha);
-
         return { contenu, sha };
     } catch (error) {
         console.log("Erreur lecture GitHub :", error);
