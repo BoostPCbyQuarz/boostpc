@@ -371,15 +371,6 @@ async function mettreAJourCartesPartenariat() {
         if (response.ok) {
             const json = await response.json();
             data = JSON.parse(atob(json.content));
-            // Vérification des dates
-const today = new Date().toDateString();
-const partenaires = ['sylvain2500', 'voldarks81540', 'miss_dixon', 'titou0232', 'luunaa_tv', 'inariie_'];
-partenaires.forEach(ch => {
-    if (data[ch] && new Date(data[ch].date) < new Date()) {
-        data[ch].boosts = 0;
-        data[ch].date = today;
-    }
-});
             console.log('📥 Données lues depuis GitHub :', data);
         }
     } catch (e) {
