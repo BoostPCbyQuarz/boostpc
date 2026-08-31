@@ -825,8 +825,6 @@ function calculerNiveau(boosts) {
 // SYNCHRONISATION GITHUB (JSON)
 // =========================
 
-const WORKER_URL = "https://boostpc-twitch-status.histoiresportif.workers.dev/boosts";
-
 async function lireBoostsGithub() {
     try {
         const response = await fetch(WORKER_URL);
