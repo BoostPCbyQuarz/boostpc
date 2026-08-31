@@ -489,7 +489,7 @@
                 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/65e7e4b2-1130-4587-9d83-c944360a3a60-profile_image-300x300.jpeg" alt="Sylvain Gaming">
                 <h3>Sylvain Gaming</h3>
                 <span class="grade-badge grade-0" id="badge-sylvain2500">🔩 Débutant</span>
-                <div class="niveau-jeu-info" id="niveaujeu-sylvain2500">Niveau 1/6</div>
+                <div class="niveau-jeu-info" id="niveaujeu-sylvain2500">Grade : 0/10</div>
                 <div class="boost-bar-container">
                     <div class="boost-bar" id="bar-sylvain2500" style="width:0%"></div>
                 </div>
@@ -500,7 +500,7 @@
                 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/12bbde13-8f8d-411d-8af8-dc83471254b9-profile_image-300x300.png" alt="Voldarks">
                 <h3>Voldarks</h3>
                 <span class="grade-badge grade-0" id="badge-voldarks81540">🔩 Débutant</span>
-                <div class="niveau-jeu-info" id="niveaujeu-voldarks81540">Niveau 1/6</div>
+                <div class="niveau-jeu-info" id="niveaujeu-voldarks81540">Grade : 0/10</div>
                 <div class="boost-bar-container">
                     <div class="boost-bar" id="bar-voldarks81540" style="width:0%"></div>
                 </div>
@@ -511,7 +511,7 @@
                 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/b685f882-4206-4391-855b-2575b94c5dac-profile_image-300x300.jpeg" alt="Miss_dixon">
                 <h3>Miss_dixon</h3>
                 <span class="grade-badge grade-0" id="badge-miss_dixon">🔩 Débutant</span>
-                <div class="niveau-jeu-info" id="niveaujeu-miss_dixon">Niveau 1/6</div>
+                <div class="niveau-jeu-info" id="niveaujeu-miss_dixon">Grade : 0/10</div>
                 <div class="boost-bar-container">
                     <div class="boost-bar" id="bar-miss_dixon" style="width:0%"></div>
                 </div>
@@ -522,7 +522,7 @@
                 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/6e5fbfa5-2a29-494c-891c-b6b5e3d7b90c-profile_image-300x300.png" alt="Titou0232">
                 <h3>Titou0232</h3>
                 <span class="grade-badge grade-0" id="badge-titou0232">🔩 Débutant</span>
-                <div class="niveau-jeu-info" id="niveaujeu-titou0232">Niveau 1/6</div>
+                <div class="niveau-jeu-info" id="niveaujeu-titou0232">Grade : 0/10</div>
                 <div class="boost-bar-container">
                     <div class="boost-bar" id="bar-titou0232" style="width:0%"></div>
                 </div>
@@ -533,7 +533,7 @@
                 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/a0c4cdef-1df3-4906-8423-b652ec6b12b4-profile_image-300x300.png" alt="Luunaa_TV">
                 <h3>Luunaa_TV</h3>
                 <span class="grade-badge grade-0" id="badge-luunaa_tv">🔩 Débutant</span>
-                <div class="niveau-jeu-info" id="niveaujeu-luunaa_tv">Niveau 1/6</div>
+                <div class="niveau-jeu-info" id="niveaujeu-luunaa_tv">Grade : 0/10</div>
                 <div class="boost-bar-container">
                     <div class="boost-bar" id="bar-luunaa_tv" style="width:0%"></div>
                 </div>
@@ -544,7 +544,7 @@
                 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/a3a92159-1fa4-44e5-82c3-2a003d779afe-profile_image-300x300.png" alt="Inariie_">
                 <h3>Inariie_</h3>
                 <span class="grade-badge grade-0" id="badge-inariie_">🔩 Débutant</span>
-                <div class="niveau-jeu-info" id="niveaujeu-inariie_">Niveau 1/6</div>
+                <div class="niveau-jeu-info" id="niveaujeu-inariie_">Grade : 0/10</div>
                 <div class="boost-bar-container">
                     <div class="boost-bar" id="bar-inariie_" style="width:0%"></div>
                 </div>
@@ -875,8 +875,8 @@ async function mettreAJourCartes() {
         const bar = document.getElementById(`bar-${ch}`);
         if (bar) bar.style.width = `${(bDansNiv / 10) * 100}%`;
 
-        const count = document.getElementById(`count-${ch}`);
-        if (count) count.textContent = `${bDansNiv} / 10 boosts`;
+        const niveauInfo = document.getElementById(`niveaujeu-${ch}`);
+        if (niveauInfo) niveauInfo.textContent = `Grade : ${GRADES[niv].nom}`;
 
         const carte = document.querySelector(`[data-channel="${ch}"]`);
         if (carte) {
