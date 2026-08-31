@@ -1,3 +1,52 @@
+const WORKER_URL = "https://boostpc-twitch-status.histoiresportif.workers.dev/boosts";
+
+async function lireBoostsGithub() {
+    try {
+        const response = await fetch(WORKER_URL);
+        const data = await response.json();
+        const contenu = JSON.parse(atob(data.content));
+        const sha = data.sha;
+        const today = new Date().toDateString();
+
+        const partenaires = ['sylvain2500', 'voldarks81540', 'miss_dixon', 'titou0232', 'luunaa_tv', 'inariie_'];
+        let modifie = false;
+
+        partenaires.forEach(ch => {
+            if (!contenu[ch]) {
+                contenu[ch] = { boosts: 0, date: today };
+                modifie = true;
+            } else if (contenu[ch].date !== today) {
+                contenu[ch].boosts = 0;
+                contenu[ch].date = today;
+                modifie = true;
+            }
+        });
+
+        if (modifie) await ecrireBoostsGithub(contenu, sha);
+
+        return { contenu, sha };
+    } catch (error) {
+        console.log("Erreur lecture GitHub :", error);
+        return null;
+    }
+}
+
+async function ecrireBoostsGithub(contenu, sha) {
+    try {
+        await fetch(WORKER_URL, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                message: "Mise à jour boosts",
+                content: btoa(JSON.stringify(contenu, null, 2)),
+                sha: sha
+            })
+        });
+    } catch (error) {
+        console.log("Erreur écriture GitHub :", error);
+    }
+}
+
 // =========================
 // LIGHTBOX POUR LES IMAGES D'AVIS DISCORD
 // =========================
