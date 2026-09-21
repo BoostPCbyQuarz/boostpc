@@ -8,7 +8,7 @@ async function lireBoostsGithub() {
         const sha = data.sha;
         const today = new Date().toDateString();
 
-        const partenaires = ['sylvain2500', 'voldarks81540', 'miss_dixon', 'titou0232', 'luunaa_tv', 'inariie_'];
+        const partenaires = ['sylvain2500', 'voldarks81540', 'miss_dixon', 'titou0232', 'luunaa_tv', 'inariie_', 'shadoww005'];
         let modifie = false;
 
         partenaires.forEach(ch => {
@@ -271,7 +271,8 @@ document.addEventListener('DOMContentLoaded', function () {
             { channel: "miss_dixon", nom: "Miss_dixon", lien: "https://www.twitch.tv/miss_dixon" },
             { channel: "titou0232", nom: "Titou0232", lien: "https://www.twitch.tv/titou0232" },
             { channel: "luunaa_tv", nom: "Luunaa_TV", lien: "https://www.twitch.tv/luunaa_tv" },
-            { channel: "inariie_", nom: "Inariie_", lien: "https://www.twitch.tv/inariie_" }
+            { channel: "inariie_", nom: "Inariie_", lien: "https://www.twitch.tv/inariie_" },
+            { channel: "shadoww005", nom: "ShaDowW005", lien: "https://www.twitch.tv/shadoww005" }
         ];
 
         // Parcourir les cartes et vérifier chaque streamer
@@ -317,8 +318,9 @@ const streamersAccueil = [
     { channel: "voldarks81540", nom: "Voldarks", lien: "https://www.twitch.tv/voldarks81540" },
     { channel: "miss_dixon", nom: "Miss_dixon", lien: "https://www.twitch.tv/miss_dixon" },
     { channel: "titou0232", nom: "Titou0232", lien: "https://www.twitch.tv/titou0232" },
-        { channel: "luunaa_tv", nom: "Luunaa_TV", lien: "https://www.twitch.tv/luunaa_tv" },
-    { channel: "inariie_", nom: "Inariie_", lien: "https://www.twitch.tv/inariie_" }
+    { channel: "luunaa_tv", nom: "Luunaa_TV", lien: "https://www.twitch.tv/luunaa_tv" },
+    { channel: "inariie_", nom: "Inariie_", lien: "https://www.twitch.tv/inariie_" },
+    { channel: "shadoww005", nom: "ShaDowW005", lien: "https://www.twitch.tv/shadoww005" }
 ];
 
 async function checkLiveAccueil() {
