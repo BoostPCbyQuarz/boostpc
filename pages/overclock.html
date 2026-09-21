@@ -551,6 +551,16 @@
                 <div class="boost-count" id="count-inariie_">0 / 10 boosts</div>
             </div>
 
+            <div class="choix-card niveau-0" data-channel="shadoww005" onclick="selectionnerPartenaire(this)">
+                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/af56ccb0-70a7-4c52-b05c-d065625e230e-profile_image-300x300.png" alt="ShaDowW005 Gaming">
+                <h3>ShaDowW005</h3>
+                <span class="grade-badge grade-0" id="badge-shadoww005">🔩 Débutant</span>
+                <div class="niveau-jeu-info" id="niveaujeu-shadoww005">Grade : 0/10</div>
+                <div class="boost-bar-container">
+                    <div class="boost-bar" id="bar-shadoww005" style="width:0%"></div>
+                </div>
+                <div class="boost-count" id="count-shadoww005">0 / 10 boosts</div>
+            </div>
         </div>
 
     <!-- JEU -->
@@ -862,7 +872,7 @@ async function mettreAJourCartes() {
     const github = await lireBoostsGithub();
     const data = github ? github.contenu : getBoosts();
 
-    ['sylvain2500','voldarks81540','miss_dixon','titou0232','luunaa_tv','inariie_'].forEach(ch => {
+    ['sylvain2500','voldarks81540','miss_dixon','titou0232','luunaa_tv','inariie_','shadoww005'].forEach(ch => {
         const d = data[ch] || { boosts: 0, niveau: 0 };
         const niv = calculerNiveau(d.boosts);
         const bDansNiv = d.boosts % 10;
@@ -1177,7 +1187,9 @@ async function finSession() {
         voldarks81540: 'Voldarks',
         miss_dixon: 'Miss_dixon',
         titou0232: 'Titou0232',
-        luunaa_tv: 'Luunaa_TV'
+        luunaa_tv: 'Luunaa_TV',
+        inariie_: 'Inariie_',
+        shadoww005: 'ShaDowW005'
     };
 
     document.getElementById('fin-titre-el').innerHTML = `<div class="fin-titre">⚡ SESSION TERMINÉE !</div>`;
