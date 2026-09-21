@@ -563,6 +563,11 @@
             </div>
         </div>
 
+        <!-- BOUTON LANCER -->
+        <button class="btn-lancer" id="btn-lancer" onclick="lancerJeu()" disabled>🚀 Lancer l'Overclock</button>
+
+    </div>
+
     <!-- JEU -->
     <div class="jeu-section" id="jeu-section">
 
@@ -818,7 +823,9 @@ function getBoosts() {
         voldarks81540: { boosts: 0, niveau: 0 },
         miss_dixon:    { boosts: 0, niveau: 0 },
         titou0232:     { boosts: 0, niveau: 0 },
-        luunaa_tv:     { boosts: 0, niveau: 0 }
+        luunaa_tv:     { boosts: 0, niveau: 0 },
+        inariie_:      { boosts: 0, niveau: 0 },
+        shadoww005:    { boosts: 0, niveau: 0 }
     };
     return data ? { ...base, ...JSON.parse(data) } : base;
 }
@@ -1115,7 +1122,9 @@ async function verifierReinitialisationHebdomadaire() {
             voldarks81540: { boosts: 0 },
             miss_dixon: { boosts: 0 },
             titou0232: { boosts: 0 },
-            luunaa_tv: { boosts: 0 }
+            luunaa_tv: { boosts: 0 },
+            inariie_: { boosts: 0 },
+            shadoww005: { boosts: 0 }
         };
         
         const github = await lireBoostsGithub();
@@ -1151,7 +1160,10 @@ async function finSession() {
             sylvain2500: { boosts: 0 },
             voldarks81540: { boosts: 0 },
             miss_dixon: { boosts: 0 },
-            titou0232: { boosts: 0 }
+            titou0232: { boosts: 0 },
+            luunaa_tv: { boosts: 0 },
+            inariie_: { boosts: 0 },
+            shadoww005: { boosts: 0 }
         };
         
         const github = await lireBoostsGithub();
