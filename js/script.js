@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // =========================
 
 const TWITCH_CLIENT_ID = "ijkbip2a9i70iu22tjl0hoi04u50y9";
-const TWITCH_TOKEN = "1q9bq1f4401hwmgj25bwqyh7rk5nyx";
+const TWITCH_TOKEN = "40pwmyweymvrm1oif9rq8elp7nxwc3";
 
 const streamersEnLive = {};
 
